@@ -1,0 +1,229 @@
+/* Tag.module.css — WorkLife Hub DS v2.0 */
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--wlh-spacing-1);
+  border-radius: var(--wlh-radius-full);
+  font-family: var(--font-body);
+  white-space: nowrap;
+  line-height: 1;
+  border: 1px solid transparent;
+  transition:
+    background var(--wlh-dur-fast) var(--wlh-ease-out),
+    color var(--wlh-dur-fast) var(--wlh-ease-out),
+    border-color var(--wlh-dur-fast) var(--wlh-ease-out),
+    box-shadow var(--wlh-dur-fast) var(--wlh-ease-out);
+}
+
+/* ── Sizes ──────────────────────────────────────────────────────── */
+.tag--sm {
+  height: 22px;
+  padding: 0 var(--wlh-spacing-2);
+  font-size: var(--wlh-text-xs);
+}
+
+.tag--md {
+  height: 28px;
+  padding: 0 var(--wlh-spacing-3);
+  font-size: var(--wlh-text-sm);
+}
+
+.tag--lg {
+  height: 34px;
+  padding: 0 var(--wlh-spacing-4);
+  font-size: var(--wlh-text-base);
+}
+
+/* ── Variants (unselected) ──────────────────────────────────────── */
+.tag--default {
+  background: var(--wlh-slate-100);
+  color: var(--wlh-slate-700);
+  border-color: var(--wlh-slate-200);
+}
+
+.tag--primary {
+  background: var(--wlh-navy-50);
+  color: var(--wlh-navy-700);
+  border-color: var(--wlh-navy-200);
+}
+
+.tag--success {
+  background: var(--wlh-green-50);
+  color: var(--wlh-green-700);
+  border-color: var(--wlh-green-200);
+}
+
+.tag--warning {
+  background: var(--wlh-amber-50);
+  color: var(--wlh-amber-700);
+  border-color: var(--wlh-amber-200);
+}
+
+.tag--error {
+  background: var(--wlh-red-50);
+  color: var(--wlh-red-700);
+  border-color: var(--wlh-red-200);
+}
+
+.tag--info {
+  background: var(--wlh-navy-50);
+  color: var(--wlh-navy-600);
+  border-color: var(--wlh-navy-200);
+}
+
+.tag--amber {
+  background: var(--wlh-amber-100);
+  color: var(--wlh-amber-800);
+  border-color: var(--wlh-amber-200);
+}
+
+/* ── Selected state ─────────────────────────────────────────────── */
+.tag--selected.tag--default {
+  background: var(--wlh-slate-700);
+  color: var(--wlh-white);
+  border-color: var(--wlh-slate-700);
+}
+
+.tag--selected.tag--primary {
+  background: var(--wlh-navy-700);
+  color: var(--wlh-white);
+  border-color: var(--wlh-navy-700);
+}
+
+.tag--selected.tag--success {
+  background: var(--wlh-green-600);
+  color: var(--wlh-white);
+  border-color: var(--wlh-green-600);
+}
+
+.tag--selected.tag--warning {
+  background: var(--wlh-amber-500);
+  color: var(--wlh-slate-900);
+  border-color: var(--wlh-amber-500);
+}
+
+.tag--selected.tag--error {
+  background: var(--wlh-red-600);
+  color: var(--wlh-white);
+  border-color: var(--wlh-red-600);
+}
+
+.tag--selected.tag--info {
+  background: var(--wlh-navy-600);
+  color: var(--wlh-white);
+  border-color: var(--wlh-navy-600);
+}
+
+.tag--selected.tag--amber {
+  background: var(--wlh-amber-500);
+  color: var(--wlh-slate-900);
+  border-color: var(--wlh-amber-500);
+}
+
+/* ── Selectable interaction ─────────────────────────────────────── */
+.tag--selectable {
+  cursor: pointer;
+  user-select: none;
+}
+
+.tag--selectable:hover {
+  filter: brightness(0.95);
+}
+
+.tag--selectable:focus-visible {
+  outline: 2px solid var(--border-focus);
+  outline-offset: 2px;
+}
+
+/* ── Disabled ───────────────────────────────────────────────────── */
+.tag--disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* ── Avatar ─────────────────────────────────────────────────────── */
+.avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: currentColor;
+  font-weight: var(--wlh-weight-semibold);
+  line-height: 1;
+}
+
+.tag--sm .avatar {
+  width: 16px;
+  height: 16px;
+  font-size: 9px;
+  margin-left: calc(var(--wlh-spacing-1) * -0.5);
+}
+
+.tag--md .avatar {
+  width: 20px;
+  height: 20px;
+  font-size: 10px;
+  margin-left: calc(var(--wlh-spacing-1) * -1);
+}
+
+.tag--lg .avatar {
+  width: 24px;
+  height: 24px;
+  font-size: 11px;
+  margin-left: calc(var(--wlh-spacing-1) * -1);
+}
+
+/* Avatar text uses contrasting color */
+.tag--default .avatar { background: var(--wlh-slate-300); color: var(--wlh-slate-700); }
+.tag--primary .avatar { background: var(--wlh-navy-200); color: var(--wlh-navy-800); }
+.tag--success .avatar { background: var(--wlh-green-200); color: var(--wlh-green-800); }
+.tag--warning .avatar { background: var(--wlh-amber-200); color: var(--wlh-amber-800); }
+.tag--error .avatar   { background: var(--wlh-red-200); color: var(--wlh-red-800); }
+.tag--info .avatar    { background: var(--wlh-navy-200); color: var(--wlh-navy-800); }
+.tag--amber .avatar   { background: var(--wlh-amber-200); color: var(--wlh-amber-800); }
+
+/* ── Icon ───────────────────────────────────────────────────────── */
+.icon {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.tag--sm .icon { width: 12px; height: 12px; }
+.tag--md .icon { width: 14px; height: 14px; }
+.tag--lg .icon { width: 16px; height: 16px; }
+
+/* ── Label ──────────────────────────────────────────────────────── */
+.label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ── Remove button ──────────────────────────────────────────────── */
+.remove {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  appearance: none;
+  border: none;
+  background: none;
+  padding: 0;
+  margin-left: var(--wlh-spacing-1);
+  color: currentColor;
+  opacity: 0.6;
+  cursor: pointer;
+  border-radius: 2px;
+  transition: opacity var(--wlh-dur-fast) var(--wlh-ease-out);
+  flex-shrink: 0;
+}
+
+.remove:hover  { opacity: 1; }
+.remove:active { opacity: 0.8; }
+
+.remove:disabled {
+  cursor: not-allowed;
+  opacity: 0.3;
+}

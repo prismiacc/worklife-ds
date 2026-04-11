@@ -1,0 +1,108 @@
+/* Navbar.module.css — WorkLife Hub DS v2.0 */
+
+.navbar {
+  display: flex;
+  align-items: center;
+  gap: var(--wlh-spacing-3);
+  height: var(--navbar-h);
+  padding: 0 var(--wlh-spacing-4);
+  background: var(--navbar-bg);
+  position: sticky;
+  top: 0;
+  z-index: var(--z-navbar);
+  width: 100%;
+}
+
+.navbar--bordered {
+  border-bottom: 1px solid var(--border-subtle);
+  box-shadow: var(--navbar-shadow);
+}
+
+/* ── Brand ──────────────────────────────────────────────────────── */
+.brand {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+/* ── Center ─────────────────────────────────────────────────────── */
+.center {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+/* ── Actions ────────────────────────────────────────────────────── */
+.actions {
+  display: flex;
+  align-items: center;
+  gap: var(--wlh-spacing-1);
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+/* ── Icon button ────────────────────────────────────────────────── */
+.iconBtn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border: none;
+  background: none;
+  color: var(--text-secondary);
+  border-radius: var(--wlh-radius-md);
+  cursor: pointer;
+  transition:
+    background var(--wlh-dur-fast) var(--wlh-ease-out),
+    color      var(--wlh-dur-fast) var(--wlh-ease-out);
+}
+
+.iconBtn:hover {
+  background: var(--surface-2);
+  color: var(--text-primary);
+}
+
+.iconBtn:focus-visible {
+  outline: 2px solid var(--border-focus);
+  outline-offset: 1px;
+}
+
+.iconBtn__icon {
+  display: inline-flex;
+  width: 18px;
+  height: 18px;
+}
+
+/* ── Badge ──────────────────────────────────────────────────────── */
+.iconBtn__badge {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 16px;
+  height: 16px;
+  padding: 0 3px;
+  background: var(--wlh-red-500);
+  color: var(--wlh-white);
+  border-radius: var(--wlh-radius-full);
+  font-size: 9px;
+  font-weight: var(--wlh-weight-bold);
+  line-height: 1;
+  border: 2px solid var(--navbar-bg);
+}
+
+/* ── Divider ────────────────────────────────────────────────────── */
+.divider {
+  width: 1px;
+  height: 20px;
+  background: var(--border-subtle);
+  margin: 0 var(--wlh-spacing-1);
+  flex-shrink: 0;
+}

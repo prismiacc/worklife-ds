@@ -1,0 +1,196 @@
+/* Sidebar.module.css — WorkLife Hub DS v2.0 */
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  width: var(--sidebar-width);
+  min-height: 100%;
+  background: var(--sidebar-bg);
+  transition: width var(--wlh-dur-normal) var(--wlh-ease-out);
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.sidebar--collapsed { width: var(--sidebar-width-collapsed); }
+
+/* ── Logo ───────────────────────────────────────────────────────── */
+.logoArea {
+  display: flex;
+  align-items: center;
+  padding: var(--wlh-spacing-4) var(--wlh-spacing-3);
+  min-height: var(--navbar-h);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  flex-shrink: 0;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: var(--wlh-spacing-2-5);
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+/* ── Nav ────────────────────────────────────────────────────────── */
+.nav {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: var(--wlh-spacing-3) 0;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255,255,255,0.1) transparent;
+}
+
+.nav::-webkit-scrollbar       { width: 4px; }
+.nav::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 2px; }
+
+/* ── Group ──────────────────────────────────────────────────────── */
+.group { margin-bottom: var(--wlh-spacing-4); }
+
+.groupLabel {
+  display: block;
+  padding: 0 var(--wlh-spacing-4) var(--wlh-spacing-1-5);
+  font-size: 10px;
+  font-weight: var(--wlh-weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--sidebar-text-muted);
+  white-space: nowrap;
+}
+
+.groupDivider {
+  height: 1px;
+  background: rgba(255,255,255,0.08);
+  margin: 0 var(--wlh-spacing-3) var(--wlh-spacing-3);
+}
+
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* ── Item ───────────────────────────────────────────────────────── */
+.item {
+  display: flex;
+  align-items: center;
+  gap: var(--wlh-spacing-3);
+  width: 100%;
+  padding: var(--wlh-spacing-2) var(--wlh-spacing-3);
+  border: none;
+  background: none;
+  color: var(--sidebar-text-muted);
+  font-size: var(--wlh-text-sm);
+  font-weight: var(--wlh-weight-medium);
+  font-family: var(--font-body);
+  text-align: left;
+  cursor: pointer;
+  border-left: 3px solid transparent;
+  white-space: nowrap;
+  transition:
+    background  var(--wlh-dur-fast) var(--wlh-ease-out),
+    color       var(--wlh-dur-fast) var(--wlh-ease-out),
+    border-color var(--wlh-dur-fast) var(--wlh-ease-out);
+  position: relative;
+}
+
+.item:hover:not(.item--disabled) {
+  background: var(--sidebar-item-hover);
+  color: var(--sidebar-text);
+}
+
+.item--active {
+  background: var(--sidebar-item-active);
+  border-left-color: var(--sidebar-item-active-border);
+  color: var(--wlh-amber-300);
+}
+
+.item--disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.item--child {
+  font-size: var(--wlh-text-xs);
+}
+
+.item:focus-visible {
+  outline: 2px solid var(--wlh-amber-400);
+  outline-offset: -2px;
+}
+
+/* ── Item parts ─────────────────────────────────────────────────── */
+.item__icon {
+  flex-shrink: 0;
+  display: inline-flex;
+  width: 18px;
+  height: 18px;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.7;
+}
+
+.item--active .item__icon { opacity: 1; }
+
+.item__label {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.item__badge {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 var(--wlh-spacing-1);
+  background: var(--wlh-amber-400);
+  color: var(--wlh-navy-900);
+  border-radius: var(--wlh-radius-full);
+  font-size: 10px;
+  font-weight: var(--wlh-weight-bold);
+  line-height: 1;
+}
+
+/* Dot badge when collapsed */
+.item__badgeDot {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  width: 7px;
+  height: 7px;
+  border-radius: var(--wlh-radius-full);
+  background: var(--wlh-amber-400);
+  border: 2px solid var(--sidebar-bg);
+}
+
+/* ── Footer ─────────────────────────────────────────────────────── */
+.footer {
+  border-top: 1px solid rgba(255,255,255,0.08);
+  padding: var(--wlh-spacing-3);
+  flex-shrink: 0;
+}
+
+/* ── Collapse button ────────────────────────────────────────────── */
+.collapseBtn {
+  display: flex;
+  align-items: center;
+  gap: var(--wlh-spacing-2);
+  width: 100%;
+  padding: var(--wlh-spacing-2-5) var(--wlh-spacing-3);
+  border: none;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  background: none;
+  color: var(--sidebar-text-muted);
+  font-size: var(--wlh-text-xs);
+  font-family: var(--font-body);
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: color var(--wlh-dur-fast) var(--wlh-ease-out);
+}
+
+.collapseBtn:hover { color: var(--sidebar-text); }
+.collapseBtn:focus-visible { outline: 2px solid var(--wlh-amber-400); outline-offset: -2px; }

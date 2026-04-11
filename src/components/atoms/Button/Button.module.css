@@ -1,0 +1,237 @@
+/* Button.module.css — WorkLife Hub DS v2.0
+   Variants: primary · secondary · ghost · danger · link
+   Sizes:    sm · md · lg · iconOnly
+   States:   hover · focus · active · loading · disabled
+*/
+
+/* ── Base ───────────────────────────────────────────────────────── */
+.btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--wlh-spacing-2);
+
+  appearance: none;
+  border: 1.5px solid transparent;
+  border-radius: var(--btn-radius);
+  cursor: pointer;
+  white-space: nowrap;
+  text-decoration: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+
+  font-family: var(--font-body);
+  font-weight: var(--wlh-weight-semibold);
+  letter-spacing: 0.01em;
+  line-height: 1;
+
+  transition:
+    background-color var(--wlh-dur-quick) var(--wlh-ease-out),
+    border-color     var(--wlh-dur-quick) var(--wlh-ease-out),
+    color            var(--wlh-dur-quick) var(--wlh-ease-out),
+    box-shadow       var(--wlh-dur-quick) var(--wlh-ease-out),
+    transform        var(--wlh-dur-fast)  var(--wlh-ease-spring),
+    opacity          var(--wlh-dur-quick) var(--wlh-ease-out);
+}
+
+/* Ripple prep */
+.btn::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  opacity: 0;
+  background: currentColor;
+  transition: opacity var(--wlh-dur-quick) var(--wlh-ease-out);
+}
+
+.btn:active:not(:disabled)::after { opacity: 0.08; }
+
+
+/* ── Sizes ──────────────────────────────────────────────────────── */
+.btn--sm {
+  height: var(--btn-h-sm);
+  padding: 0 var(--btn-px-sm);
+  font-size: var(--btn-text-sm);
+}
+
+.btn--md {
+  height: var(--btn-h-md);
+  padding: 0 var(--btn-px-md);
+  font-size: var(--btn-text-md);
+}
+
+.btn--lg {
+  height: var(--btn-h-lg);
+  padding: 0 var(--btn-px-lg);
+  font-size: var(--btn-text-lg);
+}
+
+.btn--fullWidth { width: 100%; }
+
+.btn--iconOnly.btn--sm { width: var(--btn-h-sm); padding: 0; }
+.btn--iconOnly.btn--md { width: var(--btn-h-md); padding: 0; }
+.btn--iconOnly.btn--lg { width: var(--btn-h-lg); padding: 0; }
+
+
+/* ── Variant: primary (amber fill) ─────────────────────────────── */
+.btn--primary {
+  background: var(--btn-primary-bg);
+  color:       var(--btn-primary-text);
+  border-color:var(--btn-primary-border);
+  box-shadow:  var(--btn-primary-shadow);
+}
+
+.btn--primary:hover:not(:disabled) {
+  background: var(--btn-primary-bg-hover);
+  box-shadow: var(--btn-primary-shadow-hover);
+  transform:  translateY(-1px);
+}
+
+.btn--primary:active:not(:disabled) {
+  background: var(--btn-primary-bg-active);
+  transform:  translateY(0) scale(0.98);
+  box-shadow: var(--btn-primary-shadow);
+}
+
+
+/* ── Variant: secondary (outline navy) ─────────────────────────── */
+.btn--secondary {
+  background:   var(--btn-secondary-bg);
+  color:        var(--btn-secondary-text);
+  border-color: var(--btn-secondary-border);
+}
+
+.btn--secondary:hover:not(:disabled) {
+  background: var(--btn-secondary-bg-hover);
+  transform:  translateY(-1px);
+}
+
+.btn--secondary:active:not(:disabled) {
+  background: var(--btn-secondary-bg-active);
+  transform:  translateY(0) scale(0.98);
+}
+
+
+/* ── Variant: ghost ─────────────────────────────────────────────── */
+.btn--ghost {
+  background: var(--btn-ghost-bg);
+  color:      var(--btn-ghost-text);
+}
+
+.btn--ghost:hover:not(:disabled) {
+  background: var(--btn-ghost-bg-hover);
+}
+
+.btn--ghost:active:not(:disabled) {
+  background: var(--btn-ghost-bg-active);
+  transform:  scale(0.98);
+}
+
+
+/* ── Variant: danger ────────────────────────────────────────────── */
+.btn--danger {
+  background: var(--btn-danger-bg);
+  color:      var(--btn-danger-text);
+}
+
+.btn--danger:hover:not(:disabled) {
+  background: var(--btn-danger-bg-hover);
+  transform:  translateY(-1px);
+  box-shadow: 0 4px 12px rgba(225, 29, 72, 0.3);
+}
+
+.btn--danger:active:not(:disabled) {
+  transform: scale(0.98);
+  box-shadow: none;
+}
+
+
+/* ── Variant: link ──────────────────────────────────────────────── */
+.btn--link {
+  background:   transparent;
+  color:        var(--text-link);
+  border-color: transparent;
+  height: auto;
+  padding: 0;
+  font-weight: var(--wlh-weight-medium);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.btn--link:hover:not(:disabled) {
+  color: var(--text-link-hover);
+}
+
+
+/* ── Focus ring ─────────────────────────────────────────────────── */
+.btn:focus-visible {
+  outline: 2px solid var(--border-focus);
+  outline-offset: 2px;
+  box-shadow: var(--wlh-glow-amber);
+}
+
+.btn:focus:not(:focus-visible) {
+  outline: none;
+}
+
+
+/* ── Disabled + Loading ─────────────────────────────────────────── */
+.btn:disabled,
+.btn--loading {
+  opacity: 0.48;
+  cursor: not-allowed;
+  pointer-events: none;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+
+/* ── Spinner ────────────────────────────────────────────────────── */
+.btn__spinner {
+  flex-shrink: 0;
+  width:  1em;
+  height: 1em;
+  border: 2px solid currentColor;
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: wlh-spin 0.65s linear infinite;
+}
+
+
+/* ── Icon slot ──────────────────────────────────────────────────── */
+.btn__icon {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  width:  1em;
+  height: 1em;
+}
+
+.btn__label {
+  /* sem estilo extra — permite que o texto herde do pai */
+}
+
+/* Visually hidden mas acessível (icon-only) */
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+
+/* ── Reduced motion ─────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .btn {
+    transition: background-color var(--wlh-dur-quick),
+                border-color     var(--wlh-dur-quick),
+                opacity          var(--wlh-dur-quick);
+    transform: none !important;
+  }
+  .btn__spinner { animation-duration: 1.5s; }
+}

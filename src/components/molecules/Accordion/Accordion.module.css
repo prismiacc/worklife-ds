@@ -1,0 +1,172 @@
+/* ── Accordion container ────────────────────────────────────────── */
+.accordion {
+  width: 100%;
+}
+
+/* ── Variant: default ──────────────────────────────────────────── */
+.accordion--default {
+  border: 1px solid var(--border);
+  border-radius: var(--wlh-radius-xl);
+  overflow: hidden;
+}
+
+.accordion--default .item + .item {
+  border-top: 1px solid var(--border);
+}
+
+/* ── Variant: flush ────────────────────────────────────────────── */
+.accordion--flush .item + .item {
+  border-top: 1px solid var(--border);
+}
+
+/* ── Variant: card ─────────────────────────────────────────────── */
+.accordion--card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--wlh-spacing-2);
+}
+
+.accordion--card .item {
+  border: 1px solid var(--border);
+  border-radius: var(--wlh-radius-xl);
+  box-shadow: var(--wlh-shadow-sm);
+  overflow: hidden;
+}
+
+/* ── Item ──────────────────────────────────────────────────────── */
+.item {
+  background: var(--surface-1);
+}
+
+.item--disabled {
+  opacity: 0.5;
+}
+
+/* ── Trigger button ────────────────────────────────────────────── */
+.trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  border: none;
+  background: transparent;
+  color: var(--text-primary);
+  font-family: inherit;
+  font-weight: var(--wlh-weight-semibold);
+  text-align: left;
+  cursor: pointer;
+  transition: background var(--wlh-dur-fast) var(--wlh-ease-out);
+}
+
+.trigger:hover:not(:disabled) {
+  background: var(--surface-2);
+}
+
+.trigger:focus-visible {
+  outline: 2px solid var(--border-focus);
+  outline-offset: -2px;
+  border-radius: var(--wlh-radius-sm);
+}
+
+.trigger:disabled {
+  cursor: not-allowed;
+}
+
+/* ── Size modifiers — trigger padding + font size ──────────────── */
+.accordion--sm .trigger {
+  padding: var(--wlh-spacing-2) var(--wlh-spacing-3);
+  font-size: var(--wlh-text-sm);
+}
+
+.accordion--md .trigger {
+  padding: var(--wlh-spacing-3) var(--wlh-spacing-4);
+  font-size: var(--wlh-text-md);
+}
+
+.accordion--lg .trigger {
+  padding: var(--wlh-spacing-4) var(--wlh-spacing-5);
+  font-size: var(--wlh-text-lg);
+}
+
+/* ── Trigger content ───────────────────────────────────────────── */
+.triggerContent {
+  display: flex;
+  align-items: center;
+  gap: var(--wlh-spacing-2-5);
+  flex: 1;
+  min-width: 0;
+}
+
+.triggerIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--text-secondary);
+}
+
+.triggerTitle {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.triggerBadge {
+  flex-shrink: 0;
+  padding: var(--wlh-spacing-0-5) var(--wlh-spacing-2);
+  font-size: var(--wlh-text-xs);
+  font-weight: var(--wlh-weight-semibold);
+  color: var(--text-secondary);
+  background: var(--surface-3);
+  border-radius: var(--wlh-radius-full);
+}
+
+/* ── Chevron ───────────────────────────────────────────────────── */
+.chevron {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--text-tertiary);
+  transition: transform var(--wlh-dur-normal) var(--wlh-ease-out);
+}
+
+.item--open .chevron {
+  transform: rotate(180deg);
+}
+
+/* ── Panel — grid-template-rows animation ──────────────────────── */
+.panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows var(--wlh-dur-normal) var(--wlh-ease-out);
+}
+
+.item--open .panel {
+  grid-template-rows: 1fr;
+}
+
+.panelInner {
+  overflow: hidden;
+}
+
+/* ── Panel content padding ─────────────────────────────────────── */
+.accordion--sm .panelContent {
+  padding: var(--wlh-spacing-2) var(--wlh-spacing-3) var(--wlh-spacing-3);
+}
+
+.accordion--md .panelContent {
+  padding: var(--wlh-spacing-1) var(--wlh-spacing-4) var(--wlh-spacing-4);
+}
+
+.accordion--lg .panelContent {
+  padding: var(--wlh-spacing-1) var(--wlh-spacing-5) var(--wlh-spacing-5);
+}
+
+.panelContent {
+  font-size: var(--wlh-text-md);
+  line-height: var(--wlh-leading-relaxed);
+  color: var(--text-secondary);
+}

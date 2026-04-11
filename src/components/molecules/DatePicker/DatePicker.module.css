@@ -1,0 +1,303 @@
+/* DatePicker.module.css — WorkLife Hub DS v2.0 */
+
+/* ── Root ───────────────────────────────────────────────────────── */
+.root {
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+  gap: var(--wlh-spacing-1);
+}
+
+.root--full { width: 100%; }
+
+/* ── Label ──────────────────────────────────────────────────────── */
+.label {
+  font-size: var(--wlh-text-sm);
+  font-weight: var(--wlh-weight-medium);
+  color: var(--text-primary);
+}
+
+/* ── Trigger ────────────────────────────────────────────────────── */
+.trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--wlh-spacing-2);
+  height: 38px;
+  padding: 0 var(--wlh-spacing-3);
+  background: var(--surface-1);
+  border: 1px solid var(--border-default);
+  border-radius: var(--wlh-radius-md);
+  font-family: var(--font-body);
+  font-size: var(--wlh-text-sm);
+  color: var(--text-primary);
+  cursor: pointer;
+  text-align: left;
+  white-space: nowrap;
+  transition:
+    border-color var(--wlh-dur-fast) var(--wlh-ease-out),
+    box-shadow   var(--wlh-dur-fast) var(--wlh-ease-out);
+}
+
+.root--full .trigger { width: 100%; }
+
+.trigger:hover:not(.trigger--disabled) {
+  border-color: var(--wlh-slate-400);
+}
+
+.trigger--open {
+  border-color: var(--border-focus);
+  box-shadow: 0 0 0 3px rgba(15,27,53,0.12);
+}
+
+.trigger--error { border-color: var(--status-error-border); }
+.trigger--error.trigger--open { box-shadow: 0 0 0 3px rgba(220,38,38,0.15); }
+
+.trigger--disabled { opacity: 0.5; cursor: not-allowed; }
+
+.trigger:focus-visible {
+  outline: 2px solid var(--border-focus);
+  outline-offset: 1px;
+}
+
+.calIcon { flex-shrink: 0; color: var(--text-tertiary); }
+
+.triggerText { flex: 1; }
+.triggerText--placeholder { color: var(--text-placeholder); }
+
+/* ── Clear button ───────────────────────────────────────────────── */
+.clearBtn {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px; height: 18px;
+  border: none;
+  background: var(--wlh-slate-200);
+  color: var(--wlh-slate-500);
+  border-radius: var(--wlh-radius-full);
+  cursor: pointer;
+  padding: 0;
+  transition: background var(--wlh-dur-fast) var(--wlh-ease-out);
+}
+.clearBtn:hover { background: var(--wlh-slate-300); color: var(--text-primary); }
+
+/* ── Hint / Error ───────────────────────────────────────────────── */
+.hint  { font-size: var(--wlh-text-xs); color: var(--text-tertiary); }
+.error { font-size: var(--wlh-text-xs); color: var(--status-error-text); }
+
+/* ── Popover ────────────────────────────────────────────────────── */
+.popover {
+  position: absolute;
+  top: calc(100% + var(--wlh-spacing-2));
+  left: 0;
+  z-index: var(--z-dropdown);
+  background: var(--surface-1);
+  border: 1px solid var(--border-default);
+  border-radius: var(--wlh-radius-xl);
+  box-shadow: var(--wlh-shadow-xl);
+  animation: wlh-scale-in var(--wlh-dur-fast) var(--wlh-ease-spring);
+  transform-origin: top left;
+}
+
+.popover--withPresets {
+  display: flex;
+  flex-direction: row;
+}
+
+/* ── Presets panel ──────────────────────────────────────────────── */
+.presets {
+  display: flex;
+  flex-direction: column;
+  min-width: 9rem;
+  border-right: 1px solid var(--border-subtle);
+  padding: var(--wlh-spacing-2);
+}
+
+.presetsLabel {
+  font-size: 10px;
+  font-weight: var(--wlh-weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-tertiary);
+  padding: var(--wlh-spacing-2) var(--wlh-spacing-2) var(--wlh-spacing-1);
+}
+
+.preset {
+  display: block;
+  width: 100%;
+  padding: var(--wlh-spacing-1-5) var(--wlh-spacing-2);
+  border: none;
+  background: none;
+  border-radius: var(--wlh-radius-md);
+  font-family: var(--font-body);
+  font-size: var(--wlh-text-sm);
+  color: var(--text-secondary);
+  cursor: pointer;
+  text-align: left;
+  transition:
+    background var(--wlh-dur-fast) var(--wlh-ease-out),
+    color      var(--wlh-dur-fast) var(--wlh-ease-out);
+}
+.preset:hover { background: var(--surface-2); color: var(--text-primary); }
+.preset:focus-visible { outline: 2px solid var(--border-focus); outline-offset: 1px; border-radius: var(--wlh-radius-md); }
+
+/* ── Calendar ───────────────────────────────────────────────────── */
+.calendar {
+  padding: var(--wlh-spacing-3);
+  min-width: 260px;
+}
+
+/* ── Nav ────────────────────────────────────────────────────────── */
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--wlh-spacing-3);
+}
+
+.navBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px; height: 28px;
+  border: none;
+  background: none;
+  border-radius: var(--wlh-radius-md);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: background var(--wlh-dur-fast) var(--wlh-ease-out);
+}
+.navBtn:hover { background: var(--surface-2); }
+.navBtn:focus-visible { outline: 2px solid var(--border-focus); outline-offset: 1px; }
+
+.navTitle {
+  font-size: var(--wlh-text-sm);
+  font-weight: var(--wlh-weight-semibold);
+  color: var(--text-primary);
+}
+
+/* ── Day headers ────────────────────────────────────────────────── */
+.dayHeaders {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  margin-bottom: var(--wlh-spacing-1);
+}
+
+.dayHeader {
+  text-align: center;
+  font-size: 10px;
+  font-weight: var(--wlh-weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-tertiary);
+  padding: var(--wlh-spacing-1) 0;
+}
+
+/* ── Grid ───────────────────────────────────────────────────────── */
+.grid {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.week {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+}
+
+.empty { height: 32px; }
+
+/* ── Day button ─────────────────────────────────────────────────── */
+.day {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 32px;
+  border: none;
+  background: none;
+  border-radius: var(--wlh-radius-md);
+  font-family: var(--font-body);
+  font-size: var(--wlh-text-sm);
+  color: var(--text-primary);
+  cursor: pointer;
+  transition:
+    background   var(--wlh-dur-fast) var(--wlh-ease-out),
+    color        var(--wlh-dur-fast) var(--wlh-ease-out),
+    border-radius var(--wlh-dur-fast) var(--wlh-ease-out);
+}
+
+.day:hover:not(.day--disabled) {
+  background: var(--surface-2);
+}
+
+.day:focus-visible {
+  outline: 2px solid var(--border-focus);
+  outline-offset: 1px;
+  z-index: 1;
+}
+
+/* ── Today ──────────────────────────────────────────────────────── */
+.day--today {
+  font-weight: var(--wlh-weight-semibold);
+  color: var(--wlh-navy-800);
+}
+
+.day--today::after {
+  content: '';
+  position: absolute;
+  bottom: 3px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px; height: 4px;
+  border-radius: var(--wlh-radius-full);
+  background: var(--wlh-amber-400);
+}
+
+/* ── Selected ───────────────────────────────────────────────────── */
+.day--selected {
+  background: var(--wlh-navy-800);
+  color: var(--wlh-white);
+  font-weight: var(--wlh-weight-semibold);
+}
+.day--selected:hover { background: var(--wlh-navy-700); }
+.day--selected.day--today::after { background: var(--wlh-amber-400); }
+
+/* ── Range ──────────────────────────────────────────────────────── */
+.day--inRange {
+  background: var(--wlh-navy-100);
+  color: var(--wlh-navy-800);
+  border-radius: 0;
+}
+
+.day--rangeStart {
+  border-radius: var(--wlh-radius-md) 0 0 var(--wlh-radius-md);
+}
+
+.day--rangeEnd {
+  border-radius: 0 var(--wlh-radius-md) var(--wlh-radius-md) 0;
+}
+
+.day--rangeStart.day--rangeEnd {
+  border-radius: var(--wlh-radius-md);
+}
+
+/* ── Hover range (preview) ──────────────────────────────────────── */
+.day--hovered {
+  background: var(--wlh-navy-50);
+  border-radius: 0;
+}
+
+/* ── Disabled ───────────────────────────────────────────────────── */
+.day--disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .popover { animation: none; }
+  .day     { transition: none; }
+}

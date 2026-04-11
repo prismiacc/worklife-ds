@@ -1,0 +1,43 @@
+/*
+ * HelperText.module.css — WorkLife Hub
+ * Atom: HelperText — below-field hint, error, or success message
+ * WCAG 2.1 AA: all variants >= 4.5:1 on white bg
+ */
+
+.helperText {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.25rem;
+  margin: 0;
+  font-family: var(--font-body, 'Inter', system-ui, sans-serif);
+  font-size: var(--font-size-xs, 0.6875rem);
+  line-height: 1.45;
+  color: var(--color-slate-500, #64748B); /* 4.54:1 on white — AA */
+}
+
+/* Error — navy-900 on white (25:1) */
+.helperText--error {
+  color: var(--color-navy-900, #0F1B35);
+}
+
+/* Success — navy-800 on white (11.61:1) */
+.helperText--success {
+  color: var(--color-navy-800, #1A2B4A);
+}
+
+/* Icon shared styles */
+.helperText__icon {
+  flex-shrink: 0;
+  width: 0.875rem;
+  height: 0.875rem;
+  margin-top: 0.0625rem; /* optical alignment with text cap */
+  stroke: currentColor;
+  stroke-width: 1.5;
+  fill: none;
+}
+
+/* Error icon fill for dot */
+.helperText--error .helperText__icon circle:last-child,
+.helperText--success .helperText__icon polyline {
+  stroke: currentColor;
+}

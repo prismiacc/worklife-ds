@@ -1,0 +1,143 @@
+/* Toast.module.css — WorkLife Hub DS v2.0 */
+
+/* ── Region (container posicionado) ────────────────────────────── */
+.region {
+  position: fixed;
+  z-index: var(--z-toast);
+  display: flex;
+  flex-direction: column;
+  gap: var(--wlh-spacing-2);
+  pointer-events: none;
+  width: var(--toast-width);
+  max-width: calc(100vw - var(--wlh-spacing-8));
+}
+
+.region--bottom-center {
+  bottom: var(--wlh-spacing-6);
+  left: 50%;
+  transform: translateX(-50%);
+  align-items: center;
+}
+
+.region--bottom-right {
+  bottom: var(--wlh-spacing-6);
+  right: var(--wlh-spacing-6);
+  align-items: flex-end;
+}
+
+.region--top-center {
+  top: var(--wlh-spacing-6);
+  left: 50%;
+  transform: translateX(-50%);
+  align-items: center;
+  flex-direction: column-reverse;
+}
+
+.region--top-right {
+  top: var(--wlh-spacing-6);
+  right: var(--wlh-spacing-6);
+  align-items: flex-end;
+  flex-direction: column-reverse;
+}
+
+/* ── Card ───────────────────────────────────────────────────────── */
+.card {
+  pointer-events: all;
+  display: flex;
+  align-items: center;
+  gap: var(--wlh-spacing-2-5);
+  padding: var(--toast-py) var(--toast-px);
+  border-radius: var(--toast-radius);
+  border: 1px solid;
+  width: 100%;
+  box-shadow: var(--wlh-shadow-lg);
+  font-size: var(--wlh-text-sm);
+  line-height: var(--wlh-leading-snug);
+  animation: wlh-toast-in var(--wlh-dur-normal) var(--wlh-ease-spring) both;
+}
+
+/* ── Variants ───────────────────────────────────────────────────── */
+.card--default {
+  background:   var(--surface-1);
+  border-color: var(--border-default);
+  color:        var(--text-primary);
+}
+
+.card--success {
+  background:   var(--status-success-bg);
+  border-color: var(--status-success-border);
+  color:        var(--status-success-text);
+}
+
+.card--warning {
+  background:   var(--status-warning-bg);
+  border-color: var(--status-warning-border);
+  color:        var(--status-warning-text);
+}
+
+.card--error {
+  background:   var(--status-error-bg);
+  border-color: var(--status-error-border);
+  color:        var(--status-error-text);
+}
+
+.card--info {
+  background:   var(--status-info-bg);
+  border-color: var(--status-info-border);
+  color:        var(--status-info-text);
+}
+
+/* ── Icon ───────────────────────────────────────────────────────── */
+.card__icon {
+  flex-shrink: 0;
+  display: inline-flex;
+  width:  1rem;
+  height: 1rem;
+}
+
+.card__icon svg { width: 100%; height: 100%; }
+
+/* ── Message ────────────────────────────────────────────────────── */
+.card__message {
+  flex: 1;
+  min-width: 0;
+}
+
+/* ── Action button ──────────────────────────────────────────────── */
+.card__action {
+  flex-shrink: 0;
+  appearance: none;
+  border: none;
+  background: none;
+  padding: var(--wlh-spacing-0-5) var(--wlh-spacing-1);
+  cursor: pointer;
+  font-size: var(--wlh-text-sm);
+  font-weight: var(--wlh-weight-semibold);
+  color: currentColor;
+  border-radius: var(--wlh-radius-sm);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: opacity var(--wlh-dur-fast) var(--wlh-ease-out);
+}
+
+.card__action:hover { opacity: 0.75; }
+.card__action:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }
+
+/* ── Dismiss ────────────────────────────────────────────────────── */
+.card__dismiss {
+  flex-shrink: 0;
+  appearance: none;
+  border: none;
+  background: none;
+  padding: var(--wlh-spacing-0-5);
+  margin-right: calc(var(--wlh-spacing-0-5) * -1);
+  cursor: pointer;
+  color: currentColor;
+  opacity: 0.5;
+  border-radius: var(--wlh-radius-sm);
+  line-height: 0;
+  transition: opacity var(--wlh-dur-fast) var(--wlh-ease-out);
+}
+
+.card__dismiss:hover  { opacity: 1; }
+.card__dismiss:focus-visible { opacity: 1; outline: 2px solid currentColor; outline-offset: 1px; }

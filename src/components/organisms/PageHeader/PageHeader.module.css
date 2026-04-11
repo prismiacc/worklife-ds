@@ -1,0 +1,93 @@
+/* PageHeader.module.css — WorkLife Hub DS v2.0 */
+
+.root {
+  background: var(--surface-1);
+  padding: var(--wlh-spacing-5) var(--wlh-spacing-6);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+/* ── Breadcrumb row ─────────────────────────────────────────────── */
+.breadcrumbRow {
+  margin-bottom: var(--wlh-spacing-3);
+}
+
+/* ── Title row ──────────────────────────────────────────────────── */
+.titleRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--wlh-spacing-4);
+  flex-wrap: wrap;
+}
+
+.titleGroup {
+  display: flex;
+  align-items: center;
+  gap: var(--wlh-spacing-3);
+  min-width: 0;
+}
+
+.title {
+  font-size: var(--wlh-text-2xl);
+  font-weight: var(--wlh-weight-bold);
+  color: var(--text-primary);
+  margin: 0;
+  line-height: 1.3;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+/* ── Back button ────────────────────────────────────────────────── */
+.backBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  appearance: none;
+  border: none;
+  background: none;
+  padding: var(--wlh-spacing-1-5);
+  margin: calc(var(--wlh-spacing-1) * -1);
+  cursor: pointer;
+  color: var(--text-secondary);
+  border-radius: var(--wlh-radius-md);
+  text-decoration: none;
+  flex-shrink: 0;
+  transition:
+    color var(--wlh-dur-fast) var(--wlh-ease-out),
+    background var(--wlh-dur-fast) var(--wlh-ease-out);
+}
+
+.backBtn:hover {
+  color: var(--text-primary);
+  background: var(--surface-2);
+}
+
+.backBtn:focus-visible {
+  outline: 2px solid var(--border-focus);
+  outline-offset: 2px;
+}
+
+/* ── Actions slot ───────────────────────────────────────────────── */
+.actions {
+  display: flex;
+  align-items: center;
+  gap: var(--wlh-spacing-2);
+  flex-shrink: 0;
+}
+
+/* ── Subtitle ───────────────────────────────────────────────────── */
+.subtitle {
+  margin: var(--wlh-spacing-1) 0 0;
+  font-size: var(--wlh-text-sm);
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+/* ── Tabs slot ──────────────────────────────────────────────────── */
+.tabs {
+  margin-top: var(--wlh-spacing-4);
+}

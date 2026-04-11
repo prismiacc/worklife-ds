@@ -1,0 +1,123 @@
+/* ProgressBar.module.css — WorkLife Hub DS v2.0 */
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--wlh-spacing-1);
+  width: 100%;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.label {
+  font-size: var(--wlh-text-sm);
+  font-weight: var(--wlh-weight-medium);
+  color: var(--text-secondary);
+}
+
+.valueText {
+  font-size: var(--wlh-text-xs);
+  color: var(--text-tertiary);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── Track ──────────────────────────────────────────────────────── */
+.track {
+  position: relative;
+  width: 100%;
+  background: var(--wlh-slate-200);
+  border-radius: var(--wlh-radius-full);
+  overflow: hidden;
+}
+
+.track--xs  { height: 2px; }
+.track--sm  { height: 4px; }
+.track--md  { height: 8px; }
+.track--lg  { height: 12px; }
+
+/* ── Fill ───────────────────────────────────────────────────────── */
+.fill {
+  height: 100%;
+  border-radius: inherit;
+  transition: width var(--wlh-dur-slow) var(--wlh-ease-out);
+}
+
+.fill--brand   { background: var(--wlh-navy-700); }
+.fill--amber   { background: var(--wlh-amber-400); }
+.fill--success { background: var(--wlh-green-500); }
+.fill--warning { background: var(--wlh-amber-500); }
+.fill--error   { background: var(--wlh-red-500); }
+.fill--info    { background: var(--wlh-purple-500); }
+
+/* ── Indeterminate ──────────────────────────────────────────────── */
+.fill--indeterminate {
+  width: 40% !important;
+  animation: wlh-indeterminate 1.4s ease-in-out infinite;
+}
+
+@keyframes wlh-indeterminate {
+  0%   { transform: translateX(-150%); }
+  100% { transform: translateX(400%); }
+}
+
+/* ── Segmented ──────────────────────────────────────────────────── */
+.segmented {
+  display: flex;
+  gap: var(--wlh-spacing-1);
+  width: 100%;
+}
+
+.segment {
+  flex: 1;
+  height: 6px;
+  border-radius: var(--wlh-radius-full);
+  background: var(--wlh-slate-200);
+  transition: background var(--wlh-dur-normal) var(--wlh-ease-out);
+}
+
+.segment--filled { background: var(--wlh-navy-700); }
+
+/* ── Circular ───────────────────────────────────────────────────── */
+.circular {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.circular__svg { transform: rotate(-90deg); }
+
+.circular__track {
+  fill: none;
+  stroke: var(--wlh-slate-200);
+}
+
+.circular__fill {
+  fill: none;
+  stroke: var(--wlh-navy-700);
+  stroke-linecap: round;
+  transition: stroke-dashoffset var(--wlh-dur-slow) var(--wlh-ease-out);
+}
+
+.circular__fill--amber   { stroke: var(--wlh-amber-400); }
+.circular__fill--success { stroke: var(--wlh-green-500); }
+.circular__fill--error   { stroke: var(--wlh-red-500); }
+
+.circular__label {
+  position: absolute;
+  font-size: var(--wlh-text-xs);
+  font-weight: var(--wlh-weight-semibold);
+  color: var(--text-primary);
+  font-variant-numeric: tabular-nums;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fill { transition: none; }
+  .fill--indeterminate { animation: none; width: 50% !important; }
+  .circular__fill { transition: none; }
+}

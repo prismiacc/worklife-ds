@@ -1,0 +1,233 @@
+/* HabitTracker.module.css — WorkLife Hub DS v2.0 */
+
+/* ── Root ───────────────────────────────────────────────────────── */
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: var(--wlh-spacing-4);
+  padding: var(--wlh-spacing-5);
+  background: var(--surface-1);
+  border: 1px solid var(--border-default);
+  border-radius: var(--wlh-radius-xl);
+  box-shadow: var(--wlh-shadow-sm);
+}
+
+/* ── Header ─────────────────────────────────────────────────────── */
+.header {
+  display: flex;
+  align-items: center;
+  gap: var(--wlh-spacing-3);
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--wlh-radius-lg);
+  font-size: 1.125rem;
+  flex-shrink: 0;
+}
+
+.meta {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.name {
+  font-size: var(--wlh-text-base);
+  font-weight: var(--wlh-weight-semibold);
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.description {
+  font-size: var(--wlh-text-sm);
+  color: var(--text-tertiary);
+}
+
+/* ── Streak badge ───────────────────────────────────────────────── */
+.streakBadge {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 2px;
+  padding: var(--wlh-spacing-1) var(--wlh-spacing-2);
+  background: var(--wlh-amber-50);
+  border: 1px solid var(--wlh-amber-200);
+  border-radius: var(--wlh-radius-lg);
+  flex-shrink: 0;
+}
+
+.streakFlame { font-size: 0.875rem; }
+
+.streakNum {
+  font-size: var(--wlh-text-lg);
+  font-weight: var(--wlh-weight-bold);
+  color: var(--wlh-amber-700);
+  line-height: 1;
+}
+
+.streakUnit {
+  font-size: var(--wlh-text-xs);
+  color: var(--wlh-amber-600);
+}
+
+/* ── Stats row ──────────────────────────────────────────────────── */
+.stats {
+  display: flex;
+  gap: var(--wlh-spacing-6);
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.statValue {
+  font-size: var(--wlh-text-xl);
+  font-weight: var(--wlh-weight-bold);
+  color: var(--text-primary);
+  line-height: 1;
+}
+
+.statLabel {
+  font-size: var(--wlh-text-xs);
+  color: var(--text-tertiary);
+}
+
+/* ── Grid wrapper ───────────────────────────────────────────────── */
+.gridWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--wlh-spacing-1);
+  overflow-x: auto;
+}
+
+/* ── Month labels ───────────────────────────────────────────────── */
+.monthRow {
+  display: grid;
+  gap: 3px;
+  padding-left: 0;
+}
+
+.monthLabel {
+  font-size: 10px;
+  color: var(--text-tertiary);
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+/* ── Grid body ──────────────────────────────────────────────────── */
+.grid {
+  display: flex;
+  gap: 4px;
+}
+
+.dayLabels {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  width: 12px;
+  flex-shrink: 0;
+}
+
+.dayLabel {
+  font-size: 10px;
+  color: var(--text-tertiary);
+  height: 11px;
+  display: flex;
+  align-items: center;
+  line-height: 1;
+}
+
+/* ── Weeks + cells ──────────────────────────────────────────────── */
+.weeks {
+  display: grid;
+  gap: 3px;
+}
+
+.weekCol {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+/* ── Cell ───────────────────────────────────────────────────────── */
+.cell {
+  width: 11px;
+  height: 11px;
+  border: none;
+  border-radius: 2px;
+  padding: 0;
+  cursor: default;
+  display: block;
+  flex-shrink: 0;
+}
+
+/* Level 0 — empty */
+.cell--l0 { background: var(--wlh-slate-100); }
+
+/* Levels 1–4 — use CSS custom property set per-cell */
+.cell--l1 { background: color-mix(in srgb, var(--habit-color, var(--wlh-navy-500)) 25%, transparent); }
+.cell--l2 { background: color-mix(in srgb, var(--habit-color, var(--wlh-navy-500)) 50%, transparent); }
+.cell--l3 { background: color-mix(in srgb, var(--habit-color, var(--wlh-navy-500)) 75%, transparent); }
+.cell--l4 { background: var(--habit-color, var(--wlh-navy-500)); }
+
+/* Today highlight */
+.cell--today {
+  outline: 2px solid var(--wlh-amber-400);
+  outline-offset: 1px;
+}
+
+/* Future — dimmed */
+.cell--future { opacity: 0.3; }
+
+/* Interactive hover */
+.cell--interactive {
+  cursor: pointer;
+  transition: transform var(--wlh-dur-fast) var(--wlh-ease-out), opacity var(--wlh-dur-fast);
+}
+
+.cell--interactive:hover {
+  transform: scale(1.3);
+  opacity: 0.85;
+}
+
+.cell--interactive:focus-visible {
+  outline: 2px solid var(--border-focus);
+  outline-offset: 1px;
+}
+
+/* ── Legend ─────────────────────────────────────────────────────── */
+.legend {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  margin-top: var(--wlh-spacing-1);
+  justify-content: flex-end;
+}
+
+.legendLabel {
+  font-size: 10px;
+  color: var(--text-tertiary);
+  margin: 0 var(--wlh-spacing-1);
+}
+
+/* Fallback for browsers without color-mix */
+@supports not (background: color-mix(in srgb, red 50%, transparent)) {
+  .cell--l1 { opacity: 0.25; background: var(--habit-color, var(--wlh-navy-500)); }
+  .cell--l2 { opacity: 0.5;  background: var(--habit-color, var(--wlh-navy-500)); }
+  .cell--l3 { opacity: 0.75; background: var(--habit-color, var(--wlh-navy-500)); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cell--interactive { transition: none; }
+  .cell--interactive:hover { transform: none; }
+}

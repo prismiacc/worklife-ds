@@ -1,0 +1,40 @@
+/* FormField.module.css — WorkLife Hub DS v2.0 */
+
+.formField {
+  display: flex;
+  flex-direction: column;
+  gap: var(--wlh-spacing-1-5);
+}
+
+.formField__header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--wlh-spacing-2);
+}
+
+.formField__label--hidden {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.formField__input { width: 100%; }
+
+.formField__counter {
+  font-size: var(--wlh-text-xs);
+  color: var(--text-tertiary);
+  white-space: nowrap;
+  flex-shrink: 0;
+  font-variant-numeric: tabular-nums;
+  transition: color var(--wlh-dur-quick) var(--wlh-ease-out);
+}
+
+.formField__counter--over {
+  color: var(--status-error-text);
+  font-weight: var(--wlh-weight-semibold);
+}

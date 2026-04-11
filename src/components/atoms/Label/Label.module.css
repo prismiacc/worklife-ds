@@ -1,0 +1,25 @@
+/*
+ * Label.module.css — WorkLife Hub
+ * Atom: Label — form field label
+ * WCAG 2.1 AA: text on white >= 4.5:1
+ */
+
+.label {
+  display: inline-block;
+  font-family: var(--font-body, 'Inter', system-ui, sans-serif);
+  font-size: var(--font-size-sm, 0.75rem);
+  font-weight: var(--font-weight-semibold, 600);
+  line-height: 1.4;
+  color: var(--color-navy-800, #1A2B4A); /* 11.61:1 on white */
+  cursor: default;
+}
+
+.label--disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.label__required {
+  color: var(--color-error, #EF4444);
+  font-weight: var(--font-weight-bold, 700);
+}

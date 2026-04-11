@@ -1,0 +1,208 @@
+/* FocusTimer.module.css — WorkLife Hub DS v2.0 */
+
+/* ── Root ───────────────────────────────────────────────────────── */
+.root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--wlh-spacing-5);
+  padding: var(--wlh-spacing-6);
+  background: var(--surface-1);
+  border: 1px solid var(--border-default);
+  border-radius: var(--wlh-radius-xl);
+  box-shadow: var(--wlh-shadow-sm);
+  width: fit-content;
+}
+
+/* ── Phase tabs ─────────────────────────────────────────────────── */
+.phaseTabs {
+  display: flex;
+  gap: 2px;
+  background: var(--surface-2);
+  border-radius: var(--wlh-radius-lg);
+  padding: 3px;
+}
+
+.phaseTab {
+  padding: var(--wlh-spacing-1-5) var(--wlh-spacing-3);
+  border: none;
+  background: none;
+  border-radius: var(--wlh-radius-md);
+  font-family: var(--font-body);
+  font-size: var(--wlh-text-xs);
+  font-weight: var(--wlh-weight-medium);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition:
+    background var(--wlh-dur-fast) var(--wlh-ease-out),
+    color      var(--wlh-dur-fast) var(--wlh-ease-out);
+  white-space: nowrap;
+}
+
+.phaseTab:hover { color: var(--text-primary); }
+
+.phaseTab--active {
+  background: var(--surface-1);
+  color: var(--text-primary);
+  box-shadow: var(--wlh-shadow-sm);
+  font-weight: var(--wlh-weight-semibold);
+}
+
+.phaseTab:focus-visible {
+  outline: 2px solid var(--border-focus);
+  outline-offset: 1px;
+}
+
+/* ── Ring ───────────────────────────────────────────────────────── */
+.ringWrap {
+  position: relative;
+  width: 200px;
+  height: 200px;
+}
+
+.ringWrap svg {
+  display: block;
+}
+
+/* Subtle pulse when running */
+.ring--running {
+  animation: wlh-timer-pulse 2s ease-in-out infinite;
+}
+
+@keyframes wlh-timer-pulse {
+  0%, 100% { filter: drop-shadow(0 0 0px transparent); }
+  50%       { filter: drop-shadow(0 0 8px rgba(15,27,53,0.2)); }
+}
+
+/* ── Ring center ────────────────────────────────────────────────── */
+.ringCenter {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--wlh-spacing-1);
+}
+
+.timeDisplay {
+  font-family: var(--font-body);
+  font-size: 3rem;
+  font-weight: var(--wlh-weight-bold);
+  color: var(--text-primary);
+  letter-spacing: -0.03em;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+.phaseLabel {
+  font-size: var(--wlh-text-sm);
+  font-weight: var(--wlh-weight-semibold);
+  letter-spacing: 0.02em;
+}
+
+/* ── Round dots ─────────────────────────────────────────────────── */
+.rounds {
+  display: flex;
+  gap: var(--wlh-spacing-2);
+  align-items: center;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: var(--wlh-radius-full);
+  background: var(--wlh-slate-200);
+  transition: background var(--wlh-dur-fast) var(--wlh-ease-out), transform var(--wlh-dur-fast);
+}
+
+.dot--active {
+  transform: scale(1.4);
+}
+
+.dot--done {
+  opacity: 0.5;
+}
+
+/* ── Controls ───────────────────────────────────────────────────── */
+.controls {
+  display: flex;
+  align-items: center;
+  gap: var(--wlh-spacing-4);
+}
+
+.ctrlBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--border-default);
+  border-radius: var(--wlh-radius-full);
+  background: var(--surface-1);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition:
+    background   var(--wlh-dur-fast) var(--wlh-ease-out),
+    color        var(--wlh-dur-fast) var(--wlh-ease-out),
+    border-color var(--wlh-dur-fast) var(--wlh-ease-out),
+    transform    var(--wlh-dur-fast) var(--wlh-ease-out);
+}
+
+.ctrlBtn:hover:not(:disabled) {
+  background: var(--surface-2);
+  color: var(--text-primary);
+}
+
+.ctrlBtn:active { transform: scale(0.94); }
+
+.ctrlBtn:focus-visible {
+  outline: 2px solid var(--border-focus);
+  outline-offset: 2px;
+}
+
+.ctrlBtn--primary {
+  width: 60px;
+  height: 60px;
+  background: var(--ring-color, var(--wlh-navy-600));
+  border-color: transparent;
+  color: var(--wlh-white);
+  box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+}
+
+.ctrlBtn--primary:hover:not(:disabled) {
+  background: var(--ring-color, var(--wlh-navy-700));
+  filter: brightness(1.1);
+  color: var(--wlh-white);
+}
+
+/* ── Stop button ────────────────────────────────────────────────── */
+.stopBtn {
+  border: none;
+  background: none;
+  font-family: var(--font-body);
+  font-size: var(--wlh-text-xs);
+  color: var(--text-tertiary);
+  cursor: pointer;
+  padding: var(--wlh-spacing-1) var(--wlh-spacing-2);
+  border-radius: var(--wlh-radius-md);
+  transition:
+    color      var(--wlh-dur-fast) var(--wlh-ease-out),
+    background var(--wlh-dur-fast) var(--wlh-ease-out);
+}
+
+.stopBtn:hover {
+  color: var(--wlh-red-500);
+  background: var(--wlh-red-50);
+}
+
+.stopBtn:focus-visible {
+  outline: 2px solid var(--border-focus);
+  outline-offset: 1px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ring--running { animation: none; }
+  .dot           { transition: none; }
+  .ctrlBtn       { transition: none; }
+}

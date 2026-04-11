@@ -1,0 +1,251 @@
+/* MoodHistory.module.css — WorkLife Hub DS v2.0 */
+
+/* ── Root ───────────────────────────────────────────────────────── */
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: var(--wlh-spacing-4);
+  padding: var(--wlh-spacing-5);
+  background: var(--surface-1);
+  border: 1px solid var(--border-default);
+  border-radius: var(--wlh-radius-xl);
+  box-shadow: var(--wlh-shadow-sm);
+}
+
+/* ── Header ─────────────────────────────────────────────────────── */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.headerLeft {
+  display: flex;
+  align-items: baseline;
+  gap: var(--wlh-spacing-2);
+}
+
+.title {
+  font-size: var(--wlh-text-base);
+  font-weight: var(--wlh-weight-semibold);
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.average {
+  font-size: var(--wlh-text-sm);
+  color: var(--text-secondary);
+}
+
+.trend {
+  font-size: var(--wlh-text-xs);
+  font-weight: var(--wlh-weight-semibold);
+  padding: 2px var(--wlh-spacing-2);
+  border-radius: var(--wlh-radius-full);
+}
+
+.trend--up   { background: var(--wlh-green-50);  color: var(--wlh-green-700);  }
+.trend--down { background: var(--wlh-red-50);    color: var(--wlh-red-600);    }
+
+/* ── Chart ──────────────────────────────────────────────────────── */
+.chart {
+  display: flex;
+  align-items: flex-end;
+  gap: 4px;
+  padding-bottom: var(--wlh-spacing-1);
+}
+
+/* ── Bar column ─────────────────────────────────────────────────── */
+.barCol {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--wlh-spacing-1);
+  min-width: 0;
+}
+
+.barWrap {
+  display: flex;
+  align-items: flex-end;
+  width: 100%;
+}
+
+/* ── Bar ────────────────────────────────────────────────────────── */
+.bar {
+  width: 100%;
+  border: none;
+  border-radius: var(--wlh-radius-md) var(--wlh-radius-md) 2px 2px;
+  cursor: pointer;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 4px;
+  transition:
+    filter    var(--wlh-dur-fast) var(--wlh-ease-out),
+    transform var(--wlh-dur-fast) var(--wlh-ease-out);
+  animation: wlh-bar-grow 0.5s var(--wlh-ease-spring) both;
+}
+
+@keyframes wlh-bar-grow {
+  from { transform: scaleY(0); transform-origin: bottom; }
+  to   { transform: scaleY(1); transform-origin: bottom; }
+}
+
+.bar:disabled { cursor: default; }
+
+.bar:not(:disabled):hover {
+  filter: brightness(1.15);
+  transform: scaleY(1.04);
+  transform-origin: bottom;
+}
+
+.bar--today {
+  outline: 2px solid var(--wlh-amber-400);
+  outline-offset: 1px;
+}
+
+.bar:focus-visible {
+  outline: 2px solid var(--border-focus);
+  outline-offset: 2px;
+}
+
+.barEmoji {
+  font-size: 0.75rem;
+  line-height: 1;
+  pointer-events: none;
+}
+
+/* ── Empty bar ──────────────────────────────────────────────────── */
+.barEmpty {
+  width: 100%;
+  background: var(--wlh-slate-100);
+  border-radius: var(--wlh-radius-md) var(--wlh-radius-md) 2px 2px;
+  border: 1px dashed var(--border-subtle);
+}
+
+.barEmpty--today {
+  border-color: var(--wlh-amber-300);
+}
+
+/* ── Day labels ─────────────────────────────────────────────────── */
+.dayLabel {
+  font-size: 10px;
+  color: var(--text-tertiary);
+  text-align: center;
+  white-space: nowrap;
+}
+
+.dayLabel--today {
+  color: var(--wlh-amber-600);
+  font-weight: var(--wlh-weight-semibold);
+}
+
+/* ── Log section ────────────────────────────────────────────────── */
+.logSection {
+  border-top: 1px solid var(--border-subtle);
+  padding-top: var(--wlh-spacing-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--wlh-spacing-3);
+}
+
+.logLabel {
+  font-size: var(--wlh-text-sm);
+  font-weight: var(--wlh-weight-medium);
+  color: var(--text-secondary);
+  text-align: center;
+}
+
+.moodPicker {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--wlh-spacing-1);
+}
+
+.moodBtn {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: var(--wlh-spacing-2) var(--wlh-spacing-1);
+  border: 1px solid transparent;
+  border-radius: var(--wlh-radius-lg);
+  background: var(--surface-2);
+  cursor: pointer;
+  transition:
+    background    var(--wlh-dur-fast) var(--wlh-ease-out),
+    border-color  var(--wlh-dur-fast) var(--wlh-ease-out),
+    transform     var(--wlh-dur-fast) var(--wlh-ease-out);
+}
+
+.moodBtn:hover {
+  background: var(--wlh-navy-50);
+  border-color: var(--wlh-navy-200);
+  transform: translateY(-2px);
+}
+
+.moodBtn:focus-visible {
+  outline: 2px solid var(--border-focus);
+  outline-offset: 1px;
+}
+
+.moodEmoji {
+  font-size: 1.375rem;
+  line-height: 1;
+}
+
+.moodBtnLabel {
+  font-size: 9px;
+  color: var(--text-tertiary);
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+/* ── Today card ─────────────────────────────────────────────────── */
+.todayCard {
+  display: flex;
+  align-items: center;
+  gap: var(--wlh-spacing-3);
+  padding: var(--wlh-spacing-3);
+  border-radius: var(--wlh-radius-lg);
+  border-top: 1px solid var(--border-subtle);
+  margin-top: -var(--wlh-spacing-1);
+}
+
+.todayEmoji {
+  font-size: 1.75rem;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.todayText {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.todayLabel {
+  font-size: var(--wlh-text-sm);
+  font-weight: var(--wlh-weight-semibold);
+  color: var(--text-primary);
+}
+
+.todayNote {
+  font-size: var(--wlh-text-xs);
+  color: var(--text-secondary);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bar { animation: none; }
+  .bar:not(:disabled):hover { transform: none; }
+  .moodBtn:hover { transform: none; }
+}

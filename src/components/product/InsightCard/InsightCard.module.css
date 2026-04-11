@@ -1,0 +1,244 @@
+/* InsightCard.module.css — WorkLife Hub DS v2.0 */
+
+/* ── Root ───────────────────────────────────────────────────────── */
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: var(--wlh-spacing-3);
+  padding: var(--wlh-spacing-4) var(--wlh-spacing-5);
+  background: var(--surface-1);
+  border: 1px solid var(--border-default);
+  border-radius: var(--wlh-radius-xl);
+  box-shadow: var(--wlh-shadow-sm);
+  position: relative;
+  transition: box-shadow var(--wlh-dur-fast) var(--wlh-ease-out);
+}
+
+.root:hover {
+  box-shadow: var(--wlh-shadow-md);
+}
+
+/* ── Priority left border ──────────────────────────────────────── */
+.priority--high {
+  border-left: 3px solid var(--wlh-red-400);
+  background: color-mix(in srgb, var(--surface-1) 96%, var(--wlh-red-50));
+}
+
+.priority--medium {
+  border-left: 3px solid var(--wlh-amber-400);
+}
+
+.priority--low {
+  border-left: 3px solid var(--wlh-slate-200);
+}
+
+/* ── Top row ───────────────────────────────────────────────────── */
+.topRow {
+  display: flex;
+  align-items: center;
+  gap: var(--wlh-spacing-2);
+}
+
+.topRowSpacer {
+  flex: 1;
+}
+
+/* ── Category chip ─────────────────────────────────────────────── */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--wlh-spacing-1);
+  padding: 2px var(--wlh-spacing-2);
+  border-radius: var(--wlh-radius-full);
+  font-size: var(--wlh-text-xs);
+  font-weight: var(--wlh-weight-semibold);
+  line-height: 1;
+}
+
+.chipIcon {
+  font-size: 0.625rem;
+  line-height: 1;
+}
+
+.cat--navy   { background: var(--wlh-navy-50);   color: var(--wlh-navy-700);   }
+.cat--green  { background: var(--wlh-green-50);  color: var(--wlh-green-700);  }
+.cat--amber  { background: var(--wlh-amber-50);  color: var(--wlh-amber-700);  }
+.cat--purple { background: var(--wlh-purple-50); color: var(--wlh-purple-700); }
+
+/* ── Priority dot ──────────────────────────────────────────────── */
+.priorityDot {
+  width: 6px;
+  height: 6px;
+  border-radius: var(--wlh-radius-full);
+  flex-shrink: 0;
+}
+
+.dot--high   { background: var(--wlh-red-400);   }
+.dot--medium { background: var(--wlh-amber-400); }
+.dot--low    { background: var(--wlh-slate-300); }
+
+/* ── "Novo" badge ──────────────────────────────────────────────── */
+.newBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--wlh-spacing-1);
+  font-size: var(--wlh-text-xs);
+  font-weight: var(--wlh-weight-semibold);
+  color: var(--wlh-green-700);
+}
+
+.newDot {
+  width: 8px;
+  height: 8px;
+  border-radius: var(--wlh-radius-full);
+  background: var(--wlh-green-400);
+  animation: wlh-pulse-dot 2s ease-in-out infinite;
+}
+
+@keyframes wlh-pulse-dot {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(1.4);
+  }
+}
+
+/* ── Dismiss button ────────────────────────────────────────────── */
+.dismissBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: none;
+  border-radius: var(--wlh-radius-sm);
+  background: transparent;
+  color: var(--text-tertiary);
+  cursor: pointer;
+  opacity: 0;
+  transition:
+    opacity    var(--wlh-dur-fast) var(--wlh-ease-out),
+    background var(--wlh-dur-fast) var(--wlh-ease-out),
+    color      var(--wlh-dur-fast) var(--wlh-ease-out);
+}
+
+.root:hover .dismissBtn {
+  opacity: 1;
+}
+
+.dismissBtn:hover {
+  background: var(--surface-2);
+  color: var(--text-primary);
+}
+
+.dismissBtn:focus-visible {
+  opacity: 1;
+  outline: 2px solid var(--border-focus);
+  outline-offset: 1px;
+}
+
+/* ── Body ──────────────────────────────────────────────────────── */
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--wlh-spacing-1);
+}
+
+.title {
+  margin: 0;
+  font-size: var(--wlh-text-base);
+  font-weight: var(--wlh-weight-semibold);
+  color: var(--text-primary);
+  line-height: 1.3;
+}
+
+.text {
+  margin: 0;
+  font-size: var(--wlh-text-sm);
+  color: var(--text-secondary);
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ── Metric row ────────────────────────────────────────────────── */
+.metricRow {
+  display: flex;
+  align-items: baseline;
+  gap: var(--wlh-spacing-2);
+}
+
+.metricValue {
+  font-size: var(--wlh-text-xl);
+  font-weight: var(--wlh-weight-bold);
+  color: var(--text-primary);
+  line-height: 1;
+}
+
+.metricLabel {
+  font-size: var(--wlh-text-xs);
+  color: var(--text-tertiary);
+}
+
+/* ── Trend ─────────────────────────────────────────────────────── */
+.trend {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  font-size: var(--wlh-text-xs);
+  font-weight: var(--wlh-weight-semibold);
+  margin-left: auto;
+}
+
+.trend--up   { color: var(--wlh-green-600); }
+.trend--down { color: var(--wlh-red-500);   }
+
+.trendIcon {
+  flex-shrink: 0;
+}
+
+/* ── Actions ───────────────────────────────────────────────────── */
+.actions {
+  display: flex;
+  gap: var(--wlh-spacing-2);
+  border-top: 1px solid var(--border-subtle);
+  padding-top: var(--wlh-spacing-3);
+}
+
+.actionBtn {
+  flex: 1;
+  padding: var(--wlh-spacing-1-5) var(--wlh-spacing-3);
+  border: 1px solid var(--border-default);
+  border-radius: var(--wlh-radius-md);
+  background: var(--surface-1);
+  font-family: var(--font-body);
+  font-size: var(--wlh-text-sm);
+  font-weight: var(--wlh-weight-medium);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition:
+    background var(--wlh-dur-fast) var(--wlh-ease-out),
+    color      var(--wlh-dur-fast) var(--wlh-ease-out);
+}
+
+.actionBtn:hover {
+  background: var(--surface-2);
+  color: var(--text-primary);
+}
+
+.actionBtn:focus-visible {
+  outline: 2px solid var(--border-focus);
+  outline-offset: 1px;
+}
+
+/* ── Reduced motion ────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .newDot { animation: none; }
+  .dismissBtn,
+  .actionBtn { transition: none; }
+}

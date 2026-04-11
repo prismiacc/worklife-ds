@@ -1,0 +1,31 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100%;
+  gap: var(--wlh-spacing-4);
+  padding: var(--wlh-spacing-8);
+  text-align: center;
+}
+
+.code {
+  font-size: 6rem;
+  font-weight: var(--wlh-weight-bold);
+  line-height: 1;
+  color: var(--wlh-navy-200);
+}
+
+.title {
+  font-size: var(--wlh-text-2xl);
+  font-weight: var(--wlh-weight-semibold);
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.desc {
+  font-size: var(--wlh-text-sm);
+  color: var(--text-secondary);
+  margin: 0;
+  max-width: 320px;
+}

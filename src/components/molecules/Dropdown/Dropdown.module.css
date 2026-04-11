@@ -1,0 +1,136 @@
+/* ── Dropdown wrapper ───────────────────────────────────────────── */
+.wrapper {
+  position: relative;
+  display: inline-flex;
+}
+
+/* ── Trigger ───────────────────────────────────────────────────── */
+.trigger {
+  cursor: pointer;
+  user-select: none;
+}
+
+.trigger[aria-disabled='true'] {
+  cursor: not-allowed;
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+/* ── Popover ───────────────────────────────────────────────────── */
+.popover {
+  position: absolute;
+  z-index: var(--z-dropdown);
+  min-width: 180px;
+  padding: var(--wlh-spacing-1-5);
+  background: var(--surface-1);
+  border: 1px solid var(--border);
+  border-radius: var(--wlh-radius-xl);
+  box-shadow: var(--wlh-shadow-xl);
+  animation: wlh-scale-in var(--wlh-dur-fast) var(--wlh-ease-out) both;
+}
+
+/* ── Placement modifiers ───────────────────────────────────────── */
+.popover--bottom-start {
+  top: calc(100% + var(--wlh-spacing-1));
+  left: 0;
+}
+
+.popover--bottom-end {
+  top: calc(100% + var(--wlh-spacing-1));
+  right: 0;
+}
+
+.popover--top-start {
+  bottom: calc(100% + var(--wlh-spacing-1));
+  left: 0;
+}
+
+.popover--top-end {
+  bottom: calc(100% + var(--wlh-spacing-1));
+  right: 0;
+}
+
+/* ── Menu item ─────────────────────────────────────────────────── */
+.item {
+  display: flex;
+  align-items: center;
+  gap: var(--wlh-spacing-2-5);
+  width: 100%;
+  padding: var(--wlh-spacing-2) var(--wlh-spacing-3);
+  border: none;
+  border-radius: var(--wlh-radius-md);
+  background: transparent;
+  color: var(--text-primary);
+  font-size: var(--wlh-text-md);
+  font-family: inherit;
+  line-height: var(--wlh-leading-snug);
+  text-align: left;
+  cursor: pointer;
+  transition:
+    background var(--wlh-dur-fast) var(--wlh-ease-out),
+    color var(--wlh-dur-fast) var(--wlh-ease-out);
+}
+
+.item:hover,
+.item--focused {
+  background: var(--surface-2);
+}
+
+.item:focus-visible {
+  outline: 2px solid var(--border-focus);
+  outline-offset: -2px;
+}
+
+/* ── Danger item ───────────────────────────────────────────────── */
+.item--danger {
+  color: var(--wlh-red-600);
+}
+
+.item--danger:hover,
+.item--danger.item--focused {
+  background: var(--wlh-red-50);
+  color: var(--wlh-red-700);
+}
+
+/* ── Disabled item ─────────────────────────────────────────────── */
+.item--disabled {
+  color: var(--text-disabled);
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* ── Item internals ────────────────────────────────────────────── */
+.itemIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 1rem;
+  height: 1rem;
+  color: inherit;
+}
+
+.itemContent {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+}
+
+.itemLabel {
+  font-weight: var(--wlh-weight-medium);
+}
+
+.itemDescription {
+  font-size: var(--wlh-text-xs);
+  color: var(--text-tertiary);
+  margin-top: var(--wlh-spacing-0-5);
+}
+
+/* ── Separator ─────────────────────────────────────────────────── */
+.separator {
+  height: 1px;
+  margin: var(--wlh-spacing-1-5) var(--wlh-spacing-2);
+  border: none;
+  background: var(--border-subtle);
+}

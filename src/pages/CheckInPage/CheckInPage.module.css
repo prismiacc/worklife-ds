@@ -1,0 +1,44 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+.stepperWrap {
+  flex: 1;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: var(--wlh-spacing-6);
+}
+
+.result {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--wlh-spacing-8) var(--wlh-spacing-6);
+}
+
+.scoreCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--wlh-spacing-4);
+  max-width: 360px;
+  width: 100%;
+  text-align: center;
+}
+
+.scoreTitle {
+  font-size: var(--wlh-text-lg);
+  font-weight: var(--wlh-weight-semibold);
+  color: var(--text-primary);
+}
+
+.scoreMsg {
+  font-size: var(--wlh-text-sm);
+  color: var(--text-secondary);
+  margin: 0;
+  max-width: 280px;
+}

@@ -1,0 +1,76 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--wlh-spacing-6);
+  padding: var(--wlh-spacing-6);
+}
+
+/* ── Row 1: Greeting ───────────────────────────────────────────── */
+.greeting {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--wlh-spacing-3);
+}
+
+.greetingText {
+  display: flex;
+  flex-direction: column;
+  gap: var(--wlh-spacing-1);
+}
+
+.greetingTitle {
+  font-size: var(--wlh-text-2xl);
+  font-weight: var(--wlh-weight-bold);
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.greetingDate {
+  font-size: var(--wlh-text-sm);
+  color: var(--text-tertiary);
+}
+
+/* ── Row 2: Stats grid ─────────────────────────────────────────── */
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: var(--wlh-spacing-4);
+}
+
+/* ── Row 3: Main two-column layout ─────────────────────────────── */
+.mainRow {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: var(--wlh-spacing-5);
+}
+
+@media (max-width: 900px) {
+  .mainRow {
+    grid-template-columns: 1fr;
+  }
+}
+
+.mainCol {
+  display: flex;
+  flex-direction: column;
+  gap: var(--wlh-spacing-5);
+}
+
+.scoreCard {
+  background: var(--surface-1);
+  border-radius: var(--wlh-radius-xl);
+  padding: var(--wlh-spacing-6);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--wlh-spacing-4);
+  box-shadow: var(--wlh-shadow-sm);
+}
+
+.insightsCol {
+  display: flex;
+  flex-direction: column;
+  gap: var(--wlh-spacing-4);
+}

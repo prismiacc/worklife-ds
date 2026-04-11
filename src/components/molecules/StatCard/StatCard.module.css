@@ -1,0 +1,138 @@
+/* StatCard.module.css — WorkLife Hub DS v2.0 */
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--wlh-spacing-3);
+  padding: var(--wlh-spacing-5);
+  background: var(--surface-1);
+  border: 1px solid var(--border-default);
+  border-radius: var(--card-radius);
+  transition: box-shadow var(--wlh-dur-fast) var(--wlh-ease-out);
+}
+
+.card--loading { pointer-events: none; }
+
+/* ── Variants ───────────────────────────────────────────────────── */
+.card--brand {
+  background: var(--wlh-navy-800);
+  border-color: var(--wlh-navy-700);
+  color: var(--wlh-white);
+}
+
+.card--amber {
+  background: var(--wlh-amber-50);
+  border-color: var(--wlh-amber-200);
+}
+
+.card--success {
+  background: var(--status-success-bg);
+  border-color: var(--status-success-border);
+}
+
+.card--warning {
+  background: var(--status-warning-bg);
+  border-color: var(--status-warning-border);
+}
+
+.card--error {
+  background: var(--status-error-bg);
+  border-color: var(--status-error-border);
+}
+
+/* ── Header ─────────────────────────────────────────────────────── */
+.header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--wlh-spacing-2);
+}
+
+.label {
+  font-size: var(--wlh-text-sm);
+  font-weight: var(--wlh-weight-medium);
+  color: var(--text-secondary);
+  line-height: var(--wlh-leading-snug);
+}
+
+.card--brand .label { color: rgba(255,255,255,0.7); }
+
+/* ── Icon ───────────────────────────────────────────────────────── */
+.icon {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--wlh-radius-md);
+  background: var(--surface-2);
+  color: var(--text-secondary);
+}
+
+.icon--brand   { background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.8); }
+.icon--amber   { background: var(--wlh-amber-100);  color: var(--wlh-amber-700); }
+.icon--success { background: var(--wlh-green-100);  color: var(--wlh-green-700); }
+.icon--warning { background: var(--wlh-amber-100);  color: var(--wlh-amber-700); }
+.icon--error   { background: var(--wlh-red-100);    color: var(--wlh-red-700); }
+
+/* ── Value ──────────────────────────────────────────────────────── */
+.valueRow {
+  display: flex;
+  align-items: baseline;
+  gap: var(--wlh-spacing-1);
+}
+
+.value {
+  font-size: var(--wlh-text-3xl);
+  font-weight: var(--wlh-weight-bold);
+  color: var(--text-primary);
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+}
+
+.card--brand .value { color: var(--wlh-white); }
+
+.unit {
+  font-size: var(--wlh-text-md);
+  font-weight: var(--wlh-weight-medium);
+  color: var(--text-tertiary);
+}
+
+.card--brand .unit { color: rgba(255,255,255,0.6); }
+
+/* ── Skeleton ───────────────────────────────────────────────────── */
+.skeleton {
+  height: 2.25rem;
+  width: 60%;
+  border-radius: var(--wlh-radius-md);
+  background: var(--wlh-slate-200);
+  animation: wlh-shimmer 1.5s ease-in-out infinite;
+  background-image: linear-gradient(
+    90deg,
+    var(--wlh-slate-200) 0%,
+    var(--wlh-slate-100) 50%,
+    var(--wlh-slate-200) 100%
+  );
+  background-size: 200% 100%;
+}
+
+/* ── Trend ──────────────────────────────────────────────────────── */
+.trend {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--wlh-spacing-1);
+  font-size: var(--wlh-text-xs);
+  font-weight: var(--wlh-weight-medium);
+}
+
+.trend--positive { color: var(--wlh-green-600); }
+.trend--negative { color: var(--wlh-red-500); }
+.trend--neutral  { color: var(--text-tertiary); }
+
+.trendValue { font-variant-numeric: tabular-nums; }
+
+.trendLabel {
+  color: var(--text-tertiary);
+  font-weight: var(--wlh-weight-normal);
+}

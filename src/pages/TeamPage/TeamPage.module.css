@@ -1,0 +1,49 @@
+.page {
+  padding: var(--wlh-spacing-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--wlh-spacing-6);
+}
+
+/* ── Selected member callout ───────────────────────────────────── */
+.callout {
+  background: var(--surface-1);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--wlh-radius-lg);
+  padding: var(--wlh-spacing-4) var(--wlh-spacing-5);
+  display: flex;
+  align-items: center;
+  gap: var(--wlh-spacing-4);
+  box-shadow: var(--wlh-shadow-sm);
+}
+
+.calloutAvatar {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--wlh-radius-full);
+  background: var(--wlh-navy-100);
+  color: var(--wlh-navy-700);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--wlh-text-sm);
+  font-weight: var(--wlh-weight-semibold);
+  flex-shrink: 0;
+}
+
+.calloutInfo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--wlh-spacing-1);
+}
+
+.calloutName {
+  font-size: var(--wlh-text-base);
+  font-weight: var(--wlh-weight-semibold);
+  color: var(--text-primary);
+}
+
+.calloutDetail {
+  font-size: var(--wlh-text-sm);
+  color: var(--text-secondary);
+}

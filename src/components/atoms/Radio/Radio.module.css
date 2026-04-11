@@ -1,0 +1,142 @@
+/* Radio.module.css — WorkLife Hub DS v2.0 */
+
+/* ── Root label ─────────────────────────────────────────────────── */
+.root {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: var(--wlh-spacing-2-5);
+  cursor: pointer;
+  user-select: none;
+}
+
+.root--sm { gap: var(--wlh-spacing-2); }
+
+.root--disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+/* ── Control (radio visual) ─────────────────────────────────────── */
+.control {
+  position: relative;
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1px; /* optical alignment com a label */
+}
+
+/* ── Hidden input ───────────────────────────────────────────────── */
+.input {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  margin: 0;
+  cursor: inherit;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+/* ── Outer circle ───────────────────────────────────────────────── */
+.dot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--wlh-radius-full);
+  border: 2px solid var(--border-default);
+  background: var(--surface-1);
+  transition:
+    border-color var(--wlh-dur-fast) var(--wlh-ease-out),
+    background   var(--wlh-dur-fast) var(--wlh-ease-out),
+    box-shadow   var(--wlh-dur-fast) var(--wlh-ease-out);
+}
+
+/* ── Inner dot (checked state via ::after) ──────────────────────── */
+.dot::after {
+  content: '';
+  border-radius: var(--wlh-radius-full);
+  background: var(--wlh-white);
+  transform: scale(0);
+  transition: transform var(--wlh-dur-fast) var(--wlh-ease-spring);
+}
+
+/* ── Sizes ──────────────────────────────────────────────────────── */
+.root--md .dot           { width: 18px; height: 18px; }
+.root--md .dot::after    { width: 7px;  height: 7px; }
+
+.root--sm .dot           { width: 14px; height: 14px; }
+.root--sm .dot::after    { width: 5px;  height: 5px; }
+
+/* ── States ─────────────────────────────────────────────────────── */
+.input:checked ~ .dot {
+  border-color: var(--wlh-navy-800);
+  background:   var(--wlh-navy-800);
+}
+
+.input:checked ~ .dot::after {
+  transform: scale(1);
+}
+
+.input:focus-visible ~ .dot {
+  outline: 2px solid var(--border-focus);
+  outline-offset: 2px;
+}
+
+.root:hover:not(.root--disabled) .dot {
+  border-color: var(--wlh-navy-700);
+}
+
+/* ── Content ────────────────────────────────────────────────────── */
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--wlh-spacing-0-5);
+}
+
+.label {
+  font-size: var(--wlh-text-md);
+  font-weight: var(--wlh-weight-medium);
+  color: var(--text-primary);
+  line-height: var(--wlh-leading-snug);
+}
+
+.root--sm .label { font-size: var(--wlh-text-sm); }
+
+.description {
+  font-size: var(--wlh-text-sm);
+  color: var(--text-tertiary);
+  line-height: var(--wlh-leading-relaxed);
+}
+
+/* ── Group ──────────────────────────────────────────────────────── */
+.group {
+  border: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--wlh-spacing-2);
+}
+
+.groupLabel {
+  font-size: var(--wlh-text-sm);
+  font-weight: var(--wlh-weight-semibold);
+  color: var(--text-primary);
+  margin-bottom: var(--wlh-spacing-1);
+  padding: 0;
+}
+
+.groupLabel--sr {
+  position: absolute;
+  width: 1px; height: 1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
+
+.options--vertical   { display: flex; flex-direction: column; gap: var(--wlh-spacing-3); }
+.options--horizontal { display: flex; flex-direction: row; flex-wrap: wrap; gap: var(--wlh-spacing-4); }
+
+.hint  { font-size: var(--wlh-text-sm); color: var(--text-tertiary); }
+.error { font-size: var(--wlh-text-sm); color: var(--status-error-text); }

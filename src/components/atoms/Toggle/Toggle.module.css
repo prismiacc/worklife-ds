@@ -1,0 +1,114 @@
+/* Toggle.module.css — WorkLife Hub DS v2.0 */
+
+.wrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--wlh-spacing-3);
+  cursor: pointer;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.wrapper--labelLeft { flex-direction: row-reverse; }
+
+.wrapper--disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+
+/* ── Track ──────────────────────────────────────────────────────── */
+.track {
+  position: relative;
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  border-radius: var(--wlh-radius-full);
+  background: var(--toggle-track-bg);
+  transition: background var(--wlh-dur-quick) var(--wlh-ease-out);
+}
+
+.track--sm { width: var(--toggle-w-sm); height: var(--toggle-h-sm); }
+.track--md { width: var(--toggle-w-md); height: var(--toggle-h-md); }
+.track--lg { width: var(--toggle-w-lg); height: var(--toggle-h-lg); }
+
+
+/* ── Input nativo (escondido) ───────────────────────────────────── */
+.input {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  margin: 0;
+  cursor: pointer;
+  border-radius: inherit;
+}
+
+.input:checked ~ .thumb { transform: translateX(calc(var(--thumb-travel, 1rem))); }
+
+.track--sm .input:checked ~ .thumb { transform: translateX(calc(var(--toggle-w-sm) - var(--toggle-h-sm))); }
+.track--md .input:checked ~ .thumb { transform: translateX(calc(var(--toggle-w-md) - var(--toggle-h-md))); }
+.track--lg .input:checked ~ .thumb { transform: translateX(calc(var(--toggle-w-lg) - var(--toggle-h-lg))); }
+
+/* Track checked */
+.input:checked ~ .thumb { background: var(--toggle-thumb-bg); }
+.track:has(.input:checked) { background: var(--toggle-track-bg-on); }
+
+/* Focus */
+.input:focus-visible ~ .thumb {
+  box-shadow: var(--control-shadow-focus);
+}
+
+
+/* ── Thumb ──────────────────────────────────────────────────────── */
+.thumb {
+  position: absolute;
+  left: 2px;
+  width:  calc(var(--toggle-h-md) - 4px);
+  height: calc(var(--toggle-h-md) - 4px);
+  border-radius: 50%;
+  background: var(--toggle-thumb-bg);
+  box-shadow: var(--wlh-shadow-sm);
+  transition:
+    transform  var(--wlh-dur-normal) var(--wlh-ease-spring),
+    box-shadow var(--wlh-dur-quick)  var(--wlh-ease-out);
+  pointer-events: none;
+}
+
+.track--sm .thumb {
+  width:  calc(var(--toggle-h-sm) - 4px);
+  height: calc(var(--toggle-h-sm) - 4px);
+}
+
+.track--lg .thumb {
+  width:  calc(var(--toggle-h-lg) - 4px);
+  height: calc(var(--toggle-h-lg) - 4px);
+}
+
+
+/* ── Label ──────────────────────────────────────────────────────── */
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--wlh-spacing-0-5);
+}
+
+.label {
+  font-size: var(--wlh-text-md);
+  font-weight: var(--wlh-weight-medium);
+  color: var(--text-primary);
+  line-height: var(--wlh-leading-snug);
+}
+
+.description {
+  font-size: var(--wlh-text-sm);
+  color: var(--text-tertiary);
+}
+
+
+/* ── Reduced motion ─────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .track, .thumb { transition: none; }
+}

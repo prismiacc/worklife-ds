@@ -1,0 +1,172 @@
+/* Tabs.module.css — WorkLife Hub DS v2.0 */
+
+.root {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* ── List ───────────────────────────────────────────────────────── */
+.list {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.list--full .tab { flex: 1; justify-content: center; }
+
+/* ── Line variant ───────────────────────────────────────────────── */
+.list--line {
+  border-bottom: 2px solid var(--border-subtle);
+  gap: 0;
+}
+
+.tab--line {
+  position: relative;
+  border: none;
+  background: none;
+  color: var(--text-tertiary);
+  font-weight: var(--wlh-weight-medium);
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px;
+  transition:
+    color      var(--wlh-dur-fast) var(--wlh-ease-out),
+    border-color var(--wlh-dur-fast) var(--wlh-ease-out);
+}
+
+.tab--line:hover:not(.tab--disabled) { color: var(--text-secondary); }
+
+.tab--line.tab--active {
+  color: var(--wlh-navy-800);
+  border-bottom-color: var(--wlh-navy-800);
+}
+
+/* ── Pill variant ───────────────────────────────────────────────── */
+.list--pill {
+  background: var(--surface-2);
+  border-radius: var(--wlh-radius-lg);
+  gap: var(--wlh-spacing-1);
+}
+
+.list--pill.list--sm { padding: var(--wlh-spacing-0-5); border-radius: var(--wlh-radius-md); }
+.list--pill.list--md { padding: var(--wlh-spacing-1);   }
+.list--pill.list--lg { padding: var(--wlh-spacing-1);   }
+
+.tab--pill {
+  border: none;
+  background: none;
+  color: var(--text-secondary);
+  font-weight: var(--wlh-weight-medium);
+  cursor: pointer;
+  border-radius: var(--wlh-radius-md);
+  transition:
+    background var(--wlh-dur-fast) var(--wlh-ease-out),
+    color      var(--wlh-dur-fast) var(--wlh-ease-out),
+    box-shadow var(--wlh-dur-fast) var(--wlh-ease-out);
+}
+
+.tab--pill:hover:not(.tab--disabled) { color: var(--text-primary); background: var(--surface-3); }
+
+.tab--pill.tab--active {
+  background: var(--surface-1);
+  color: var(--text-primary);
+  box-shadow: var(--wlh-shadow-sm);
+}
+
+/* ── Card variant ───────────────────────────────────────────────── */
+.list--card {
+  gap: var(--wlh-spacing-1);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.tab--card {
+  border: 1px solid transparent;
+  border-bottom: none;
+  background: none;
+  color: var(--text-tertiary);
+  font-weight: var(--wlh-weight-medium);
+  cursor: pointer;
+  border-radius: var(--wlh-radius-md) var(--wlh-radius-md) 0 0;
+  margin-bottom: -1px;
+  transition:
+    background    var(--wlh-dur-fast) var(--wlh-ease-out),
+    color         var(--wlh-dur-fast) var(--wlh-ease-out),
+    border-color  var(--wlh-dur-fast) var(--wlh-ease-out);
+}
+
+.tab--card:hover:not(.tab--disabled) {
+  color: var(--text-secondary);
+  background: var(--surface-2);
+}
+
+.tab--card.tab--active {
+  background: var(--surface-1);
+  color: var(--text-primary);
+  border-color: var(--border-subtle);
+  border-bottom-color: var(--surface-1);
+}
+
+/* ── Sizes (shared) ─────────────────────────────────────────────── */
+.list--sm .tab { padding: var(--wlh-spacing-1-5) var(--wlh-spacing-3);   font-size: var(--wlh-text-sm); }
+.list--md .tab { padding: var(--wlh-spacing-2)   var(--wlh-spacing-4);   font-size: var(--wlh-text-md); }
+.list--lg .tab { padding: var(--wlh-spacing-2-5) var(--wlh-spacing-5);   font-size: var(--wlh-text-md); }
+
+/* ── Tab internals ──────────────────────────────────────────────── */
+.tab {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--wlh-spacing-1-5);
+  white-space: nowrap;
+}
+
+.tab--disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.tab:focus-visible {
+  outline: 2px solid var(--border-focus);
+  outline-offset: 2px;
+  border-radius: var(--wlh-radius-sm);
+}
+
+.tab__icon {
+  display: inline-flex;
+  width: 1em;
+  height: 1em;
+}
+
+.tab__badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 var(--wlh-spacing-1);
+  border-radius: var(--wlh-radius-full);
+  background: var(--wlh-slate-200);
+  color: var(--text-secondary);
+  font-size: var(--wlh-text-xs);
+  font-weight: var(--wlh-weight-semibold);
+  line-height: 1;
+}
+
+.tab--active .tab__badge {
+  background: var(--wlh-navy-100);
+  color: var(--wlh-navy-800);
+}
+
+/* ── Panel ──────────────────────────────────────────────────────── */
+.panel {
+  padding-top: var(--wlh-spacing-4);
+  outline: none;
+  animation: wlh-fade-in var(--wlh-dur-fast) var(--wlh-ease-out);
+}
+
+.panel:focus-visible {
+  outline: 2px solid var(--border-focus);
+  outline-offset: -2px;
+  border-radius: var(--wlh-radius-sm);
+}

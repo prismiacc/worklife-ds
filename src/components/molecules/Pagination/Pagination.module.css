@@ -1,0 +1,102 @@
+/* Pagination.module.css — WorkLife Hub DS v2.0 */
+
+.root {
+  display: flex;
+  align-items: center;
+  gap: var(--wlh-spacing-3);
+}
+
+.info {
+  font-size: var(--wlh-text-sm);
+  color: var(--text-tertiary);
+  white-space: nowrap;
+}
+
+/* ── List ───────────────────────────────────────────────────────── */
+.list {
+  display: flex;
+  align-items: center;
+  gap: var(--wlh-spacing-1);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* ── Button ─────────────────────────────────────────────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border-default);
+  background: var(--surface-1);
+  color: var(--text-secondary);
+  border-radius: var(--wlh-radius-md);
+  font-weight: var(--wlh-weight-medium);
+  font-variant-numeric: tabular-nums;
+  cursor: pointer;
+  transition:
+    background    var(--wlh-dur-fast) var(--wlh-ease-out),
+    border-color  var(--wlh-dur-fast) var(--wlh-ease-out),
+    color         var(--wlh-dur-fast) var(--wlh-ease-out);
+}
+
+/* ── Sizes ──────────────────────────────────────────────────────── */
+.root--md .btn {
+  min-width: 36px;
+  height: 36px;
+  padding: 0 var(--wlh-spacing-2);
+  font-size: var(--wlh-text-sm);
+}
+
+.root--sm .btn {
+  min-width: 28px;
+  height: 28px;
+  padding: 0 var(--wlh-spacing-1-5);
+  font-size: var(--wlh-text-xs);
+}
+
+/* ── States ─────────────────────────────────────────────────────── */
+.btn:hover:not(:disabled) {
+  background: var(--surface-2);
+  border-color: var(--wlh-slate-300);
+  color: var(--text-primary);
+}
+
+.btn--active {
+  background: var(--wlh-navy-800);
+  border-color: var(--wlh-navy-800);
+  color: var(--wlh-white);
+}
+
+.btn--active:hover { background: var(--wlh-navy-700); border-color: var(--wlh-navy-700); }
+
+.btn:focus-visible {
+  outline: 2px solid var(--border-focus);
+  outline-offset: 2px;
+}
+
+.btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* ── Nav buttons (prev/next) ────────────────────────────────────── */
+.btn--nav { color: var(--text-tertiary); }
+
+/* ── Ellipsis ───────────────────────────────────────────────────── */
+.ellipsis {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 36px;
+  height: 36px;
+  font-size: var(--wlh-text-sm);
+  color: var(--text-tertiary);
+  user-select: none;
+}
+
+.root--sm .ellipsis {
+  min-width: 28px;
+  height: 28px;
+}

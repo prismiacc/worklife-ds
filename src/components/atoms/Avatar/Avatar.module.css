@@ -1,0 +1,61 @@
+/* Avatar.module.css — WorkLife Hub DS v2.0 */
+
+.avatar {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: var(--avatar-bg);
+  color: var(--avatar-text);
+  overflow: hidden;
+  font-family: var(--font-body);
+  font-weight: var(--wlh-weight-semibold);
+  user-select: none;
+}
+
+/* ── Sizes ──────────────────────────────────────────────────────── */
+.avatar--xs { width: var(--avatar-size-xs); height: var(--avatar-size-xs); font-size: 0.4375rem; }
+.avatar--sm { width: var(--avatar-size-sm); height: var(--avatar-size-sm); font-size: 0.625rem;  }
+.avatar--md { width: var(--avatar-size-md); height: var(--avatar-size-md); font-size: 0.875rem;  }
+.avatar--lg { width: var(--avatar-size-lg); height: var(--avatar-size-lg); font-size: 1.125rem;  }
+.avatar--xl { width: var(--avatar-size-xl); height: var(--avatar-size-xl); font-size: 1.5rem;    }
+
+/* ── Ring ───────────────────────────────────────────────────────── */
+.avatar--ring {
+  box-shadow: 0 0 0 2px var(--wlh-white), 0 0 0 4px var(--wlh-amber-400);
+}
+
+/* ── Image ──────────────────────────────────────────────────────── */
+.img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 50%;
+}
+
+/* ── Initials ───────────────────────────────────────────────────── */
+.initials {
+  line-height: 1;
+  letter-spacing: 0.025em;
+}
+
+/* ── Status dot ─────────────────────────────────────────────────── */
+.statusDot {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width:  22%;
+  height: 22%;
+  min-width:  6px;
+  min-height: 6px;
+  border-radius: 50%;
+  border: 2px solid var(--wlh-white);
+}
+
+.statusDot--online  { background: var(--wlh-green-500); }
+.statusDot--away    { background: var(--wlh-amber-400); }
+.statusDot--busy    { background: var(--wlh-red-500);   }
+.statusDot--offline { background: var(--wlh-slate-400); }

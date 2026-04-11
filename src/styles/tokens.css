@@ -1,0 +1,831 @@
+/* ================================================================
+   WORKLIFE HUB — Design System Tokens v2.0
+   Rebuild completo: primitives → semantic → component → motion
+   ================================================================
+
+   CAMADAS:
+     1. Primitives      Escalas brutas de cor, espaço, tipo
+     2. Semantic        Papéis com significado (bg, text, border…)
+     3. Component       Tokens por componente
+     4. Motion          Duração, easing, keyframes
+     5. Z-index         Sistema de camadas
+     6. Shim            Aliases curtos para backwards-compat
+   ================================================================ */
+
+/* ----------------------------------------------------------------
+   1. PRIMITIVES
+   ---------------------------------------------------------------- */
+:root {
+
+  /* ── Navy (brand primary) ───────────────────────────────────── */
+  --wlh-navy-50:  #F0F3FA;
+  --wlh-navy-100: #D9E0EF;
+  --wlh-navy-200: #B2C1DF;
+  --wlh-navy-300: #7B96C6;
+  --wlh-navy-400: #4B6DAD;
+  --wlh-navy-500: #2D4D8E;
+  --wlh-navy-600: #1E3570;
+  --wlh-navy-700: #152651;
+  --wlh-navy-800: #0F1B35; /* ← brand primary — mais usado */
+  --wlh-navy-900: #080F1E;
+  --wlh-navy-950: #040810;
+
+  /* ── Amber (brand accent — Daily Pulse) ─────────────────────── */
+  --wlh-amber-50:  #FFFBEC;
+  --wlh-amber-100: #FEF4CC;
+  --wlh-amber-200: #FDE68A;
+  --wlh-amber-300: #FCC94A;
+  --wlh-amber-400: #FDB011; /* ← brand amber — cor do logo */
+  --wlh-amber-500: #F59000;
+  --wlh-amber-600: #DC7200;
+  --wlh-amber-700: #B45700;
+  --wlh-amber-800: #8C4200;
+  --wlh-amber-900: #6B3200;
+
+  /* ── Slate (neutral) ────────────────────────────────────────── */
+  --wlh-slate-50:  #F8FAFC;
+  --wlh-slate-100: #F1F5F9;
+  --wlh-slate-200: #E2E8F0;
+  --wlh-slate-300: #CBD5E1;
+  --wlh-slate-400: #94A3B8;
+  --wlh-slate-500: #64748B;
+  --wlh-slate-600: #475569;
+  --wlh-slate-700: #334155;
+  --wlh-slate-800: #1E293B;
+  --wlh-slate-900: #0F172A;
+  --wlh-slate-950: #020617;
+
+  /* ── Green (sucesso) ────────────────────────────────────────── */
+  --wlh-green-50:  #F0FDF4;
+  --wlh-green-100: #DCFCE7;
+  --wlh-green-200: #BBF7D0;
+  --wlh-green-300: #86EFAC;
+  --wlh-green-400: #4ADE80;
+  --wlh-green-500: #22C55E;
+  --wlh-green-600: #16A34A;
+  --wlh-green-700: #15803D;
+  --wlh-green-800: #166534;
+  --wlh-green-900: #14532D;
+
+  /* ── Red (erro/perigo) ──────────────────────────────────────── */
+  --wlh-red-50:  #FFF1F2;
+  --wlh-red-100: #FFE4E6;
+  --wlh-red-200: #FECDD3;
+  --wlh-red-300: #FDA4AF;
+  --wlh-red-400: #FB7185;
+  --wlh-red-500: #F43F5E;
+  --wlh-red-600: #E11D48;
+  --wlh-red-700: #BE123C;
+  --wlh-red-800: #9F1239;
+  --wlh-red-900: #881337;
+
+  /* ── Purple (informação/neutro premium) ─────────────────────── */
+  --wlh-purple-50:  #FAF5FF;
+  --wlh-purple-100: #F3E8FF;
+  --wlh-purple-200: #E9D5FF;
+  --wlh-purple-300: #D8B4FE;
+  --wlh-purple-400: #C084FC;
+  --wlh-purple-500: #A855F7;
+  --wlh-purple-600: #9333EA;
+  --wlh-purple-700: #7E22CE;
+  --wlh-purple-800: #6B21A8;
+  --wlh-purple-900: #581C87;
+
+  /* ── Absolute ───────────────────────────────────────────────── */
+  --wlh-white: #FFFFFF;
+  --wlh-black: #000000;
+  --wlh-transparent: transparent;
+
+  /* ── Fontes ─────────────────────────────────────────────────── */
+  --wlh-font-display: 'Rachelya', 'Plus Jakarta Sans', serif;
+  --wlh-font-heading: 'Plus Jakarta Sans', system-ui, sans-serif;
+  --wlh-font-body:    'Inter', system-ui, sans-serif;
+  --wlh-font-mono:    'JetBrains Mono', 'Fira Code', monospace;
+
+  /* ── Pesos ──────────────────────────────────────────────────── */
+  --wlh-weight-light:    300;
+  --wlh-weight-regular:  400;
+  --wlh-weight-medium:   500;
+  --wlh-weight-semibold: 600;
+  --wlh-weight-bold:     700;
+  --wlh-weight-extrabold: 800;
+
+  /* ── Escala de tipo ─────────────────────────────────────────── */
+  --wlh-text-2xs:  0.625rem;   /*  10px — micro label */
+  --wlh-text-xs:   0.6875rem;  /*  11px — caption     */
+  --wlh-text-sm:   0.75rem;    /*  12px — label sm     */
+  --wlh-text-base: 0.8125rem;  /*  13px — label        */
+  --wlh-text-md:   0.875rem;   /*  14px — body SaaS    */
+  --wlh-text-lg:   1rem;       /*  16px — body comf.   */
+  --wlh-text-xl:   1.125rem;   /*  18px — lead         */
+  --wlh-text-2xl:  1.25rem;    /*  20px — subtitle     */
+  --wlh-text-3xl:  1.5rem;     /*  24px — heading sm   */
+  --wlh-text-4xl:  1.75rem;    /*  28px — heading md   */
+  --wlh-text-5xl:  2rem;       /*  32px — heading lg   */
+  --wlh-text-6xl:  2.5rem;     /*  40px — display sm   */
+  --wlh-text-7xl:  3rem;       /*  48px — display md   */
+  --wlh-text-8xl:  3.5rem;     /*  56px — display lg   */
+  --wlh-text-9xl:  4.5rem;     /*  72px — hero         */
+
+  /* ── Line-height ────────────────────────────────────────────── */
+  --wlh-leading-none:    1;
+  --wlh-leading-tight:   1.25;
+  --wlh-leading-snug:    1.375;
+  --wlh-leading-normal:  1.5;
+  --wlh-leading-relaxed: 1.625;
+  --wlh-leading-loose:   2;
+
+  /* ── Letter-spacing ─────────────────────────────────────────── */
+  --wlh-tracking-tight:   -0.025em;
+  --wlh-tracking-normal:   0;
+  --wlh-tracking-wide:     0.025em;
+  --wlh-tracking-wider:    0.05em;
+  --wlh-tracking-widest:   0.1em;
+  --wlh-tracking-label:    0.06em;  /* uppercase labels */
+}
+
+
+/* ----------------------------------------------------------------
+   2. SEMANTIC — papéis visuais com significado
+   ---------------------------------------------------------------- */
+:root {
+
+  /* ── Backgrounds de página ──────────────────────────────────── */
+  --bg-page:        var(--wlh-slate-100);  /* default app bg    */
+  --bg-page-alt:    var(--wlh-slate-50);   /* auth, onboarding  */
+  --bg-inverse:     var(--wlh-navy-800);   /* dark sections     */
+
+  /* ── Surfaces (cards, modais, painéis) ──────────────────────── */
+  --surface-1:      var(--wlh-white);      /* card principal    */
+  --surface-2:      var(--wlh-slate-50);   /* card aninhado     */
+  --surface-3:      var(--wlh-slate-100);  /* terciário         */
+  --surface-brand:  var(--wlh-navy-800);   /* sidebar, nav dark */
+  --surface-amber:  var(--wlh-amber-400);  /* CTA prominente    */
+  --surface-overlay: rgba(15, 27, 53, 0.48); /* modal backdrop  */
+
+  /* ── Bordas ──────────────────────────────────────────────────── */
+  --border:          var(--wlh-slate-200);
+  --border-subtle:   var(--wlh-slate-100);
+  --border-strong:   var(--wlh-slate-300);
+  --border-focus:    var(--wlh-amber-400);
+  --border-error:    var(--wlh-red-400);
+  --border-success:  var(--wlh-green-500);
+  --border-warning:  var(--wlh-amber-500);
+  --border-brand:    var(--wlh-navy-800);
+  --border-inverse:  rgba(255, 255, 255, 0.12);
+
+  /* ── Texto ───────────────────────────────────────────────────── */
+  --text-primary:     var(--wlh-navy-800);   /* corpo principal   */
+  --text-secondary:   var(--wlh-slate-600);  /* suporte           */
+  --text-tertiary:    var(--wlh-slate-500);  /* dica, legenda     */
+  --text-placeholder: var(--wlh-slate-400);  /* placeholder       */
+  --text-disabled:    var(--wlh-slate-400);  /* campo desativado  */
+  --text-inverse:     var(--wlh-white);      /* sobre bg dark     */
+  --text-inverse-secondary: rgba(255,255,255,0.65);
+  --text-brand:       var(--wlh-navy-800);
+  --text-accent:      var(--wlh-amber-600);  /* amber legível     */
+  --text-link:        var(--wlh-navy-600);
+  --text-link-hover:  var(--wlh-navy-800);
+
+  /* ── Ícones ─────────────────────────────────────────────────── */
+  --icon-default:   var(--wlh-slate-500);
+  --icon-muted:     var(--wlh-slate-400);
+  --icon-brand:     var(--wlh-navy-800);
+  --icon-accent:    var(--wlh-amber-400);
+  --icon-inverse:   var(--wlh-white);
+  --icon-error:     var(--wlh-red-500);
+  --icon-success:   var(--wlh-green-600);
+
+  /* ── Status — sucesso ───────────────────────────────────────── */
+  --status-success-bg:     var(--wlh-green-50);
+  --status-success-border: var(--wlh-green-200);
+  --status-success-text:   var(--wlh-green-700);
+  --status-success-icon:   var(--wlh-green-600);
+  --status-success-solid:  var(--wlh-green-600);
+
+  /* ── Status — erro ──────────────────────────────────────────── */
+  --status-error-bg:     var(--wlh-red-50);
+  --status-error-border: var(--wlh-red-200);
+  --status-error-text:   var(--wlh-red-700);
+  --status-error-icon:   var(--wlh-red-500);
+  --status-error-solid:  var(--wlh-red-600);
+
+  /* ── Status — aviso ─────────────────────────────────────────── */
+  --status-warning-bg:     var(--wlh-amber-50);
+  --status-warning-border: var(--wlh-amber-200);
+  --status-warning-text:   var(--wlh-amber-800);
+  --status-warning-icon:   var(--wlh-amber-600);
+  --status-warning-solid:  var(--wlh-amber-500);
+
+  /* ── Status — informação ────────────────────────────────────── */
+  --status-info-bg:     var(--wlh-navy-50);
+  --status-info-border: var(--wlh-navy-200);
+  --status-info-text:   var(--wlh-navy-700);
+  --status-info-icon:   var(--wlh-navy-600);
+  --status-info-solid:  var(--wlh-navy-600);
+
+  /* ── Brand interações ───────────────────────────────────────── */
+  --brand-primary:          var(--wlh-navy-800);
+  --brand-primary-hover:    var(--wlh-navy-700);
+  --brand-primary-active:   var(--wlh-navy-900);
+  --brand-primary-subtle:   var(--wlh-navy-50);
+  --brand-accent:           var(--wlh-amber-400);
+  --brand-accent-hover:     var(--wlh-amber-500);
+  --brand-accent-subtle:    var(--wlh-amber-50);
+}
+
+
+/* ----------------------------------------------------------------
+   3. COMPONENT TOKENS
+   ---------------------------------------------------------------- */
+:root {
+
+  /* ── Button — primary (amber) ───────────────────────────────── */
+  --btn-primary-bg:          var(--wlh-amber-400);
+  --btn-primary-bg-hover:    var(--wlh-amber-500);
+  --btn-primary-bg-active:   var(--wlh-amber-600);
+  --btn-primary-text:        var(--wlh-navy-800);
+  --btn-primary-border:      transparent;
+  --btn-primary-shadow:      0 1px 2px rgba(253,176,17,0.25);
+  --btn-primary-shadow-hover:0 4px 12px rgba(253,176,17,0.35);
+
+  /* ── Button — secondary (outline navy) ──────────────────────── */
+  --btn-secondary-bg:          transparent;
+  --btn-secondary-bg-hover:    var(--wlh-navy-50);
+  --btn-secondary-bg-active:   var(--wlh-navy-100);
+  --btn-secondary-text:        var(--wlh-navy-800);
+  --btn-secondary-border:      var(--wlh-navy-800);
+
+  /* ── Button — ghost ─────────────────────────────────────────── */
+  --btn-ghost-bg:          transparent;
+  --btn-ghost-bg-hover:    var(--wlh-slate-100);
+  --btn-ghost-bg-active:   var(--wlh-slate-200);
+  --btn-ghost-text:        var(--wlh-slate-700);
+
+  /* ── Button — danger ────────────────────────────────────────── */
+  --btn-danger-bg:         var(--wlh-red-600);
+  --btn-danger-bg-hover:   var(--wlh-red-700);
+  --btn-danger-text:       var(--wlh-white);
+
+  /* ── Button — tamanhos ──────────────────────────────────────── */
+  --btn-h-sm:     1.75rem;   /* 28px */
+  --btn-h-md:     2.25rem;   /* 36px */
+  --btn-h-lg:     2.75rem;   /* 44px */
+  --btn-px-sm:    0.625rem;  /* 10px */
+  --btn-px-md:    0.875rem;  /* 14px */
+  --btn-px-lg:    1.125rem;  /* 18px */
+  --btn-text-sm:  var(--wlh-text-sm);
+  --btn-text-md:  var(--wlh-text-md);
+  --btn-text-lg:  var(--wlh-text-lg);
+  --btn-radius:   var(--wlh-radius-md);
+
+  /* ── Input ───────────────────────────────────────────────────── */
+  --input-bg:              var(--wlh-white);
+  --input-bg-disabled:     var(--wlh-slate-50);
+  --input-border:          var(--wlh-slate-200);
+  --input-border-hover:    var(--wlh-slate-300);
+  --input-border-focus:    var(--wlh-amber-400);
+  --input-border-error:    var(--wlh-red-400);
+  --input-border-success:  var(--wlh-green-500);
+  --input-text:            var(--wlh-navy-800);
+  --input-placeholder:     var(--wlh-slate-400);
+  --input-text-disabled:   var(--wlh-slate-400);
+  --input-addon-bg:        var(--wlh-slate-50);
+  --input-addon-border:    var(--wlh-slate-200);
+  --input-h-sm:            2rem;      /* 32px */
+  --input-h-md:            2.5rem;    /* 40px */
+  --input-h-lg:            3rem;      /* 48px */
+  --input-radius:          var(--wlh-radius-md);
+  --input-shadow-focus:    0 0 0 3px rgba(253,176,17,0.20);
+  --input-shadow-error:    0 0 0 3px rgba(244,63,94,0.15);
+  --input-shadow-success:  0 0 0 3px rgba(34,197,94,0.15);
+
+  /* ── Checkbox / Radio ───────────────────────────────────────── */
+  --control-size:          1.125rem;  /* 18px */
+  --control-border:        var(--wlh-slate-300);
+  --control-border-hover:  var(--wlh-navy-400);
+  --control-bg-checked:    var(--wlh-navy-800);
+  --control-border-checked:var(--wlh-navy-800);
+  --control-check-color:   var(--wlh-white);
+  --control-radius-cb:     var(--wlh-radius-sm);   /* checkbox */
+  --control-radius-radio:  var(--wlh-radius-full); /* radio    */
+  --control-shadow-focus:  0 0 0 3px rgba(253,176,17,0.25);
+
+  /* ── Toggle/Switch ──────────────────────────────────────────── */
+  --toggle-track-bg:       var(--wlh-slate-300);
+  --toggle-track-bg-on:    var(--wlh-navy-800);
+  --toggle-thumb-bg:       var(--wlh-white);
+  --toggle-w-sm:  2rem;   --toggle-h-sm:  1.125rem;
+  --toggle-w-md:  2.5rem; --toggle-h-md:  1.375rem;
+  --toggle-w-lg:  3rem;   --toggle-h-lg:  1.625rem;
+
+  /* ── Badge ───────────────────────────────────────────────────── */
+  --badge-radius:   var(--wlh-radius-full);
+  --badge-px:       0.5rem;
+  --badge-py:       0.125rem;
+  --badge-text:     var(--wlh-text-xs);
+  --badge-weight:   var(--wlh-weight-semibold);
+
+  /* ── Avatar ──────────────────────────────────────────────────── */
+  --avatar-border:   2px solid var(--wlh-white);
+  --avatar-bg:       var(--wlh-navy-100);
+  --avatar-text:     var(--wlh-navy-700);
+  --avatar-size-xs:  1.25rem;  /* 20px */
+  --avatar-size-sm:  1.75rem;  /* 28px */
+  --avatar-size-md:  2.5rem;   /* 40px */
+  --avatar-size-lg:  3.5rem;   /* 56px */
+  --avatar-size-xl:  5rem;     /* 80px */
+
+  /* ── Card ────────────────────────────────────────────────────── */
+  --card-bg:         var(--surface-1);
+  --card-border:     var(--border);
+  --card-radius:     var(--wlh-radius-xl);
+  --card-shadow:     var(--wlh-shadow-sm);
+  --card-shadow-hover: var(--wlh-shadow-md);
+  --card-padding:    var(--wlh-spacing-6);
+
+  /* ── Toast ───────────────────────────────────────────────────── */
+  --toast-bg:        var(--wlh-navy-900);
+  --toast-text:      var(--wlh-white);
+  --toast-radius:    var(--wlh-radius-lg);
+  --toast-shadow:    var(--wlh-shadow-lg);
+  --toast-width:     22rem;
+  --toast-py:        var(--wlh-spacing-3);
+  --toast-px:        var(--wlh-spacing-4);
+
+  /* ── Modal ───────────────────────────────────────────────────── */
+  --modal-bg:           var(--surface-1);
+  --modal-radius:       var(--wlh-radius-2xl);
+  --modal-shadow:       var(--wlh-shadow-xl);
+  --modal-px:           var(--wlh-spacing-6);
+  --modal-header-py:    var(--wlh-spacing-4);
+  --modal-body-py:      var(--wlh-spacing-5);
+  --modal-footer-py:    var(--wlh-spacing-4);
+  --modal-max-w-sm:     24rem;
+  --modal-max-w-md:     32rem;
+  --modal-max-w-lg:     42rem;
+  --modal-max-w-xl:     56rem;
+
+  /* ── Tooltip ─────────────────────────────────────────────────── */
+  --tooltip-bg:      var(--wlh-navy-900);
+  --tooltip-text:    var(--wlh-white);
+  --tooltip-radius:  var(--wlh-radius-md);
+  --tooltip-px:      0.625rem;
+  --tooltip-py:      0.375rem;
+  --tooltip-text-size: var(--wlh-text-xs);
+
+  /* ── Sidebar ─────────────────────────────────────────────────── */
+  --sidebar-bg:      var(--wlh-navy-800);
+  --sidebar-width:   15rem;          /* 240px */
+  --sidebar-width-collapsed: 4rem;   /* 64px  */
+  --sidebar-item-hover: rgba(255,255,255,0.07);
+  --sidebar-item-active: rgba(253,176,17,0.12);
+  --sidebar-item-active-border: var(--wlh-amber-400);
+  --sidebar-text:    var(--wlh-white);
+  --sidebar-text-muted: rgba(255,255,255,0.5);
+
+  /* ── Navbar ──────────────────────────────────────────────────── */
+  --navbar-bg:       var(--surface-1);
+  --navbar-h:        3.5rem;   /* 56px */
+  --navbar-border:   var(--border);
+  --navbar-shadow:   var(--wlh-shadow-xs);
+
+  /* ── Progress ────────────────────────────────────────────────── */
+  --progress-bg:     var(--wlh-slate-200);
+  --progress-fill:   var(--wlh-amber-400);
+  --progress-fill-success: var(--wlh-green-500);
+  --progress-h-xs:   0.1875rem; /* 3px  */
+  --progress-h-sm:   0.375rem;  /* 6px  */
+  --progress-h-md:   0.5rem;    /* 8px  */
+  --progress-h-lg:   0.75rem;   /* 12px */
+  --progress-radius: var(--wlh-radius-full);
+
+  /* ── Skeleton ────────────────────────────────────────────────── */
+  --skeleton-bg:     var(--wlh-slate-200);
+  --skeleton-shine:  var(--wlh-slate-100);
+  --skeleton-radius: var(--wlh-radius-md);
+
+  /* ── Tabs ────────────────────────────────────────────────────── */
+  --tab-text:         var(--wlh-slate-500);
+  --tab-text-active:  var(--wlh-navy-800);
+  --tab-border-active:var(--wlh-navy-800);
+  --tab-bg-hover:     var(--wlh-slate-50);
+
+  /* ── Callout / Alert ────────────────────────────────────────── */
+  --callout-radius:  var(--wlh-radius-lg);
+  --callout-px:      var(--wlh-spacing-4);
+  --callout-py:      var(--wlh-spacing-3);
+}
+
+
+/* ----------------------------------------------------------------
+   4. SPACING — grade 4px
+   ---------------------------------------------------------------- */
+:root {
+  --wlh-spacing-0:  0;
+  --wlh-spacing-px: 1px;
+  --wlh-spacing-0-5: 0.125rem;  /*  2px */
+  --wlh-spacing-1:  0.25rem;    /*  4px */
+  --wlh-spacing-1-5:0.375rem;   /*  6px */
+  --wlh-spacing-2:  0.5rem;     /*  8px */
+  --wlh-spacing-2-5:0.625rem;   /* 10px */
+  --wlh-spacing-3:  0.75rem;    /* 12px */
+  --wlh-spacing-3-5:0.875rem;   /* 14px */
+  --wlh-spacing-4:  1rem;       /* 16px */
+  --wlh-spacing-5:  1.25rem;    /* 20px */
+  --wlh-spacing-6:  1.5rem;     /* 24px */
+  --wlh-spacing-7:  1.75rem;    /* 28px */
+  --wlh-spacing-8:  2rem;       /* 32px */
+  --wlh-spacing-9:  2.25rem;    /* 36px */
+  --wlh-spacing-10: 2.5rem;     /* 40px */
+  --wlh-spacing-11: 2.75rem;    /* 44px */
+  --wlh-spacing-12: 3rem;       /* 48px */
+  --wlh-spacing-14: 3.5rem;     /* 56px */
+  --wlh-spacing-16: 4rem;       /* 64px */
+  --wlh-spacing-20: 5rem;       /* 80px */
+  --wlh-spacing-24: 6rem;       /* 96px */
+  --wlh-spacing-32: 8rem;       /* 128px */
+  --wlh-spacing-40: 10rem;      /* 160px */
+  --wlh-spacing-48: 12rem;      /* 192px */
+  --wlh-spacing-64: 16rem;      /* 256px */
+}
+
+
+/* ----------------------------------------------------------------
+   5. BORDER RADIUS
+   ---------------------------------------------------------------- */
+:root {
+  --wlh-radius-none: 0;
+  --wlh-radius-xs:   0.125rem;  /*  2px */
+  --wlh-radius-sm:   0.25rem;   /*  4px */
+  --wlh-radius-md:   0.5rem;    /*  8px */
+  --wlh-radius-lg:   0.75rem;   /* 12px */
+  --wlh-radius-xl:   1rem;      /* 16px */
+  --wlh-radius-2xl:  1.25rem;   /* 20px */
+  --wlh-radius-3xl:  1.5rem;    /* 24px */
+  --wlh-radius-full: 9999px;
+}
+
+
+/* ----------------------------------------------------------------
+   6. SHADOWS — navy-based (mais coerentes com a paleta)
+   ---------------------------------------------------------------- */
+:root {
+  --wlh-shadow-xs:   0 1px 2px rgba(15,27,53,0.05);
+  --wlh-shadow-sm:   0 1px 3px rgba(15,27,53,0.08), 0 1px 2px rgba(15,27,53,0.06);
+  --wlh-shadow-md:   0 4px 6px rgba(15,27,53,0.07), 0 2px 4px rgba(15,27,53,0.06);
+  --wlh-shadow-lg:   0 10px 15px rgba(15,27,53,0.08), 0 4px 6px rgba(15,27,53,0.05);
+  --wlh-shadow-xl:   0 20px 25px rgba(15,27,53,0.10), 0 8px 10px rgba(15,27,53,0.06);
+  --wlh-shadow-2xl:  0 25px 50px rgba(15,27,53,0.18);
+  --wlh-shadow-inner: inset 0 2px 4px rgba(15,27,53,0.06);
+
+  /* Glow — para foco e destaques */
+  --wlh-glow-amber:  0 0 0 3px rgba(253,176,17,0.22);
+  --wlh-glow-navy:   0 0 0 3px rgba(15,27,53,0.18);
+  --wlh-glow-red:    0 0 0 3px rgba(244,63,94,0.18);
+  --wlh-glow-green:  0 0 0 3px rgba(34,197,94,0.18);
+}
+
+
+/* ----------------------------------------------------------------
+   7. MOTION
+   ---------------------------------------------------------------- */
+:root {
+  /* Durações */
+  --wlh-dur-instant:  75ms;
+  --wlh-dur-fast:     100ms;
+  --wlh-dur-quick:    150ms;
+  --wlh-dur-normal:   200ms;
+  --wlh-dur-medium:   300ms;
+  --wlh-dur-slow:     500ms;
+  --wlh-dur-gentle:   700ms;
+
+  /* Easings */
+  --wlh-ease-linear:   linear;
+  --wlh-ease-in:       cubic-bezier(0.4, 0, 1, 1);
+  --wlh-ease-out:      cubic-bezier(0, 0, 0.2, 1);
+  --wlh-ease-in-out:   cubic-bezier(0.4, 0, 0.2, 1);
+  --wlh-ease-spring:   cubic-bezier(0.34, 1.56, 0.64, 1);
+  --wlh-ease-bounce:   cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  --wlh-ease-gentle:   cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --wlh-ease-snappy:   cubic-bezier(0.2, 0, 0, 1);
+}
+
+/* Keyframes */
+@keyframes wlh-fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes wlh-fade-out {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}
+
+@keyframes wlh-slide-up {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes wlh-slide-down {
+  from { opacity: 0; transform: translateY(-8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes wlh-slide-in-right {
+  from { opacity: 0; transform: translateX(16px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes wlh-slide-in-left {
+  from { opacity: 0; transform: translateX(-16px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes wlh-scale-in {
+  from { opacity: 0; transform: scale(0.95); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes wlh-scale-out {
+  from { opacity: 1; transform: scale(1); }
+  to   { opacity: 0; transform: scale(0.95); }
+}
+
+@keyframes wlh-shimmer {
+  from { background-position: -200% 0; }
+  to   { background-position:  200% 0; }
+}
+
+@keyframes wlh-spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes wlh-pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.5; }
+}
+
+@keyframes wlh-shake {
+  0%, 100% { transform: translateX(0); }
+  20%       { transform: translateX(-4px); }
+  40%       { transform: translateX( 4px); }
+  60%       { transform: translateX(-3px); }
+  80%       { transform: translateX( 3px); }
+}
+
+@keyframes wlh-bounce-in {
+  0%   { opacity: 0; transform: scale(0.8); }
+  60%  { opacity: 1; transform: scale(1.04); }
+  100% { transform: scale(1); }
+}
+
+@keyframes wlh-toast-in {
+  from { opacity: 0; transform: translateY(100%) scale(0.96); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes wlh-toast-out {
+  from { opacity: 1; transform: translateY(0) scale(1); }
+  to   { opacity: 0; transform: translateY(100%) scale(0.96); }
+}
+
+@keyframes wlh-drawer-in-right {
+  from { transform: translateX(100%); }
+  to   { transform: translateX(0); }
+}
+
+@keyframes wlh-drawer-out-right {
+  from { transform: translateX(0); }
+  to   { transform: translateX(100%); }
+}
+
+@keyframes wlh-check {
+  from { stroke-dashoffset: 20; }
+  to   { stroke-dashoffset: 0; }
+}
+
+@keyframes wlh-ripple {
+  to { transform: scale(4); opacity: 0; }
+}
+
+
+/* ----------------------------------------------------------------
+   8. Z-INDEX — sistema de camadas
+   ---------------------------------------------------------------- */
+:root {
+  --z-base:     0;
+  --z-raised:   10;
+  --z-dropdown: 100;
+  --z-sticky:   200;
+  --z-overlay:  300;
+  --z-modal:    400;
+  --z-popover:  500;
+  --z-toast:    600;
+  --z-tooltip:  700;
+}
+
+
+/* ----------------------------------------------------------------
+   9. BREAKPOINTS (documentação — não são media query vars)
+      Uso: @media (min-width: 768px) { ... }
+   ---------------------------------------------------------------- */
+:root {
+  --bp-sm:  480px;
+  --bp-md:  768px;
+  --bp-lg:  1024px;
+  --bp-xl:  1280px;
+  --bp-2xl: 1536px;
+}
+
+
+/* ----------------------------------------------------------------
+   10. SHIM — aliases curtos para backwards-compat
+       Mantém compatibilidade com MoodSelector, DailyCheckInStepper
+       e outros componentes já escritos.
+   ---------------------------------------------------------------- */
+:root {
+
+  /* Cores primitivas (usadas nos CSS Modules existentes) */
+  --color-navy-900:   var(--wlh-navy-800);   /* era #0F1B35 */
+  --color-navy-800:   var(--wlh-navy-700);   /* era #1A2B4A */
+  --color-navy-700:   var(--wlh-navy-600);   /* era #243B6A */
+  --color-amber-500:  var(--wlh-amber-500);
+  --color-amber-400:  var(--wlh-amber-400);
+  --color-amber-300:  var(--wlh-amber-300);
+  --color-slate-500:  var(--wlh-slate-500);
+  --color-slate-300:  var(--wlh-slate-300);
+  --color-slate-100:  var(--wlh-slate-100);
+  --color-green-500:  var(--wlh-green-500);
+  --color-green-300:  var(--wlh-green-300);
+  --color-white:      var(--wlh-white);
+  --color-error:      var(--wlh-red-600);
+
+  /* Fontes */
+  --font-display:  var(--wlh-font-display);
+  --font-heading:  var(--wlh-font-heading);
+  --font-body:     var(--wlh-font-body);
+  --font-mono:     var(--wlh-font-mono);
+
+  /* Pesos */
+  --font-weight-light:     var(--wlh-weight-light);
+  --font-weight-regular:   var(--wlh-weight-regular);
+  --font-weight-medium:    var(--wlh-weight-medium);
+  --font-weight-semibold:  var(--wlh-weight-semibold);
+  --font-weight-bold:      var(--wlh-weight-bold);
+
+  /* Escala de tipo */
+  --font-size-2xs:  var(--wlh-text-2xs);
+  --font-size-xs:   var(--wlh-text-xs);
+  --font-size-sm:   var(--wlh-text-sm);
+  --font-size-base: var(--wlh-text-md);
+  --font-size-md:   var(--wlh-text-lg);
+  --font-size-lg:   var(--wlh-text-xl);
+  --font-size-xl:   var(--wlh-text-2xl);
+  --font-size-2xl:  var(--wlh-text-3xl);
+  --font-size-3xl:  var(--wlh-text-5xl);
+  --font-size-4xl:  var(--wlh-text-6xl);
+
+  /* Line-height */
+  --leading-tight:   var(--wlh-leading-tight);
+  --leading-snug:    var(--wlh-leading-snug);
+  --leading-normal:  var(--wlh-leading-normal);
+  --leading-relaxed: var(--wlh-leading-relaxed);
+
+  /* Raios */
+  --radius-sm:   var(--wlh-radius-sm);
+  --radius-md:   var(--wlh-radius-md);
+  --radius-lg:   var(--wlh-radius-lg);
+  --radius-xl:   var(--wlh-radius-xl);
+  --radius-2xl:  var(--wlh-radius-2xl);
+  --radius-full: var(--wlh-radius-full);
+
+  /* Sombras */
+  --shadow-xs: var(--wlh-shadow-xs);
+  --shadow-sm: var(--wlh-shadow-sm);
+  --shadow-md: var(--wlh-shadow-md);
+  --shadow-lg: var(--wlh-shadow-lg);
+  --shadow-xl: var(--wlh-shadow-xl);
+
+  /* Espaçamentos */
+  --space-0:   var(--wlh-spacing-0);
+  --space-1:   var(--wlh-spacing-1);
+  --space-2:   var(--wlh-spacing-2);
+  --space-3:   var(--wlh-spacing-3);
+  --space-4:   var(--wlh-spacing-4);
+  --space-5:   var(--wlh-spacing-5);
+  --space-6:   var(--wlh-spacing-6);
+  --space-7:   var(--wlh-spacing-7);
+  --space-8:   var(--wlh-spacing-8);
+  --space-10:  var(--wlh-spacing-10);
+  --space-12:  var(--wlh-spacing-12);
+  --space-14:  var(--wlh-spacing-14);
+  --space-16:  var(--wlh-spacing-16);
+  --space-20:  var(--wlh-spacing-20);
+  --space-24:  var(--wlh-spacing-24);
+
+  /* Motion — duração */
+  --duration-fast:   var(--wlh-dur-quick);
+  --duration-normal: var(--wlh-dur-normal);
+  --duration-slow:   var(--wlh-dur-slow);
+  --duration-gentle: var(--wlh-dur-gentle);
+
+  /* Motion — easing */
+  --easing-default: var(--wlh-ease-in-out);
+  --easing-spring:  var(--wlh-ease-spring);
+  --easing-gentle:  var(--wlh-ease-gentle);
+  --easing-out:     var(--wlh-ease-out);
+  --easing-snappy:  var(--wlh-ease-snappy);
+}
+
+
+/* ----------------------------------------------------------------
+   DARK MODE — overrides semantic tokens only
+   Applied when: <html data-theme="dark">
+   ---------------------------------------------------------------- */
+[data-theme="dark"] {
+
+  /* ── Backgrounds ────────────────────────────────────────────── */
+  --bg-page:         #0f1117;
+  --bg-page-alt:     #13161f;
+
+  /* ── Surfaces ───────────────────────────────────────────────── */
+  --surface-1:       #1c2030;
+  --surface-2:       #242840;
+  --surface-3:       #2c3050;
+  --surface-overlay: rgba(0, 0, 0, 0.65);
+
+  /* ── Borders ────────────────────────────────────────────────── */
+  --border-default:  rgba(255,255,255,0.10);
+  --border-subtle:   rgba(255,255,255,0.06);
+  --border-strong:   rgba(255,255,255,0.18);
+  --border-inverse:  rgba(255,255,255,0.08);
+
+  /* ── Text ───────────────────────────────────────────────────── */
+  --text-primary:       #f0f2f8;
+  --text-secondary:     #9ba3c0;
+  --text-tertiary:      #6b7499;
+  --text-placeholder:   #4d5578;
+  --text-disabled:      #4d5578;
+  --text-brand:         var(--wlh-amber-400);
+  --text-link:          var(--wlh-amber-300);
+  --text-link-hover:    var(--wlh-amber-200);
+
+  /* ── Icons ──────────────────────────────────────────────────── */
+  --icon-default:   #9ba3c0;
+  --icon-muted:     #6b7499;
+  --icon-brand:     var(--wlh-amber-400);
+
+  /* ── Status ─────────────────────────────────────────────────── */
+  --status-success-bg:     rgba(34,197,94,0.12);
+  --status-success-border: rgba(34,197,94,0.25);
+  --status-success-text:   #4ade80;
+
+  --status-error-bg:     rgba(239,68,68,0.12);
+  --status-error-border: rgba(239,68,68,0.25);
+  --status-error-text:   #f87171;
+
+  --status-warning-bg:     rgba(251,191,36,0.12);
+  --status-warning-border: rgba(251,191,36,0.25);
+  --status-warning-text:   #fcd34d;
+
+  --status-info-bg:     rgba(99,102,241,0.12);
+  --status-info-border: rgba(99,102,241,0.25);
+  --status-info-text:   #a5b4fc;
+
+  /* ── Shadows (adjusted for dark) ───────────────────────────── */
+  --wlh-shadow-sm:  0 1px 3px rgba(0,0,0,0.4), 0 1px 2px rgba(0,0,0,0.3);
+  --wlh-shadow-md:  0 4px 6px rgba(0,0,0,0.5), 0 2px 4px rgba(0,0,0,0.4);
+  --wlh-shadow-lg:  0 10px 15px rgba(0,0,0,0.55), 0 4px 6px rgba(0,0,0,0.4);
+  --wlh-shadow-xl:  0 20px 25px rgba(0,0,0,0.6), 0 8px 10px rgba(0,0,0,0.45);
+
+  /* ── Tooltip ────────────────────────────────────────────────── */
+  --tooltip-bg:   #f0f2f8;
+  --tooltip-text: #0f1b35;
+
+  /* ── Brand interactions ─────────────────────────────────────── */
+  --brand-primary:        var(--wlh-amber-400);
+  --brand-primary-hover:  var(--wlh-amber-300);
+  --brand-primary-subtle: rgba(251,176,17,0.12);
+  --brand-accent:         var(--wlh-amber-400);
+  --brand-accent-hover:   var(--wlh-amber-300);
+
+  /* ── Button secondary in dark ───────────────────────────────── */
+  --btn-secondary-text:   #f0f2f8;
+  --btn-secondary-border: rgba(255,255,255,0.25);
+  --btn-secondary-bg-hover: rgba(255,255,255,0.08);
+
+  /* ── Button ghost in dark ───────────────────────────────────── */
+  --btn-ghost-text:       #9ba3c0;
+  --btn-ghost-bg-hover:   rgba(255,255,255,0.07);
+
+  /* ── Input / Form ───────────────────────────────────────────── */
+  --input-bg:             #1c2030;
+  --input-border:         rgba(255,255,255,0.12);
+  --input-text:           #f0f2f8;
+
+  /* ── Sidebar (already dark, adjust slightly) ────────────────── */
+  --sidebar-bg:        #0d1526;
+  --sidebar-item-hover:#1a2540;
+  --sidebar-active-bg: rgba(251,176,17,0.12);
+}

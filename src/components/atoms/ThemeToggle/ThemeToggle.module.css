@@ -1,0 +1,67 @@
+/* ThemeToggle.module.css — WorkLife Hub DS v2.0 */
+
+/* ── Root ───────────────────────────────────────────────────────── */
+.root {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 1px solid var(--border-default);
+  border-radius: var(--wlh-radius-full);
+  background: var(--surface-2);
+  color: var(--text-secondary);
+  cursor: pointer;
+  overflow: hidden;
+  transition:
+    background var(--wlh-dur-fast) var(--wlh-ease-out),
+    border-color var(--wlh-dur-fast) var(--wlh-ease-out);
+}
+
+.root:hover {
+  color: var(--text-primary);
+  border-color: var(--border-focus);
+}
+
+.root:focus-visible {
+  outline: 2px solid var(--border-focus);
+  outline-offset: 2px;
+}
+
+/* ── Sizes ──────────────────────────────────────────────────────── */
+.root--sm { width: 28px; height: 28px; }
+.root--md { width: 34px; height: 34px; }
+.root--lg { width: 40px; height: 40px; }
+
+/* ── Icon wrapper (handles swap transition) ────────────────────── */
+.iconWrap {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition:
+    opacity   var(--wlh-dur-normal) var(--wlh-ease-out),
+    transform var(--wlh-dur-normal) var(--wlh-ease-out);
+  opacity: 1;
+  transform: scale(1) rotate(0deg);
+}
+
+.iconWrap--hidden {
+  opacity: 0;
+  transform: scale(0.5) rotate(90deg);
+  pointer-events: none;
+}
+
+/* ── Icon SVG sizing ───────────────────────────────────────────── */
+.icon {
+  display: block;
+}
+
+.root--sm .icon { width: 14px; height: 14px; }
+.root--md .icon { width: 18px; height: 18px; }
+.root--lg .icon { width: 22px; height: 22px; }
+
+/* ── Reduced motion ────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .iconWrap { transition: none; }
+}

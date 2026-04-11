@@ -1,0 +1,219 @@
+/* FilterBar.module.css — WorkLife Hub DS v2.0 */
+
+/* ── Root ───────────────────────────────────────────────────────── */
+.root {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--wlh-spacing-2);
+  padding: var(--wlh-spacing-3) var(--wlh-spacing-4);
+  background: var(--surface-1);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+/* ── Search ─────────────────────────────────────────────────────── */
+.searchWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.searchIcon {
+  position: absolute;
+  left: var(--wlh-spacing-2);
+  display: inline-flex;
+  align-items: center;
+  color: var(--text-tertiary);
+  pointer-events: none;
+}
+
+.searchInput {
+  height: 32px;
+  padding: 0 var(--wlh-spacing-3) 0 var(--wlh-spacing-7);
+  border: 1px solid var(--border-default);
+  border-radius: var(--wlh-radius-md);
+  background: var(--surface-1);
+  font-size: var(--wlh-text-sm);
+  font-family: var(--font-body);
+  color: var(--text-primary);
+  min-width: 180px;
+  transition:
+    border-color var(--wlh-dur-fast) var(--wlh-ease-out),
+    box-shadow var(--wlh-dur-fast) var(--wlh-ease-out);
+}
+
+.searchInput::placeholder {
+  color: var(--text-tertiary);
+}
+
+.searchInput:focus {
+  outline: none;
+  border-color: var(--border-focus);
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--border-focus) 25%, transparent);
+}
+
+/* ── Group wrapper ──────────────────────────────────────────────── */
+.groupWrapper {
+  position: relative;
+}
+
+/* ── Group button ───────────────────────────────────────────────── */
+.groupBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--wlh-spacing-1-5);
+  height: 32px;
+  padding: 0 var(--wlh-spacing-3);
+  border: 1px solid var(--border-default);
+  border-radius: var(--wlh-radius-md);
+  background: var(--surface-1);
+  font-size: var(--wlh-text-sm);
+  font-family: var(--font-body);
+  color: var(--text-secondary);
+  cursor: pointer;
+  white-space: nowrap;
+  transition:
+    border-color var(--wlh-dur-fast) var(--wlh-ease-out),
+    color var(--wlh-dur-fast) var(--wlh-ease-out),
+    background var(--wlh-dur-fast) var(--wlh-ease-out);
+}
+
+.groupBtn:hover {
+  border-color: var(--border-focus);
+  color: var(--text-primary);
+}
+
+.groupBtn:focus-visible {
+  outline: 2px solid var(--border-focus);
+  outline-offset: 1px;
+}
+
+.groupBtn--active {
+  border-color: var(--wlh-navy-300);
+  background: var(--wlh-navy-50);
+  color: var(--wlh-navy-700);
+}
+
+.groupCount {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 var(--wlh-spacing-1);
+  border-radius: var(--wlh-radius-full);
+  background: var(--wlh-navy-700);
+  color: var(--wlh-white);
+  font-size: var(--wlh-text-xs);
+  font-weight: var(--wlh-weight-semibold);
+  line-height: 1;
+}
+
+/* ── Chevron ────────────────────────────────────────────────────── */
+.chevron {
+  transition: transform var(--wlh-dur-fast) var(--wlh-ease-out);
+}
+
+.chevronOpen {
+  transform: rotate(180deg);
+  transition: transform var(--wlh-dur-fast) var(--wlh-ease-out);
+}
+
+/* ── Popover ────────────────────────────────────────────────────── */
+.popover {
+  position: absolute;
+  top: calc(100% + var(--wlh-spacing-1));
+  left: 0;
+  z-index: var(--z-dropdown);
+  min-width: 200px;
+  max-height: 280px;
+  overflow-y: auto;
+  padding: var(--wlh-spacing-1);
+  background: var(--surface-1);
+  border: 1px solid var(--border-default);
+  border-radius: var(--wlh-radius-lg);
+  box-shadow: var(--wlh-shadow-lg);
+  animation: wlh-scale-in var(--wlh-dur-fast) var(--wlh-ease-out) both;
+}
+
+.popoverOption {
+  display: flex;
+  align-items: center;
+  gap: var(--wlh-spacing-2);
+  padding: var(--wlh-spacing-1-5) var(--wlh-spacing-2);
+  border-radius: var(--wlh-radius-md);
+  cursor: pointer;
+  transition: background var(--wlh-dur-fast) var(--wlh-ease-out);
+}
+
+.popoverOption:hover {
+  background: var(--surface-2);
+}
+
+.popoverInput {
+  flex-shrink: 0;
+  accent-color: var(--wlh-navy-700);
+}
+
+.popoverLabel {
+  display: flex;
+  align-items: center;
+  gap: var(--wlh-spacing-2);
+  flex: 1;
+  font-size: var(--wlh-text-sm);
+  color: var(--text-primary);
+  line-height: 1.4;
+}
+
+.popoverCount {
+  margin-left: auto;
+  font-size: var(--wlh-text-xs);
+  color: var(--text-tertiary);
+}
+
+/* ── Clear all button ───────────────────────────────────────────── */
+.clearAll {
+  appearance: none;
+  border: none;
+  background: none;
+  padding: var(--wlh-spacing-1) var(--wlh-spacing-2);
+  font-size: var(--wlh-text-sm);
+  font-family: var(--font-body);
+  color: var(--wlh-red-600);
+  cursor: pointer;
+  border-radius: var(--wlh-radius-md);
+  white-space: nowrap;
+  transition:
+    color var(--wlh-dur-fast) var(--wlh-ease-out),
+    background var(--wlh-dur-fast) var(--wlh-ease-out);
+}
+
+.clearAll:hover {
+  background: var(--wlh-red-50);
+  color: var(--wlh-red-700);
+}
+
+.clearAll:focus-visible {
+  outline: 2px solid var(--border-focus);
+  outline-offset: 1px;
+}
+
+/* ── Result count ───────────────────────────────────────────────── */
+.resultCount {
+  margin-left: auto;
+  font-size: var(--wlh-text-sm);
+  color: var(--text-tertiary);
+  white-space: nowrap;
+}
+
+/* ── Reduced motion ─────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .popover {
+    animation: none;
+  }
+
+  .chevron,
+  .chevronOpen {
+    transition: none;
+  }
+}

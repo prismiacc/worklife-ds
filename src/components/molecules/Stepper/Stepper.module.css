@@ -1,0 +1,232 @@
+/* Stepper.module.css — WorkLife Hub DS v2.0 */
+
+/* ── Root ───────────────────────────────────────────────────────── */
+.root {
+  display: flex;
+  width: 100%;
+}
+
+.root--horizontal {
+  flex-direction: row;
+  align-items: flex-start;
+}
+
+.root--vertical {
+  flex-direction: column;
+}
+
+/* ── Step ───────────────────────────────────────────────────────── */
+.step {
+  display: flex;
+  position: relative;
+}
+
+.root--horizontal .step {
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+}
+
+.root--vertical .step {
+  flex-direction: row;
+  align-items: flex-start;
+}
+
+/* ── Indicator (circle + connector) ─────────────────────────────── */
+.indicator {
+  display: flex;
+  align-items: center;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.root--horizontal .indicator {
+  flex-direction: row;
+  width: 100%;
+  justify-content: center;
+}
+
+.root--vertical .indicator {
+  flex-direction: column;
+  align-items: center;
+  min-height: 100%;
+}
+
+/* ── Circle ─────────────────────────────────────────────────────── */
+.circle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  flex-shrink: 0;
+  font-weight: var(--wlh-weight-semibold);
+  z-index: 1;
+  transition:
+    background var(--wlh-dur-fast) var(--wlh-ease-out),
+    color var(--wlh-dur-fast) var(--wlh-ease-out),
+    border-color var(--wlh-dur-fast) var(--wlh-ease-out);
+}
+
+/* Sizes */
+.root--sm .circle {
+  width: 24px;
+  height: 24px;
+  font-size: var(--wlh-text-xs);
+}
+
+.root--md .circle {
+  width: 32px;
+  height: 32px;
+  font-size: var(--wlh-text-sm);
+}
+
+.root--lg .circle {
+  width: 40px;
+  height: 40px;
+  font-size: var(--wlh-text-base);
+}
+
+/* Status colors */
+.circle--completed {
+  background: var(--wlh-navy-700);
+  color: var(--wlh-white);
+  border: 2px solid var(--wlh-navy-700);
+}
+
+.circle--current {
+  background: var(--wlh-white);
+  color: var(--wlh-navy-700);
+  border: 2px solid var(--wlh-navy-700);
+}
+
+.circle--upcoming {
+  background: var(--wlh-slate-100);
+  color: var(--wlh-slate-500);
+  border: 2px solid var(--wlh-slate-300);
+}
+
+.circle--error {
+  background: var(--wlh-red-600);
+  color: var(--wlh-white);
+  border: 2px solid var(--wlh-red-600);
+}
+
+/* Current dot inside circle */
+.currentDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--wlh-navy-700);
+}
+
+/* ── Clickable wrapper ──────────────────────────────────────────── */
+.clickable {
+  appearance: none;
+  border: none;
+  background: none;
+  padding: 0;
+  cursor: pointer;
+  border-radius: 50%;
+  line-height: 0;
+}
+
+.clickable:focus-visible {
+  outline: 2px solid var(--border-focus);
+  outline-offset: 2px;
+}
+
+.clickable:hover .circle--completed {
+  background: var(--wlh-navy-800);
+  border-color: var(--wlh-navy-800);
+}
+
+/* ── Connector ──────────────────────────────────────────────────── */
+.connector {
+  flex-shrink: 0;
+}
+
+/* Horizontal connector */
+.root--horizontal .connector {
+  flex: 1;
+  height: 2px;
+  min-width: var(--wlh-spacing-4);
+}
+
+/* Vertical connector */
+.root--vertical .connector {
+  width: 2px;
+  flex: 1;
+  min-height: var(--wlh-spacing-6);
+}
+
+/* Connector statuses */
+.connector--full {
+  background: var(--wlh-navy-700);
+}
+
+.connector--half {
+  background: linear-gradient(
+    to right,
+    var(--wlh-navy-700) 50%,
+    var(--wlh-slate-300) 50%
+  );
+}
+
+.root--vertical .connector--half {
+  background: linear-gradient(
+    to bottom,
+    var(--wlh-navy-700) 50%,
+    var(--wlh-slate-300) 50%
+  );
+}
+
+.connector--empty {
+  background: var(--wlh-slate-300);
+}
+
+/* ── Content (label + description) ──────────────────────────────── */
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--wlh-spacing-1);
+}
+
+.root--horizontal .content {
+  align-items: center;
+  text-align: center;
+  margin-top: var(--wlh-spacing-2);
+}
+
+.root--vertical .content {
+  margin-left: var(--wlh-spacing-3);
+  padding-bottom: var(--wlh-spacing-6);
+}
+
+/* ── Label ──────────────────────────────────────────────────────── */
+.label {
+  font-weight: var(--wlh-weight-medium);
+  line-height: 1.4;
+}
+
+.root--sm .label { font-size: var(--wlh-text-xs); }
+.root--md .label { font-size: var(--wlh-text-sm); }
+.root--lg .label { font-size: var(--wlh-text-base); }
+
+.label--completed { color: var(--text-primary); }
+.label--current   { color: var(--text-primary); font-weight: var(--wlh-weight-semibold); }
+.label--upcoming  { color: var(--text-tertiary); }
+.label--error     { color: var(--wlh-red-600); }
+
+/* ── Description ────────────────────────────────────────────────── */
+.description {
+  font-size: var(--wlh-text-xs);
+  color: var(--text-tertiary);
+  line-height: 1.4;
+}
+
+/* ── Reduced motion ─────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .circle {
+    transition: none;
+  }
+}

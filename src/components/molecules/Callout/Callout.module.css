@@ -1,0 +1,92 @@
+/* Callout.module.css — WorkLife Hub DS v2.0 */
+
+.callout {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--wlh-spacing-3);
+  padding: var(--callout-py) var(--callout-px);
+  border-radius: var(--callout-radius);
+  border: 1px solid;
+  animation: wlh-slide-down var(--wlh-dur-normal) var(--wlh-ease-out) both;
+}
+
+/* ── Variants ───────────────────────────────────────────────────── */
+.callout--info {
+  background:   var(--status-info-bg);
+  border-color: var(--status-info-border);
+  color:        var(--status-info-text);
+}
+
+.callout--success {
+  background:   var(--status-success-bg);
+  border-color: var(--status-success-border);
+  color:        var(--status-success-text);
+}
+
+.callout--warning {
+  background:   var(--status-warning-bg);
+  border-color: var(--status-warning-border);
+  color:        var(--status-warning-text);
+}
+
+.callout--error {
+  background:   var(--status-error-bg);
+  border-color: var(--status-error-border);
+  color:        var(--status-error-text);
+}
+
+/* ── Icon ───────────────────────────────────────────────────────── */
+.icon {
+  flex-shrink: 0;
+  display: inline-flex;
+  width:  1rem;
+  height: 1rem;
+  margin-top: 0.0625rem; /* alinha com a primeira linha de texto */
+}
+
+.icon svg { width: 100%; height: 100%; }
+
+/* ── Body ───────────────────────────────────────────────────────── */
+.body {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--wlh-spacing-1);
+}
+
+.title {
+  font-size: var(--wlh-text-md);
+  font-weight: var(--wlh-weight-semibold);
+  line-height: var(--wlh-leading-snug);
+}
+
+.content {
+  font-size: var(--wlh-text-md);
+  line-height: var(--wlh-leading-relaxed);
+  opacity: 0.85;
+}
+
+/* ── Action ─────────────────────────────────────────────────────── */
+.action {
+  flex-shrink: 0;
+}
+
+/* ── Dismiss ────────────────────────────────────────────────────── */
+.dismiss {
+  flex-shrink: 0;
+  appearance: none;
+  border: none;
+  background: none;
+  padding: var(--wlh-spacing-0-5);
+  margin: -2px -4px 0 0;
+  cursor: pointer;
+  color: currentColor;
+  opacity: 0.5;
+  border-radius: var(--wlh-radius-sm);
+  transition: opacity var(--wlh-dur-fast) var(--wlh-ease-out);
+  line-height: 0;
+}
+
+.dismiss:hover  { opacity: 1; }
+.dismiss:focus-visible { opacity: 1; outline: 2px solid currentColor; outline-offset: 1px; }

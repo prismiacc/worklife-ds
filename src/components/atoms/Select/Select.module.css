@@ -1,0 +1,93 @@
+/* Select.module.css — WorkLife Hub DS v2.0 */
+
+.wrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.wrapper--full { width: 100%; }
+
+/* ── Select element ─────────────────────────────────────────────── */
+.select {
+  appearance: none;
+  width: 100%;
+  font-family: var(--font-body);
+  color: var(--text-primary);
+  background: var(--surface-1);
+  border: 1px solid var(--border-default);
+  border-radius: var(--wlh-radius-md);
+  cursor: pointer;
+  outline: none;
+  transition:
+    border-color var(--wlh-dur-fast) var(--wlh-ease-out),
+    box-shadow   var(--wlh-dur-fast) var(--wlh-ease-out);
+}
+
+/* ── Sizes ──────────────────────────────────────────────────────── */
+.wrapper--sm .select {
+  height: 32px;
+  padding: 0 var(--wlh-spacing-7) 0 var(--wlh-spacing-2-5);
+  font-size: var(--wlh-text-sm);
+}
+
+.wrapper--md .select {
+  height: 38px;
+  padding: 0 var(--wlh-spacing-8) 0 var(--wlh-spacing-3);
+  font-size: var(--wlh-text-md);
+}
+
+.wrapper--lg .select {
+  height: 44px;
+  padding: 0 var(--wlh-spacing-9) 0 var(--wlh-spacing-4);
+  font-size: var(--wlh-text-md);
+}
+
+/* ── States ─────────────────────────────────────────────────────── */
+.select:hover:not(:disabled) {
+  border-color: var(--wlh-slate-400);
+}
+
+.select:focus {
+  border-color: var(--border-focus);
+  box-shadow: 0 0 0 3px rgba(15,27,53,0.12);
+}
+
+.wrapper--error .select {
+  border-color: var(--status-error-border);
+}
+.wrapper--error .select:focus {
+  box-shadow: 0 0 0 3px rgba(220,38,38,0.15);
+}
+
+.wrapper--success .select {
+  border-color: var(--status-success-border);
+}
+
+/* ── Disabled ───────────────────────────────────────────────────── */
+.wrapper--disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.select:disabled {
+  cursor: not-allowed;
+  background: var(--surface-2);
+  color: var(--text-tertiary);
+}
+
+/* ── Chevron icon ───────────────────────────────────────────────── */
+.icon {
+  position: absolute;
+  right: var(--wlh-spacing-3);
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: var(--text-tertiary);
+  display: inline-flex;
+}
+
+/* ── Placeholder option ─────────────────────────────────────────── */
+.select option[value=""] {
+  color: var(--text-tertiary);
+}

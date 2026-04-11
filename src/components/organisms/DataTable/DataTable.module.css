@@ -1,0 +1,140 @@
+/* DataTable.module.css — WorkLife Hub DS v2.0 */
+
+.root { display: flex; flex-direction: column; width: 100%; }
+
+/* ── Bulk bar ───────────────────────────────────────────────────── */
+.bulkBar {
+  display: flex;
+  align-items: center;
+  gap: var(--wlh-spacing-3);
+  padding: var(--wlh-spacing-2) var(--wlh-spacing-4);
+  background: var(--wlh-navy-50);
+  border: 1px solid var(--wlh-navy-200);
+  border-radius: var(--wlh-radius-lg) var(--wlh-radius-lg) 0 0;
+  border-bottom: none;
+  animation: wlh-slide-down var(--wlh-dur-fast) var(--wlh-ease-out);
+}
+
+.bulkCount {
+  font-size: var(--wlh-text-sm);
+  font-weight: var(--wlh-weight-semibold);
+  color: var(--wlh-navy-800);
+}
+
+.bulkActions { display: flex; gap: var(--wlh-spacing-2); }
+
+.bulkBtn {
+  display: inline-flex; align-items: center; gap: var(--wlh-spacing-1-5);
+  padding: var(--wlh-spacing-1) var(--wlh-spacing-3);
+  border: 1px solid var(--border-default); background: var(--surface-1);
+  border-radius: var(--wlh-radius-md); font-size: var(--wlh-text-sm);
+  font-weight: var(--wlh-weight-medium); font-family: var(--font-body);
+  cursor: pointer; color: var(--text-primary);
+  transition: background var(--wlh-dur-fast) var(--wlh-ease-out);
+}
+.bulkBtn:hover { background: var(--surface-2); }
+.bulkBtn--danger { color: var(--wlh-red-600); border-color: var(--wlh-red-200); }
+.bulkBtn--danger:hover { background: var(--wlh-red-50); }
+
+.bulkClear {
+  margin-left: auto; border: none; background: none; font-size: var(--wlh-text-xs);
+  color: var(--text-tertiary); cursor: pointer; font-family: var(--font-body);
+  text-decoration: underline; text-underline-offset: 2px;
+}
+.bulkClear:hover { color: var(--text-primary); }
+
+/* ── Table wrapper ──────────────────────────────────────────────── */
+.tableWrapper {
+  width: 100%;
+  overflow-x: auto;
+  border: 1px solid var(--border-default);
+  border-radius: var(--wlh-radius-xl);
+  background: var(--surface-1);
+}
+
+/* When bulk bar visible, remove top radius */
+.root:has(.bulkBar) .tableWrapper {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+/* ── Table ──────────────────────────────────────────────────────── */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--wlh-text-sm);
+  color: var(--text-primary);
+}
+
+.caption {
+  text-align: left;
+  font-size: var(--wlh-text-xs);
+  color: var(--text-tertiary);
+  padding: var(--wlh-spacing-2) var(--wlh-spacing-4);
+  caption-side: top;
+}
+
+/* ── Thead ──────────────────────────────────────────────────────── */
+.thead { background: var(--surface-2); }
+
+.table--sticky .thead { position: sticky; top: 0; z-index: 1; }
+
+.th {
+  padding: var(--wlh-spacing-3) var(--wlh-spacing-4);
+  font-size: var(--wlh-text-xs);
+  font-weight: var(--wlh-weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-tertiary);
+  text-align: left;
+  border-bottom: 1px solid var(--border-default);
+  white-space: nowrap;
+}
+
+.th--check { width: 44px; padding-left: var(--wlh-spacing-4); }
+.th--center { text-align: center; }
+.th--right  { text-align: right; }
+
+/* ── Sort button ────────────────────────────────────────────────── */
+.sortBtn {
+  display: inline-flex; align-items: center; gap: var(--wlh-spacing-1);
+  border: none; background: none; padding: 0;
+  font-size: inherit; font-weight: inherit; color: inherit;
+  text-transform: inherit; letter-spacing: inherit;
+  cursor: pointer; font-family: var(--font-body);
+  transition: color var(--wlh-dur-fast) var(--wlh-ease-out);
+}
+.sortBtn:hover { color: var(--text-primary); }
+.sortBtn:focus-visible { outline: 2px solid var(--border-focus); outline-offset: 2px; border-radius: 2px; }
+
+/* ── Body ───────────────────────────────────────────────────────── */
+.tr {
+  border-bottom: 1px solid var(--border-subtle);
+  transition: background var(--wlh-dur-fast) var(--wlh-ease-out);
+}
+.tr:last-child { border-bottom: none; }
+.tr:hover { background: var(--surface-2); }
+.tr--selected { background: var(--wlh-navy-50) !important; }
+
+.table--striped .tr:nth-child(even) { background: var(--surface-2); }
+.table--striped .tr:nth-child(even):hover { background: var(--wlh-slate-100); }
+
+.td {
+  padding: var(--wlh-spacing-3) var(--wlh-spacing-4);
+  color: var(--text-primary);
+  vertical-align: middle;
+}
+
+.td--check { width: 44px; }
+.td--center { text-align: center; }
+.td--right  { text-align: right; }
+
+.table--compact .td,
+.table--compact .th { padding: var(--wlh-spacing-2) var(--wlh-spacing-3); }
+
+/* ── Special cells ──────────────────────────────────────────────── */
+.loadingCell,
+.emptyCell {
+  text-align: center;
+  padding: var(--wlh-spacing-10) var(--wlh-spacing-4);
+}

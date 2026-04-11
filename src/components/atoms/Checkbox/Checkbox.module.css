@@ -1,0 +1,140 @@
+/* Checkbox.module.css — WorkLife Hub DS v2.0 */
+
+.wrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--wlh-spacing-2-5);
+  cursor: pointer;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.wrapper--alignTop { align-items: flex-start; }
+
+.wrapper--disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+
+/* ── Control (hidden input + visual box) ────────────────────────── */
+.control {
+  position: relative;
+  flex-shrink: 0;
+  width:  var(--control-size);
+  height: var(--control-size);
+}
+
+/* Input nativo — escondido mas acessível */
+.input {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  margin: 0;
+  cursor: pointer;
+}
+
+
+/* ── Caixa visual ───────────────────────────────────────────────── */
+.box {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--control-border);
+  border-radius: var(--control-radius-cb);
+  background: var(--input-bg);
+  transition:
+    background     var(--wlh-dur-quick) var(--wlh-ease-out),
+    border-color   var(--wlh-dur-quick) var(--wlh-ease-out),
+    box-shadow     var(--wlh-dur-quick) var(--wlh-ease-out),
+    transform      var(--wlh-dur-fast)  var(--wlh-ease-spring);
+  pointer-events: none;
+}
+
+/* Hover */
+.input:hover ~ .box {
+  border-color: var(--control-border-hover);
+}
+
+/* Focus */
+.input:focus-visible ~ .box {
+  box-shadow: var(--control-shadow-focus);
+  border-color: var(--border-focus);
+}
+
+/* Checked */
+.input:checked ~ .box,
+.input:indeterminate ~ .box {
+  background:   var(--control-bg-checked);
+  border-color: var(--control-border-checked);
+}
+
+/* Active press */
+.input:active ~ .box {
+  transform: scale(0.9);
+}
+
+
+/* ── Check SVG ──────────────────────────────────────────────────── */
+.check {
+  width:  0.6em;
+  height: 0.6em;
+  color: var(--control-check-color);
+  overflow: visible;
+  opacity: 0;
+  transform: scale(0.5);
+  transition:
+    opacity   var(--wlh-dur-quick) var(--wlh-ease-out),
+    transform var(--wlh-dur-quick) var(--wlh-ease-spring);
+}
+
+.input:checked ~ .box .check,
+.input:indeterminate ~ .box .check {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Animação do stroke */
+.check polyline,
+.check line {
+  stroke-dasharray: 20;
+  stroke-dashoffset: 20;
+  transition: stroke-dashoffset var(--wlh-dur-normal) var(--wlh-ease-out) var(--wlh-dur-fast);
+}
+
+.input:checked ~ .box .check polyline,
+.input:indeterminate ~ .box .check line {
+  stroke-dashoffset: 0;
+}
+
+
+/* ── Label + description ────────────────────────────────────────── */
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--wlh-spacing-0-5);
+}
+
+.label {
+  font-size: var(--wlh-text-md);
+  font-weight: var(--wlh-weight-medium);
+  color: var(--text-primary);
+  line-height: var(--wlh-leading-snug);
+}
+
+.description {
+  font-size: var(--wlh-text-sm);
+  color: var(--text-tertiary);
+  line-height: var(--wlh-leading-normal);
+}
+
+
+/* ── Reduced motion ─────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .box, .check, .check polyline, .check line { transition: none; }
+}

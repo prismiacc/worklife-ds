@@ -1,0 +1,89 @@
+/* SearchField.module.css — WorkLife Hub DS v2.0 */
+
+.root {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.root--full { width: 100%; }
+
+/* ── Input ──────────────────────────────────────────────────────── */
+.input {
+  width: 100%;
+  font-family: var(--font-body);
+  background: var(--surface-1);
+  color: var(--text-primary);
+  border: 1px solid var(--border-default);
+  border-radius: var(--wlh-radius-full);
+  outline: none;
+  transition:
+    border-color var(--wlh-dur-fast) var(--wlh-ease-out),
+    box-shadow   var(--wlh-dur-fast) var(--wlh-ease-out);
+}
+
+/* Remove native clear button */
+.input::-webkit-search-cancel-button { display: none; }
+
+/* ── Sizes ──────────────────────────────────────────────────────── */
+.root--sm .input { height: 30px; padding: 0 var(--wlh-spacing-7) 0 var(--wlh-spacing-7);  font-size: var(--wlh-text-sm); }
+.root--md .input { height: 36px; padding: 0 var(--wlh-spacing-8) 0 var(--wlh-spacing-8);  font-size: var(--wlh-text-md); }
+.root--lg .input { height: 44px; padding: 0 var(--wlh-spacing-10) 0 var(--wlh-spacing-10); font-size: var(--wlh-text-md); }
+
+/* ── States ─────────────────────────────────────────────────────── */
+.input:hover:not(:disabled) { border-color: var(--wlh-slate-400); }
+
+.input:focus {
+  border-color: var(--border-focus);
+  box-shadow: 0 0 0 3px rgba(15,27,53,0.12);
+}
+
+.input::placeholder { color: var(--text-placeholder); }
+.input:disabled     { opacity: 0.5; cursor: not-allowed; background: var(--surface-2); }
+
+/* ── Icons ──────────────────────────────────────────────────────── */
+.iconLeft {
+  position: absolute;
+  left: var(--wlh-spacing-2-5);
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-tertiary);
+  display: inline-flex;
+  pointer-events: none;
+}
+
+.root--lg .iconLeft { left: var(--wlh-spacing-3-5); }
+
+/* ── Clear button ───────────────────────────────────────────────── */
+.clearBtn {
+  position: absolute;
+  right: var(--wlh-spacing-2-5);
+  top: 50%;
+  transform: translateY(-50%);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border: none;
+  background: var(--wlh-slate-300);
+  color: var(--wlh-slate-600);
+  border-radius: var(--wlh-radius-full);
+  cursor: pointer;
+  transition:
+    background var(--wlh-dur-fast) var(--wlh-ease-out),
+    color      var(--wlh-dur-fast) var(--wlh-ease-out);
+  animation: wlh-scale-in var(--wlh-dur-fast) var(--wlh-ease-spring);
+}
+
+.clearBtn:hover {
+  background: var(--wlh-slate-400);
+  color: var(--wlh-white);
+}
+
+.root--lg .clearBtn { right: var(--wlh-spacing-3-5); width: 20px; height: 20px; }
+
+/* ── Spinner ────────────────────────────────────────────────────── */
+.spinner {
+  animation: wlh-spin 0.8s linear infinite;
+}

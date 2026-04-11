@@ -1,0 +1,114 @@
+/* EmptyState.module.css — WorkLife Hub DS v2.0 */
+
+.root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+}
+
+/* ── Sizes ──────────────────────────────────────────────────────── */
+.root--sm { gap: var(--wlh-spacing-3); padding: var(--wlh-spacing-8) var(--wlh-spacing-4); }
+.root--md { gap: var(--wlh-spacing-4); padding: var(--wlh-spacing-12) var(--wlh-spacing-6); }
+.root--lg { gap: var(--wlh-spacing-6); padding: var(--wlh-spacing-16) var(--wlh-spacing-8); }
+
+/* ── Visual ─────────────────────────────────────────────────────── */
+.visual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon {
+  display: inline-flex;
+  color: var(--text-placeholder);
+  opacity: 0.6;
+}
+
+.root--sm .icon svg { width: 40px; height: 40px; }
+.root--md .icon svg { width: 64px; height: 64px; }
+.root--lg .icon svg { width: 80px; height: 80px; }
+
+/* ── Copy ───────────────────────────────────────────────────────── */
+.copy {
+  display: flex;
+  flex-direction: column;
+  gap: var(--wlh-spacing-1-5);
+  max-width: 28rem;
+}
+
+.title {
+  font-size: var(--wlh-text-lg);
+  font-weight: var(--wlh-weight-semibold);
+  color: var(--text-primary);
+  margin: 0;
+  line-height: var(--wlh-leading-snug);
+}
+
+.root--sm .title { font-size: var(--wlh-text-md); }
+.root--lg .title { font-size: var(--wlh-text-xl); }
+
+.description {
+  font-size: var(--wlh-text-sm);
+  color: var(--text-tertiary);
+  line-height: var(--wlh-leading-relaxed);
+  margin: 0;
+}
+
+.root--lg .description { font-size: var(--wlh-text-md); }
+
+/* ── Actions ────────────────────────────────────────────────────── */
+.actions {
+  display: flex;
+  align-items: center;
+  gap: var(--wlh-spacing-2);
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* Inline button styles (sem dep de Button atom para ser self-contained) */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--wlh-spacing-1-5);
+  padding: var(--wlh-spacing-2) var(--wlh-spacing-4);
+  border-radius: var(--wlh-radius-md);
+  font-size: var(--wlh-text-sm);
+  font-weight: var(--wlh-weight-semibold);
+  font-family: var(--font-body);
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition:
+    background   var(--wlh-dur-fast) var(--wlh-ease-out),
+    box-shadow   var(--wlh-dur-fast) var(--wlh-ease-out),
+    transform    var(--wlh-dur-fast) var(--wlh-ease-out);
+}
+
+.btn:hover  { transform: translateY(-1px); }
+.btn:active { transform: translateY(0) scale(0.98); }
+.btn:focus-visible { outline: 2px solid var(--border-focus); outline-offset: 2px; }
+
+.btn--primary {
+  background: var(--wlh-amber-400);
+  color: var(--wlh-navy-900);
+  border-color: var(--wlh-amber-400);
+}
+.btn--primary:hover { background: var(--wlh-amber-300); }
+
+.btn--secondary {
+  background: var(--surface-1);
+  color: var(--text-primary);
+  border-color: var(--border-default);
+  box-shadow: var(--wlh-shadow-xs);
+}
+.btn--secondary:hover { background: var(--surface-2); }
+
+.btn--ghost {
+  background: none;
+  color: var(--text-secondary);
+  border-color: transparent;
+}
+.btn--ghost:hover { background: var(--surface-2); color: var(--text-primary); }

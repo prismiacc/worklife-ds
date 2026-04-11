@@ -1,0 +1,352 @@
+/* TeamDashboard.module.css — WorkLife Hub DS v2.0 */
+
+/* ── Root ───────────────────────────────────────────────────────── */
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: var(--wlh-spacing-5);
+}
+
+/* ── Header ─────────────────────────────────────────────────────── */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--wlh-spacing-3);
+  flex-wrap: wrap;
+}
+
+.headerLeft {
+  display: flex;
+  align-items: center;
+  gap: var(--wlh-spacing-2);
+}
+
+.teamName {
+  font-size: var(--wlh-text-xl);
+  font-weight: var(--wlh-weight-semibold);
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.periodChip {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px var(--wlh-spacing-2);
+  font-size: var(--wlh-text-xs);
+  font-weight: var(--wlh-weight-medium);
+  color: var(--text-secondary);
+  background: var(--wlh-slate-100);
+  border-radius: var(--wlh-radius-full);
+  line-height: 1.5;
+}
+
+.exportButton {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--wlh-spacing-1);
+  padding: var(--wlh-spacing-1-5) var(--wlh-spacing-3);
+  font-size: var(--wlh-text-sm);
+  font-weight: var(--wlh-weight-medium);
+  color: var(--text-secondary);
+  background: transparent;
+  border: 1px solid var(--border-default);
+  border-radius: var(--wlh-radius-md);
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.exportButton:hover {
+  background: var(--wlh-slate-50);
+  color: var(--text-primary);
+}
+
+.exportButton:focus-visible {
+  outline: 2px solid var(--border-focus);
+  outline-offset: 2px;
+}
+
+/* ── Metrics Grid ──────────────────────────────────────────────── */
+.metricsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: var(--wlh-spacing-3);
+}
+
+.metricCard {
+  border: 1px solid var(--border-default);
+  border-radius: var(--wlh-radius-xl);
+  padding: var(--wlh-spacing-4);
+  background: var(--surface-1);
+  display: flex;
+  flex-direction: column;
+  gap: var(--wlh-spacing-1);
+}
+
+.metricValue {
+  font-size: var(--wlh-text-2xl);
+  font-weight: var(--wlh-weight-bold);
+  color: var(--text-primary);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.metricValueRed {
+  color: var(--wlh-red-500);
+}
+
+.metricLabel {
+  font-size: var(--wlh-text-xs);
+  color: var(--text-tertiary);
+  font-weight: var(--wlh-weight-regular);
+}
+
+.metricTrend {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--wlh-spacing-1);
+  font-size: var(--wlh-text-xs);
+  font-weight: var(--wlh-weight-semibold);
+}
+
+.metricTrendUp {
+  color: var(--wlh-green-600);
+}
+
+.metricTrendDown {
+  color: var(--wlh-red-500);
+}
+
+.metricHabitValue {
+  font-size: var(--wlh-text-base);
+  font-weight: var(--wlh-weight-semibold);
+  color: var(--text-primary);
+  line-height: 1.3;
+  word-break: break-word;
+}
+
+/* ── Risk Banner ───────────────────────────────────────────────── */
+.riskBanner {
+  display: flex;
+  align-items: center;
+  gap: var(--wlh-spacing-3);
+  padding: var(--wlh-spacing-4);
+  background: var(--wlh-red-50);
+  border: 1px solid var(--wlh-red-200);
+  border-left: 4px solid var(--wlh-red-400);
+  border-radius: var(--wlh-radius-xl);
+}
+
+.riskIcon {
+  font-size: var(--wlh-text-lg);
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+.riskText {
+  flex: 1;
+  font-size: var(--wlh-text-sm);
+  font-weight: var(--wlh-weight-medium);
+  color: var(--wlh-red-700);
+}
+
+.riskButton {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--wlh-spacing-1) var(--wlh-spacing-2);
+  font-size: var(--wlh-text-xs);
+  font-weight: var(--wlh-weight-medium);
+  color: var(--wlh-red-600);
+  background: transparent;
+  border: 1px solid var(--wlh-red-200);
+  border-radius: var(--wlh-radius-md);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background-color 0.15s ease;
+}
+
+.riskButton:hover {
+  background: var(--wlh-red-100);
+}
+
+.riskButton:focus-visible {
+  outline: 2px solid var(--border-focus);
+  outline-offset: 2px;
+}
+
+/* ── Member Grid ───────────────────────────────────────────────── */
+.memberGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: var(--wlh-spacing-3);
+}
+
+/* ── Member Card ───────────────────────────────────────────────── */
+.memberCard {
+  border: 1px solid var(--border-default);
+  border-radius: var(--wlh-radius-xl);
+  padding: var(--wlh-spacing-4);
+  background: var(--surface-1);
+  display: flex;
+  flex-direction: column;
+  gap: var(--wlh-spacing-3);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.memberCardClickable {
+  cursor: pointer;
+}
+
+.memberCardClickable:hover {
+  box-shadow: var(--wlh-shadow-md);
+  transform: translateY(-1px);
+}
+
+.memberCardClickable:focus-visible {
+  outline: 2px solid var(--border-focus);
+  outline-offset: 2px;
+}
+
+/* ── Member Card — Top Row ─────────────────────────────────────── */
+.memberTop {
+  display: flex;
+  align-items: center;
+  gap: var(--wlh-spacing-2);
+}
+
+.avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--wlh-radius-full);
+  background: var(--wlh-navy-800);
+  color: #fff;
+  font-size: var(--wlh-text-sm);
+  font-weight: var(--wlh-weight-semibold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  line-height: 1;
+  letter-spacing: 0.02em;
+}
+
+.memberInfo {
+  flex: 1;
+  min-width: 0;
+}
+
+.memberName {
+  font-size: var(--wlh-text-sm);
+  font-weight: var(--wlh-weight-semibold);
+  color: var(--text-primary);
+  line-height: 1.3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.memberRole {
+  font-size: var(--wlh-text-xs);
+  color: var(--text-tertiary);
+  line-height: 1.3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.statusDot {
+  width: 8px;
+  height: 8px;
+  border-radius: var(--wlh-radius-full);
+  flex-shrink: 0;
+}
+
+.statusActive  { background: var(--wlh-green-400); }
+.statusAway    { background: var(--wlh-amber-400); }
+.statusAtRisk  { background: var(--wlh-red-400); }
+.statusNoData  { background: var(--wlh-slate-300); }
+
+/* ── Member Card — Score ───────────────────────────────────────── */
+.scoreRow {
+  display: flex;
+  align-items: baseline;
+  gap: var(--wlh-spacing-1);
+}
+
+.scoreValue {
+  font-size: var(--wlh-text-2xl);
+  font-weight: var(--wlh-weight-bold);
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.scoreUnit {
+  font-size: var(--wlh-text-xs);
+  color: var(--text-tertiary);
+  font-weight: var(--wlh-weight-regular);
+}
+
+.noData {
+  font-size: var(--wlh-text-sm);
+  color: var(--text-tertiary);
+  font-style: italic;
+}
+
+.memberTrend {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  font-size: var(--wlh-text-xs);
+  font-weight: var(--wlh-weight-semibold);
+  margin-left: var(--wlh-spacing-2);
+}
+
+.memberTrendUp {
+  color: var(--wlh-green-600);
+}
+
+.memberTrendDown {
+  color: var(--wlh-red-500);
+}
+
+/* ── Member Card — Bottom Row ──────────────────────────────────── */
+.memberBottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--wlh-spacing-2);
+}
+
+.streak {
+  font-size: var(--wlh-text-xs);
+  font-weight: var(--wlh-weight-medium);
+  color: var(--text-secondary);
+}
+
+.lastCheckIn {
+  font-size: var(--wlh-text-xs);
+  color: var(--text-tertiary);
+}
+
+/* ── Empty State ───────────────────────────────────────────────── */
+.empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--wlh-spacing-8);
+  font-size: var(--wlh-text-sm);
+  color: var(--text-tertiary);
+  text-align: center;
+}
+
+/* ── Reduced motion ────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .memberCard,
+  .memberCardClickable {
+    transition: none;
+  }
+
+  .memberCardClickable:hover {
+    transform: none;
+  }
+}

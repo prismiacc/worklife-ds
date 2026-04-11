@@ -1,0 +1,163 @@
+/* Drawer.module.css — WorkLife Hub DS v2.0 */
+
+/* ── Backdrop ───────────────────────────────────────────────────── */
+.backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-modal);
+  background: var(--surface-overlay);
+  animation: wlh-fade-in var(--wlh-dur-fast) var(--wlh-ease-out) both;
+}
+
+@keyframes wlh-fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* ── Panel base ─────────────────────────────────────────────────── */
+.panel {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  background: var(--surface-1);
+  box-shadow: var(--wlh-shadow-xl);
+  z-index: var(--z-modal);
+  transition:
+    transform var(--wlh-dur-fast) var(--wlh-ease-spring);
+}
+
+/* ── Placement: right ────────────────────────────────────────────── */
+.panel--right {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  animation: drawer-slide-right var(--wlh-dur-fast) var(--wlh-ease-spring) both;
+}
+
+@keyframes drawer-slide-right {
+  from { transform: translateX(100%); }
+  to   { transform: translateX(0); }
+}
+
+.panel--right--sm   { width: 320px; }
+.panel--right--md   { width: 400px; }
+.panel--right--lg   { width: 540px; }
+.panel--right--xl   { width: 680px; }
+.panel--right--full { width: 100vw; }
+
+/* ── Placement: left ─────────────────────────────────────────────── */
+.panel--left {
+  top: 0;
+  left: 0;
+  bottom: 0;
+  animation: drawer-slide-left var(--wlh-dur-fast) var(--wlh-ease-spring) both;
+}
+
+@keyframes drawer-slide-left {
+  from { transform: translateX(-100%); }
+  to   { transform: translateX(0); }
+}
+
+.panel--left--sm   { width: 320px; }
+.panel--left--md   { width: 400px; }
+.panel--left--lg   { width: 540px; }
+.panel--left--xl   { width: 680px; }
+.panel--left--full { width: 100vw; }
+
+/* ── Placement: bottom ───────────────────────────────────────────── */
+.panel--bottom {
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: var(--wlh-radius-xl) var(--wlh-radius-xl) 0 0;
+  animation: drawer-slide-bottom var(--wlh-dur-fast) var(--wlh-ease-spring) both;
+}
+
+@keyframes drawer-slide-bottom {
+  from { transform: translateY(100%); }
+  to   { transform: translateY(0); }
+}
+
+.panel--bottom--sm   { height: 40vh; }
+.panel--bottom--md   { height: 50vh; }
+.panel--bottom--lg   { height: 65vh; }
+.panel--bottom--xl   { height: 80vh; }
+.panel--bottom--full { height: 100vh; border-radius: 0; }
+
+/* ── Header ─────────────────────────────────────────────────────── */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--wlh-spacing-3);
+  padding: var(--wlh-spacing-4) var(--wlh-spacing-5);
+  border-bottom: 1px solid var(--border-subtle);
+  flex-shrink: 0;
+}
+
+.title {
+  font-size: var(--wlh-text-lg);
+  font-weight: var(--wlh-weight-semibold);
+  color: var(--text-primary);
+  margin: 0;
+  line-height: 1.4;
+}
+
+.closeBtn {
+  flex-shrink: 0;
+  appearance: none;
+  border: none;
+  background: none;
+  padding: var(--wlh-spacing-1);
+  margin: calc(var(--wlh-spacing-1) * -1);
+  cursor: pointer;
+  color: var(--text-tertiary);
+  border-radius: var(--wlh-radius-md);
+  line-height: 0;
+  transition:
+    color var(--wlh-dur-fast) var(--wlh-ease-out),
+    background var(--wlh-dur-fast) var(--wlh-ease-out);
+}
+
+.closeBtn:hover {
+  color: var(--text-primary);
+  background: var(--surface-2);
+}
+
+.closeBtn:focus-visible {
+  outline: 2px solid var(--border-focus);
+  outline-offset: 1px;
+}
+
+/* ── Body ───────────────────────────────────────────────────────── */
+.body {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--wlh-spacing-5);
+  color: var(--text-secondary);
+}
+
+/* ── Footer ─────────────────────────────────────────────────────── */
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--wlh-spacing-2);
+  padding: var(--wlh-spacing-4) var(--wlh-spacing-5);
+  border-top: 1px solid var(--border-subtle);
+  flex-shrink: 0;
+}
+
+/* ── Reduced motion ─────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .backdrop,
+  .panel--right,
+  .panel--left,
+  .panel--bottom {
+    animation: none;
+  }
+
+  .panel {
+    transition: none;
+  }
+}

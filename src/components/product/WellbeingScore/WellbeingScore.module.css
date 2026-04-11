@@ -1,0 +1,102 @@
+/* WellbeingScore.module.css — WorkLife Hub DS v2.0 */
+
+/* ── Root ───────────────────────────────────────────────────────── */
+.root {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--wlh-spacing-2);
+}
+
+/* ── Sizes ──────────────────────────────────────────────────────── */
+.root--sm { gap: var(--wlh-spacing-1-5); }
+.root--md { gap: var(--wlh-spacing-2); }
+.root--lg { gap: var(--wlh-spacing-3); }
+.root--xl { gap: var(--wlh-spacing-3); }
+
+/* ── Gauge wrapper ──────────────────────────────────────────────── */
+.gauge {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.gauge svg {
+  display: block;
+}
+
+/* ── Center content ─────────────────────────────────────────────── */
+.center {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1px;
+}
+
+.value {
+  font-family: var(--font-body);
+  font-weight: var(--wlh-weight-bold);
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.statusLabel {
+  font-family: var(--font-body);
+  font-weight: var(--wlh-weight-medium);
+  line-height: 1;
+  text-align: center;
+}
+
+/* ── Footer ─────────────────────────────────────────────────────── */
+.footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--wlh-spacing-1);
+}
+
+.label {
+  font-size: var(--wlh-text-sm);
+  font-weight: var(--wlh-weight-medium);
+  color: var(--text-secondary);
+  text-align: center;
+}
+
+/* ── Trend ──────────────────────────────────────────────────────── */
+.trend {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--wlh-spacing-1);
+  font-size: var(--wlh-text-xs);
+  font-weight: var(--wlh-weight-semibold);
+  padding: 2px var(--wlh-spacing-1-5);
+  border-radius: var(--wlh-radius-full);
+}
+
+.trend--up {
+  color: var(--wlh-green-700);
+  background: var(--wlh-green-50);
+}
+
+.trend--down {
+  color: var(--wlh-red-600);
+  background: var(--wlh-red-50);
+}
+
+.trendLabel {
+  font-weight: var(--wlh-weight-regular);
+  color: var(--text-tertiary);
+}
+
+/* ── Sm overrides ───────────────────────────────────────────────── */
+.root--sm .label { font-size: var(--wlh-text-xs); }
+.root--sm .trend { font-size: 10px; }
+
+/* ── Reduced motion ─────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .gauge circle {
+    transition: none !important;
+  }
+}

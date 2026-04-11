@@ -1,0 +1,326 @@
+/*
+ * MoodSelector.module.css — WorkLife Hub
+ *
+ * Versão em CSS Modules do MoodSelector.css.
+ * Os nomes de classe aqui são escopados automaticamente pelo bundler.
+ *
+ * Convenção de nomenclatura: BEM adaptado para CSS Modules.
+ * Block: moodSelector
+ * Elements: __legend, __list, __item, __button, __emojiWrap, __emoji,
+ *           __check, __checkIcon, __label, __confirmation
+ * Modifiers: --visible, --selected, --dimmed
+ */
+
+/* =========================================================================
+   Wrapper do grupo
+   ========================================================================= */
+
+.moodSelector {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.moodSelector__legend {
+  font-family: var(--font-heading, 'Plus Jakarta Sans', system-ui, sans-serif);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-navy-900, #0F1B35);
+  margin-bottom: 0.25rem;
+}
+
+/* =========================================================================
+   Lista de opções
+   ========================================================================= */
+
+.moodSelector__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* =========================================================================
+   Item individual
+   ========================================================================= */
+
+.moodSelector__item {
+  flex: 1 1 auto;
+  min-width: 4rem;
+}
+
+/* =========================================================================
+   Botão de opção
+   ========================================================================= */
+
+.moodSelector__button {
+  /* Reset */
+  appearance: none;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+
+  /* Layout */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.375rem;
+  width: 100%;
+
+  /*
+   * Estado inicial da animação de entrada stagger.
+   * Transição aplicada para states normais — prefers-reduced-motion
+   * é tratado ao final do arquivo.
+   */
+  opacity: 0;
+  transform: translateY(8px) scale(0.92);
+  transition:
+    opacity 250ms cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    transform 250ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Entrada animada concluída */
+.moodSelector__button--visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* Não-selecionado quando há seleção ativa */
+.moodSelector__button--dimmed {
+  opacity: 0.45;
+  transform: scale(0.95);
+}
+
+/* Selecionado */
+.moodSelector__button--selected {
+  opacity: 1;
+  transform: scale(1.15);
+}
+
+/*
+ * ACESSIBILIDADE: focus-visible garante outline apenas na navegação
+ * por teclado, não no clique do mouse.
+ */
+.moodSelector__button:focus-visible {
+  outline: 2px solid var(--color-amber-500, #F59E0B);
+  outline-offset: 4px;
+  border-radius: var(--radius-lg, 0.75rem);
+}
+
+.moodSelector__button:focus:not(:focus-visible) {
+  outline: none;
+}
+
+.moodSelector__button:disabled {
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* =========================================================================
+   Container do emoji
+   ========================================================================= */
+
+.moodSelector__emojiWrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* Alvo de toque mínimo WCAG 2.5.5: 44×44px */
+  width: 3rem;
+  height: 3rem;
+  border-radius: var(--radius-full, 9999px);
+
+  background-color: var(--color-slate-100, #F1F5F9);
+  border: 2px solid transparent;
+
+  transition:
+    border-color 250ms cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    box-shadow 250ms cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    background-color 250ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.moodSelector__button--selected .moodSelector__emojiWrap {
+  border-color: var(--mood-color, var(--color-amber-500, #F59E0B));
+  /*
+   * color-mix() é suportado desde Safari 16.2, Chrome 111, Firefox 113.
+   * Fallback gracioso: sem sombra extra em browsers antigos.
+   */
+  box-shadow: 0 0 0 3px color-mix(
+    in srgb,
+    var(--mood-color, var(--color-amber-500, #F59E0B)) 25%,
+    transparent
+  );
+  background-color: color-mix(
+    in srgb,
+    var(--mood-color, var(--color-amber-500, #F59E0B)) 12%,
+    var(--color-white, #fff)
+  );
+}
+
+.moodSelector__emoji {
+  font-size: 1.5rem;
+  line-height: 1;
+  user-select: none;
+}
+
+/* =========================================================================
+   Label textual
+   ========================================================================= */
+
+.moodSelector__label {
+  font-family: var(--font-body, 'Inter', system-ui, sans-serif);
+  font-size: 0.75rem;
+  font-weight: 500;
+  /*
+   * WCAG 1.4.3 FIX: navy-800 (#1A2B4A) sobre qualquer background da paleta
+   * WLH garante mínimo 11.61:1 (era slate-500 / 2.78:1 sobre slate-100 — FAIL).
+   */
+  color: var(--color-navy-800, #1A2B4A);
+  text-align: center;
+  line-height: 1.2;
+  transition: color 250ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.moodSelector__button--selected .moodSelector__label {
+  color: var(--color-navy-900, #0F1B35);
+  font-weight: 600;
+}
+
+/* =========================================================================
+   Checkmark — indicador visual não-cor de seleção
+   ========================================================================= */
+
+.moodSelector__check {
+  position: absolute;
+  bottom: -4px;
+  right: -4px;
+  width: 1rem;
+  height: 1rem;
+  border-radius: var(--radius-full, 9999px);
+  background-color: var(--mood-color, var(--color-amber-500, #F59E0B));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transform: scale(0);
+  transition: transform 250ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.moodSelector__button--selected .moodSelector__check {
+  transform: scale(1);
+}
+
+.moodSelector__checkIcon {
+  width: 0.5rem;
+  height: 0.5rem;
+  stroke: var(--color-white, #fff);
+  stroke-width: 2.5;
+  fill: none;
+}
+
+/* =========================================================================
+   Confirmação — "Registrado ✓"
+   ========================================================================= */
+
+.moodSelector__confirmation {
+  font-family: var(--font-body, 'Inter', system-ui, sans-serif);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  /*
+   * WCAG 1.4.3 FIX: navy-900 (#0F1B35) sobre branco = 25:1
+   * (era green-500 / 2.44:1 sobre branco — FAIL).
+   * O significado semântico de "sucesso" é mantido pelo ✓ e pelo conteúdo textual,
+   * sem depender apenas de cor (WCAG 1.4.1).
+   */
+  color: var(--color-navy-900, #0F1B35);
+  text-align: center;
+
+  /*
+   * Reserva altura para evitar layout shift quando o texto aparece.
+   * min-height equivale a 1 linha de texto no font-size acima.
+   */
+  min-height: 1.25rem;
+  margin: 0;
+
+  opacity: 0;
+  transform: translateY(4px);
+  transition:
+    opacity 600ms cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    transform 600ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.moodSelector__confirmation--visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* =========================================================================
+   Responsividade — telas muito estreitas
+   ========================================================================= */
+
+@media (max-width: 360px) {
+  .moodSelector__list {
+    gap: 0.5rem;
+  }
+
+  .moodSelector__emojiWrap {
+    width: 2.75rem;
+    height: 2.75rem;
+  }
+
+  .moodSelector__emoji {
+    font-size: 1.25rem;
+  }
+}
+
+/* =========================================================================
+   prefers-reduced-motion — respeita preferência do sistema operacional
+   ========================================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  /*
+   * Remove todas as transições e animações.
+   * Os estados continuam funcionando (selected, dimmed), mas
+   * a mudança é instantânea.
+   */
+  .moodSelector__button,
+  .moodSelector__emojiWrap,
+  .moodSelector__label,
+  .moodSelector__check,
+  .moodSelector__confirmation {
+    transition: none;
+    animation: none;
+  }
+
+  /* Garante visibilidade imediata — sem esperar o stagger */
+  .moodSelector__button {
+    opacity: 1;
+    transform: none;
+  }
+
+  .moodSelector__button--dimmed {
+    opacity: 0.45;
+    transform: none;
+  }
+
+  .moodSelector__button--selected {
+    transform: none;
+  }
+
+  .moodSelector__check {
+    transform: scale(0);
+  }
+
+  .moodSelector__button--selected .moodSelector__check {
+    transform: scale(1);
+  }
+
+  .moodSelector__confirmation--visible {
+    opacity: 1;
+    transform: none;
+  }
+}

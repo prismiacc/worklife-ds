@@ -1,0 +1,91 @@
+/* ── Tooltip wrapper ────────────────────────────────────────────── */
+.wrapper {
+  position: relative;
+  display: inline-flex;
+}
+
+/* ── Bubble ────────────────────────────────────────────────────── */
+.bubble {
+  position: absolute;
+  z-index: 1000;
+  max-width: 200px;
+  padding: var(--tooltip-py) var(--tooltip-px);
+  font-size: var(--tooltip-text-size);
+  font-weight: var(--wlh-weight-medium);
+  line-height: var(--wlh-leading-snug);
+  color: var(--tooltip-text);
+  background: var(--tooltip-bg);
+  border-radius: var(--tooltip-radius);
+  box-shadow: var(--wlh-shadow-md);
+  white-space: normal;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity var(--wlh-dur-quick) var(--wlh-ease-out);
+}
+
+.bubble[data-visible] {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* ── Arrow (::before pseudo) ───────────────────────────────────── */
+.bubble::before {
+  content: '';
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: var(--tooltip-bg);
+  transform: rotate(45deg);
+}
+
+/* ── Placement: top ────────────────────────────────────────────── */
+.bubble--top {
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.bubble--top::before {
+  bottom: -4px;
+  left: 50%;
+  margin-left: -4px;
+}
+
+/* ── Placement: bottom ─────────────────────────────────────────── */
+.bubble--bottom {
+  top: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.bubble--bottom::before {
+  top: -4px;
+  left: 50%;
+  margin-left: -4px;
+}
+
+/* ── Placement: left ───────────────────────────────────────────── */
+.bubble--left {
+  right: calc(100% + 8px);
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.bubble--left::before {
+  right: -4px;
+  top: 50%;
+  margin-top: -4px;
+}
+
+/* ── Placement: right ──────────────────────────────────────────── */
+.bubble--right {
+  left: calc(100% + 8px);
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.bubble--right::before {
+  left: -4px;
+  top: 50%;
+  margin-top: -4px;
+}

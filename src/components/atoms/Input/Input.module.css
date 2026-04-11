@@ -1,0 +1,124 @@
+/* Input.module.css — WorkLife Hub DS v2.0
+   Wrapper + native input.
+   Tamanhos:  sm · md · lg
+   Status:    default · error · success
+   Add-ons:   leading · trailing
+*/
+
+/* ── Wrapper ────────────────────────────────────────────────────── */
+.inputRoot {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+
+  background: var(--input-bg);
+  border: 1.5px solid var(--input-border);
+  border-radius: var(--input-radius);
+  transition:
+    border-color var(--wlh-dur-quick) var(--wlh-ease-out),
+    box-shadow   var(--wlh-dur-quick) var(--wlh-ease-out),
+    background   var(--wlh-dur-quick) var(--wlh-ease-out);
+}
+
+.inputRoot:focus-within {
+  border-color: var(--input-border-focus);
+  box-shadow:   var(--input-shadow-focus);
+  outline: none;
+}
+
+.inputRoot:not(:focus-within):not([data-disabled]):hover {
+  border-color: var(--input-border-hover);
+}
+
+
+/* ── Tamanhos ───────────────────────────────────────────────────── */
+.inputRoot--sm { height: var(--input-h-sm); }
+.inputRoot--md { height: var(--input-h-md); }
+.inputRoot--lg { height: var(--input-h-lg); }
+
+
+/* ── Status ─────────────────────────────────────────────────────── */
+.inputRoot--error {
+  border-color: var(--input-border-error);
+}
+.inputRoot--error:focus-within {
+  border-color: var(--input-border-error);
+  box-shadow:   var(--input-shadow-error);
+}
+
+.inputRoot--success {
+  border-color: var(--input-border-success);
+}
+.inputRoot--success:focus-within {
+  border-color: var(--input-border-success);
+  box-shadow:   var(--input-shadow-success);
+}
+
+
+/* ── Disabled ───────────────────────────────────────────────────── */
+.inputRoot--disabled {
+  background:     var(--input-bg-disabled);
+  border-color:   var(--input-border);
+  cursor:         not-allowed;
+  pointer-events: none;
+}
+
+
+/* ── Native input ───────────────────────────────────────────────── */
+.input {
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+  padding: 0 var(--wlh-spacing-3);
+  border: none;
+  background: transparent;
+  color: var(--input-text);
+  font-family: var(--font-body);
+  font-size: var(--wlh-text-md);
+  line-height: 1;
+  outline: none;
+}
+
+.inputRoot--sm .input { font-size: var(--wlh-text-sm); }
+.inputRoot--lg .input { font-size: var(--wlh-text-lg); }
+
+.input::placeholder { color: var(--input-placeholder); }
+
+.input:disabled {
+  color:  var(--input-text-disabled);
+  cursor: not-allowed;
+}
+
+.input[type='search']::-webkit-search-cancel-button,
+.input[type='search']::-webkit-search-decoration { display: none; }
+
+.input[type='number']::-webkit-inner-spin-button,
+.input[type='number']::-webkit-outer-spin-button { -webkit-appearance: none; }
+.input[type='number'] { -moz-appearance: textfield; }
+
+
+/* ── Add-ons ────────────────────────────────────────────────────── */
+.addon {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--icon-muted);
+  transition: color var(--wlh-dur-quick) var(--wlh-ease-out);
+}
+
+.addon[data-position='leading']  { padding-left:  var(--wlh-spacing-3); }
+.addon[data-position='trailing'] { padding-right: var(--wlh-spacing-3); }
+
+.inputRoot--hasLeading  .input { padding-left:  var(--wlh-spacing-2); }
+.inputRoot--hasTrailing .input { padding-right: var(--wlh-spacing-2); }
+
+.inputRoot:focus-within .addon { color: var(--icon-brand); }
+
+
+/* ── Reduced motion ─────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .inputRoot,
+  .addon { transition: none; }
+}

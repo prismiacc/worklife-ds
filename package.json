@@ -1,0 +1,30 @@
+{
+  "name": "worklife-hub",
+  "version": "0.1.0",
+  "private": true,
+  "description": "WorkLife Hub — check-in diário de bem-estar profissional",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@types/react-router-dom": "^5.3.3",
+    "lucide-react": "^1.8.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^7.14.0"
+  },
+  "devDependencies": {
+    "@types/node": "^25.6.0",
+    "@types/react": "^18.3.5",
+    "@types/react-dom": "^18.3.0",
+    "@vitejs/plugin-react": "^4.3.1",
+    "eslint": "^9.9.0",
+    "typescript": "^5.5.3",
+    "vite": "^5.4.2"
+  }
+}
