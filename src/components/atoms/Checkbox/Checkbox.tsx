@@ -11,6 +11,8 @@ export interface CheckboxProps extends Omit<InputHTMLAttributes<HTMLInputElement
   indeterminate?: boolean
   /** Alinha o checkbox ao topo quando há description longa */
   alignTop?:      boolean
+  /** Oculta o label visualmente (mantém para screen readers) */
+  hideLabel?:     boolean
 }
 
 export function Checkbox({
@@ -18,6 +20,7 @@ export function Checkbox({
   description,
   indeterminate = false,
   alignTop      = false,
+  hideLabel     = false,
   disabled,
   className,
   id: idProp,
@@ -72,7 +75,7 @@ export function Checkbox({
       </span>
 
       {(label || description) && (
-        <span className={styles.content}>
+        <span className={[styles.content, hideLabel && styles['content--hidden']].filter(Boolean).join(' ')}>
           {label && <span className={styles.label}>{label}</span>}
           {description && <span className={styles.description}>{description}</span>}
         </span>

@@ -1,6 +1,20 @@
-import { useState, useId } from 'react'
-import { FormField, type FormFieldProps } from '../FormField/FormField'
+import React, { useState, useId } from 'react'
+import { FormField } from '../FormField/FormField'
+import type { InputProps } from '../../atoms/Input/Input'
 import styles from './PasswordField.module.css'
+
+type InputFormFieldProps = {
+  as?: 'input'
+  label: string
+  hint?: string
+  error?: string
+  successMessage?: string
+  hideLabel?: boolean
+  required?: boolean
+  charCount?: number
+  maxLength?: number
+  iconRight?: React.ReactNode
+} & Omit<InputProps, 'status' | 'describedBy'>
 
 /* ── Strength calculation ───────────────────────────────────────── */
 export type StrengthLevel = 'weak' | 'fair' | 'good' | 'strong'
@@ -29,7 +43,7 @@ function calcStrength(password: string): { level: StrengthLevel; score: number; 
 
 /* ── Props ──────────────────────────────────────────────────────── */
 export interface PasswordFieldProps
-  extends Omit<FormFieldProps, 'as' | 'type' | 'iconRight'> {
+  extends Omit<InputFormFieldProps, 'type' | 'iconRight'> {
   showStrength?: boolean
   strengthLabel?: boolean
 }
@@ -52,10 +66,11 @@ export function PasswordField({
   return (
     <div className={styles.root}>
       <FormField
-        {...rest}
+        as="input"
+        {...(rest as InputFormFieldProps)}
         type={visible ? 'text' : 'password'}
         value={value}
-        onChange={onChange}
+        onChange={onChange as React.ChangeEventHandler<HTMLInputElement>}
         autoComplete={visible ? 'off' : 'current-password'}
         aria-describedby={showMeter ? strengthId : undefined}
         iconRight={

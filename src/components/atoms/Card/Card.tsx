@@ -53,7 +53,8 @@ export const Card = forwardRef<HTMLElement, CardProps>(function Card(
 
   return (
     <Component
-      ref={ref as React.Ref<HTMLDivElement>}
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      ref={ref as any}
       className={[
         styles.card,
         styles[`card--${variant}`],

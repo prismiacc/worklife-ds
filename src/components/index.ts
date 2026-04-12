@@ -98,7 +98,7 @@ export { Stepper }                             from './molecules/Stepper'
 export type { StepperProps, Step, StepStatus, StepperOrientation } from './molecules/Stepper'
 
 export { Tabs }                                from './molecules/Tabs'
-export type { TabsProps, Tab, TabVariant }     from './molecules/Tabs'
+export type { TabsProps, TabItem, TabsVariant } from './molecules/Tabs'
 
 /* ── Organisms ──────────────────────────────────────────────────── */
 export { Drawer }                              from './organisms/Drawer'
@@ -125,7 +125,7 @@ export { NotificationCenter }                  from './organisms/NotificationCen
 export type { NotificationCenterProps, Notification } from './organisms/NotificationCenter'
 
 export { Sidebar }                             from './organisms/Sidebar'
-export type { SidebarProps, SidebarGroup, SidebarNavItem } from './organisms/Sidebar'
+export type { SidebarProps, NavGroup, NavItem } from './organisms/Sidebar'
 
 export { ToastProvider, useToast }             from './organisms/Toast'
 export type { ToastItem, ToastVariant, ToastPosition } from './organisms/Toast'

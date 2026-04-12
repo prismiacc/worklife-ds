@@ -1,4 +1,4 @@
-import { useId } from 'react'
+import { useId, type ReactNode } from 'react'
 import { Label } from '../../atoms/Label/Label'
 import { Input, type InputProps } from '../../atoms/Input/Input'
 import { Textarea, type TextareaProps } from '../../atoms/Textarea/Textarea'
@@ -24,6 +24,8 @@ export type FormFieldProps = (InputFieldProps | TextareaFieldProps) & {
   charCount?:      number
   /** Limite para o contador */
   maxLength?:      number
+  /** Elemento posicionado à direita dentro do campo (ex.: botão mostrar/ocultar senha) */
+  iconRight?:      ReactNode
 }
 
 /**
@@ -48,6 +50,7 @@ export function FormField({
   className,
   charCount,
   maxLength,
+  iconRight,
   as = 'input',
   ...fieldProps
 }: FormFieldProps) {
@@ -102,16 +105,23 @@ export function FormField({
           describedBy={hasHelper ? helperId : undefined}
         />
       ) : (
-        <Input
-          {...(fieldProps as InputProps)}
-          id={fieldId}
-          required={required}
-          disabled={disabled}
-          status={status}
-          maxLength={maxLength}
-          describedBy={hasHelper ? helperId : undefined}
-          className={styles.formField__input}
-        />
+        <div className={iconRight ? styles['formField__inputWrapper'] : undefined}>
+          <Input
+            {...(fieldProps as InputProps)}
+            id={fieldId}
+            required={required}
+            disabled={disabled}
+            status={status}
+            maxLength={maxLength}
+            describedBy={hasHelper ? helperId : undefined}
+            className={[styles.formField__input, iconRight ? styles['formField__input--withIcon'] : undefined].filter(Boolean).join(' ')}
+          />
+          {iconRight && (
+            <span className={styles.formField__iconRight} aria-hidden="true">
+              {iconRight}
+            </span>
+          )}
+        </div>
       )}
 
       <HelperText id={helperId} variant={helperVariant}>
